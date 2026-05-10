@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OCMRC Repository</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#0f172a;
+    --secondary:#1e293b;
+    --accent:#2563eb;
+    --light:#f8fafc;
+    --border:#e2e8f0;
+    --text:#334155;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.7;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(15,23,42,0.95);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    padding-top:160px;
+    padding-bottom:100px;
+    background:
+        linear-gradient(
+            rgba(15,23,42,0.88),
+            rgba(15,23,42,0.88)
+        ),
+        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero-container{
+    max-width:1400px;
+    margin:auto;
+    padding:0 30px;
+}
+
+.hero h1{
+    font-size:64px;
+    line-height:1.1;
+    max-width:850px;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#cbd5e1;
+    max-width:850px;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:15px 28px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,0.2);
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,0.08);
+}
+
+/* MAIN */
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:80px 30px;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+    color:var(--primary);
+}
+
+.section-subtitle{
+    color:#64748b;
+    margin-bottom:50px;
+    max-width:900px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:80px;
+}
+
+.stat-card{
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    border:1px solid var(--border);
+    box-shadow:0 10px 35px rgba(0,0,0,0.04);
+}
+
+.stat-number{
+    font-size:42px;
+    font-weight:700;
+    color:var(--accent);
+}
+
+.stat-label{
+    margin-top:10px;
+    color:#64748b;
+}
+
+/* COLLECTIONS */
+
+.collections{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+.collection-card{
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    border:1px solid var(--border);
+    transition:0.3s;
+    box-shadow:0 10px 35px rgba(0,0,0,0.04);
+}
+
+.collection-card:hover{
+    transform:translateY(-6px);
+}
+
+.collection-card h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.collection-card p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.collection-link{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* SEARCH */
+
+.search-box{
+    background:white;
+    padding:40px;
+    border-radius:24px;
+    border:1px solid var(--border);
+    margin-bottom:80px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.04);
+}
+
+.search-box form{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.search-box input{
+    flex:1;
+    min-width:250px;
+    padding:18px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    font-size:16px;
+}
+
+.search-box button{
+    padding:18px 28px;
+    border:none;
+    border-radius:14px;
+    background:var(--accent);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--primary);
+    color:#cbd5e1;
+    padding:60px 30px;
+    margin-top:100px;
+}
+
+.footer-container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.footer-container h3{
+    color:white;
+    margin-bottom:20px;
+}
+
+.footer-bottom{
+    margin-top:40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:30px;
+    color:#94a3b8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:42px;
+}
+
+.nav-links{
+    display:none;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="#" class="logo">
+            OCMRC<span> Repository</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#">Головна</a>
+            <a href="#">Публікації</a>
+            <a href="#">Колекції</a>
+            <a href="#">Проєкти</a>
+            <a href="#">Автори</a>
+            <a href="#">Контакти</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+        <h1>
+            Електронний академічний репозитарій OCMRC
+        </h1>
+
+        <p>
+            Сучасна цифрова платформа для зберігання,
+            систематизації та відкритого доступу
+            до наукових публікацій, конференцій,
+            навчальних матеріалів та міжнародних проєктів.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">
+                Переглянути публікації
+            </a>
+
+            <a href="#" class="btn btn-secondary">
+                Дізнатись більше
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <h2 class="section-title">
+            Пошук у репозитарії
+        </h2>
+
+        <p class="section-subtitle">
+            Шукайте статті, тези, конференції,
+            авторів або ключові слова.
+        </p>
+
+        <form>
+            <input type="text" placeholder="Пошук матеріалів...">
+            <button type="submit">Пошук</button>
+        </form>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <div class="stat-number">12 450+</div>
+            <div class="stat-label">Наукових матеріалів</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">2 300+</div>
+            <div class="stat-label">Авторів</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">420+</div>
+            <div class="stat-label">Конференцій</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Відкритий доступ</div>
+        </div>
+
+    </div>
+
+    <!-- COLLECTIONS -->
+
+    <h2 class="section-title">
+        Основні колекції
+    </h2>
+
+    <p class="section-subtitle">
+        Академічні та наукові фонди електронного репозитарію.
+    </p>
+
+    <div class="collections">
+
+        <div class="collection-card">
+            <h3>Наукові статті</h3>
+
+            <p>
+                Публікації викладачів,
+                дослідників та студентів.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+        <div class="collection-card">
+            <h3>Матеріали конференцій</h3>
+
+            <p>
+                Збірники тез, міжнародні конференції,
+                круглі столи та форуми.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+        <div class="collection-card">
+            <h3>Кваліфікаційні роботи</h3>
+
+            <p>
+                Бакалаврські та магістерські роботи
+                випускників.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+        <div class="collection-card">
+            <h3>Міжнародні проєкти</h3>
+
+            <p>
+                Erasmus+, Horizon Europe,
+                академічні програми та гранти.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+        <div class="collection-card">
+            <h3>Монографії</h3>
+
+            <p>
+                Колективні та авторські монографії
+                науковців.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+        <div class="collection-card">
+            <h3>Навчальні матеріали</h3>
+
+            <p>
+                Методичні розробки,
+                посібники та презентації.
+            </p>
+
+            <a href="#" class="collection-link">
+                Відкрити →
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <h3>OCMRC Repository</h3>
+
+        <p>
+            Електронний академічний репозитарій
+            освітнього центру та наукової спільноти.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 OCMRC Repository.
+            Open Access Academic Platform.
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
