@@ -5,7 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>OCMRC Repository — Освітній центр мов і розвитку "Cambridge"</title>
+<title>
+OCMRC Repository — Освітній центр мов і розвитку "Cambridge"
+</title>
+
+<meta name="description"
+content="Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,10 +33,6 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Inter',sans-serif;
     background:var(--light);
@@ -39,13 +40,15 @@ body{
     line-height:1.7;
 }
 
-/* NAVBAR */
+html{
+    scroll-behavior:smooth;
+}
 
 .navbar{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(15,23,42,0.95);
+    background:rgba(15,23,42,0.94);
     backdrop-filter:blur(12px);
     z-index:1000;
     border-bottom:1px solid rgba(255,255,255,0.08);
@@ -61,8 +64,8 @@ body{
 }
 
 .logo{
-    color:white;
     text-decoration:none;
+    color:white;
     font-size:24px;
     font-weight:800;
 }
@@ -73,21 +76,18 @@ body{
 
 .nav-links{
     display:flex;
-    gap:30px;
+    gap:28px;
 }
 
 .nav-links a{
-    color:#cbd5e1;
     text-decoration:none;
+    color:#cbd5e1;
     transition:0.3s;
-    font-size:15px;
 }
 
 .nav-links a:hover{
     color:white;
 }
-
-/* HERO */
 
 .hero{
     min-height:100vh;
@@ -96,51 +96,50 @@ body{
 
     background:
     linear-gradient(
-        rgba(15,23,42,0.86),
-        rgba(15,23,42,0.88)
+        rgba(15,23,42,0.85),
+        rgba(15,23,42,0.90)
     ),
 
     url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');
 
     background-size:cover;
     background-position:center;
+
     color:white;
 }
 
 .hero-container{
     max-width:1400px;
     margin:auto;
-    padding:120px 32px 80px;
+    padding:140px 32px 100px;
 }
 
 .hero-badge{
     display:inline-block;
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.1);
     padding:10px 18px;
     border-radius:999px;
+    background:rgba(255,255,255,0.1);
     margin-bottom:28px;
-    font-size:14px;
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 .hero h1{
     font-size:72px;
     line-height:1.05;
-    max-width:950px;
-    margin-bottom:30px;
-    font-weight:800;
+    max-width:900px;
+    margin-bottom:28px;
 }
 
 .hero p{
-    max-width:900px;
+    max-width:850px;
     color:#cbd5e1;
     font-size:20px;
 }
 
 .hero-buttons{
+    margin-top:40px;
     display:flex;
     gap:18px;
-    margin-top:40px;
     flex-wrap:wrap;
 }
 
@@ -162,15 +161,13 @@ body{
 }
 
 .btn-secondary{
-    border:1px solid rgba(255,255,255,0.18);
+    border:1px solid rgba(255,255,255,0.16);
     color:white;
 }
 
 .btn-secondary:hover{
     background:rgba(255,255,255,0.08);
 }
-
-/* MAIN */
 
 .container{
     max-width:1400px;
@@ -179,120 +176,35 @@ body{
 }
 
 .section-title{
-    font-size:46px;
-    color:var(--primary);
+    font-size:48px;
     margin-bottom:18px;
+    color:var(--primary);
 }
 
 .section-subtitle{
-    color:#64748b;
     max-width:900px;
+    color:#64748b;
     margin-bottom:50px;
 }
 
-/* SEARCH */
-
 .search-box{
     background:white;
+    border-radius:28px;
     padding:40px;
-    border-radius:26px;
     border:1px solid var(--border);
     box-shadow:0 15px 40px rgba(0,0,0,0.05);
     margin-bottom:90px;
 }
 
-.search-box form{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
 .search-box input{
-    flex:1;
-    min-width:250px;
+    width:100%;
     padding:18px;
     border-radius:16px;
     border:1px solid var(--border);
     font-size:16px;
 }
 
-.search-box button{
-    padding:18px 28px;
-    border:none;
-    border-radius:16px;
-    background:var(--accent);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-}
-
-/* STATS */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:28px;
-    margin-bottom:100px;
-}
-
-.stat-card{
-    background:white;
-    padding:38px;
-    border-radius:24px;
-    border:1px solid var(--border);
-    box-shadow:0 10px 35px rgba(0,0,0,0.04);
-}
-
-.stat-number{
-    font-size:48px;
-    font-weight:800;
-    color:var(--accent);
-}
-
-.stat-label{
-    margin-top:12px;
-    color:#64748b;
-}
-
-/* DEPARTMENTS */
-
-.departments{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:30px;
-}
-
-.department-card{
-    background:white;
-    padding:36px;
-    border-radius:24px;
-    border:1px solid var(--border);
-    transition:0.3s;
-    box-shadow:0 10px 35px rgba(0,0,0,0.04);
-}
-
-.department-card:hover{
-    transform:translateY(-8px);
-}
-
-.department-card h3{
-    font-size:24px;
-    margin-bottom:18px;
-    color:var(--primary);
-}
-
-.department-card ul{
-    padding-left:18px;
-}
-
-.department-card li{
-    margin-bottom:10px;
-    color:#475569;
-}
-
-/* PUBLICATIONS */
-
-.publications{
+.publications-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:28px;
@@ -304,18 +216,22 @@ body{
     border-radius:24px;
     border:1px solid var(--border);
     box-shadow:0 10px 35px rgba(0,0,0,0.04);
+    transition:0.3s;
 }
 
-.publication-card h4{
-    margin-bottom:14px;
+.publication-card:hover{
+    transform:translateY(-6px);
+}
+
+.publication-card h3{
     color:var(--primary);
-    font-size:22px;
+    margin-bottom:14px;
 }
 
 .publication-meta{
     color:#64748b;
-    margin-bottom:18px;
     font-size:14px;
+    margin-bottom:18px;
 }
 
 .publication-card a{
@@ -324,15 +240,39 @@ body{
     font-weight:600;
 }
 
-/* CONTACT */
+.departments{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:28px;
+    margin-top:50px;
+}
+
+.department-card{
+    background:white;
+    padding:36px;
+    border-radius:24px;
+    border:1px solid var(--border);
+}
+
+.department-card h3{
+    margin-bottom:16px;
+    color:var(--primary);
+}
+
+.department-card ul{
+    padding-left:18px;
+}
+
+.department-card li{
+    margin-bottom:8px;
+}
 
 .contact{
+    margin-top:120px;
     background:white;
     border-radius:28px;
     padding:50px;
     border:1px solid var(--border);
-    margin-top:100px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.05);
 }
 
 .contact-grid{
@@ -340,13 +280,6 @@ body{
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:40px;
 }
-
-.contact h3{
-    margin-bottom:18px;
-    color:var(--primary);
-}
-
-/* FOOTER */
 
 footer{
     margin-top:120px;
@@ -363,30 +296,23 @@ footer{
 .footer-title{
     color:white;
     font-size:28px;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .footer-bottom{
     margin-top:40px;
     border-top:1px solid rgba(255,255,255,0.08);
     padding-top:30px;
-    color:#94a3b8;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:900px){
 
 .hero h1{
-    font-size:46px;
+    font-size:44px;
 }
 
 .nav-links{
     display:none;
-}
-
-.hero-buttons{
-    flex-direction:column;
 }
 
 .section-title{
@@ -400,20 +326,18 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav class="navbar">
 
 <div class="nav-container">
 
 <a href="#" class="logo">
-OCMRC<span> Repository</span>
+OCMRC <span>Repository</span>
 </a>
 
 <div class="nav-links">
 <a href="#">Головна</a>
-<a href="#departments">Відділи</a>
 <a href="#publications">Публікації</a>
+<a href="#departments">Відділи</a>
 <a href="#contact">Контакти</a>
 </div>
 
@@ -421,14 +345,12 @@ OCMRC<span> Repository</span>
 
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-container">
 
 <div class="hero-badge">
-Офіційний електронний репозитарій
+Official Open Access Repository
 </div>
 
 <h1>
@@ -436,10 +358,9 @@ OCMRC<span> Repository</span>
 </h1>
 
 <p>
-Сучасний електронний академічний репозитарій
-для зберігання, систематизації та відкритого доступу
-до навчальних матеріалів, наукових публікацій,
-конференцій, міжнародних проєктів та освітніх розробок.
+Електронний академічний репозитарій для
+зберігання, систематизації та відкритого доступу
+до наукових, освітніх і методичних матеріалів.
 </p>
 
 <div class="hero-buttons">
@@ -448,8 +369,8 @@ OCMRC<span> Repository</span>
 Переглянути публікації
 </a>
 
-<a href="#departments" class="btn btn-secondary">
-Структура відділів
+<a href="#contact" class="btn btn-secondary">
+Контакти
 </a>
 
 </div>
@@ -458,73 +379,51 @@ OCMRC<span> Repository</span>
 
 </section>
 
-<!-- MAIN -->
-
 <div class="container">
-
-<!-- SEARCH -->
 
 <div class="search-box">
 
 <h2 class="section-title">
-Пошук у репозитарії
+Пошук публікацій
 </h2>
 
 <p class="section-subtitle">
-Пошук статей, досліджень, авторів,
-методичних матеріалів та конференцій.
+Пошук PDF матеріалів репозитарію.
 </p>
 
-<form>
-<input type="text" placeholder="Введіть ключові слова...">
-<button type="submit">Пошук</button>
-</form>
+<input
+type="text"
+id="searchInput"
+placeholder="Введіть назву публікації..."
+>
 
 </div>
 
-<!-- STATS -->
+<section id="publications">
 
-<div class="stats">
+<h2 class="section-title">
+Публікації
+</h2>
 
-<div class="stat-card">
-<div class="stat-number">5 000+</div>
-<div class="stat-label">Матеріалів</div>
+<p class="section-subtitle">
+Усі матеріали автоматично завантажуються з папки publications.
+</p>
+
+<div class="publications-grid" id="publicationsGrid">
 </div>
 
-<div class="stat-card">
-<div class="stat-number">1 200+</div>
-<div class="stat-label">Авторів</div>
-</div>
+</section>
 
-<div class="stat-card">
-<div class="stat-number">150+</div>
-<div class="stat-label">Освітніх проєктів</div>
-</div>
-
-<div class="stat-card">
-<div class="stat-number">24/7</div>
-<div class="stat-label">Відкритий доступ</div>
-</div>
-
-</div>
-
-<!-- DEPARTMENTS -->
-
-<section id="departments">
+<section id="departments" style="margin-top:120px;">
 
 <h2 class="section-title">
 Структура відділів
 </h2>
 
-<p class="section-subtitle">
-Освітні напрями та академічні підрозділи центру.
-</p>
-
 <div class="departments">
 
 <div class="department-card">
 <h3>Відділ мовної освіти</h3>
-
 <ul>
 <li>Українська мова</li>
 <li>Англійська мова</li>
@@ -536,8 +435,7 @@ OCMRC<span> Repository</span>
 </div>
 
 <div class="department-card">
-<h3>Відділ природничо-математичних дисциплін</h3>
-
+<h3>Природничо-математичний відділ</h3>
 <ul>
 <li>Математика</li>
 <li>Фізика</li>
@@ -546,140 +444,28 @@ OCMRC<span> Repository</span>
 </div>
 
 <div class="department-card">
-<h3>Відділ початкової та дошкільної підготовки</h3>
-
-<ul>
-<li>Підготовка до школи</li>
-<li>Логопедичні заняття</li>
-<li>Літній табір</li>
-</ul>
-</div>
-
-<div class="department-card">
-<h3>Відділ професійної та IT-освіти</h3>
-
+<h3>IT та професійна освіта</h3>
 <ul>
 <li>Програмування</li>
-<li>Штучний інтелект (AI)</li>
+<li>AI та Machine Learning</li>
 <li>Кібербезпека</li>
 <li>Дизайн</li>
 <li>Маркетинг</li>
-<li>Бізнес</li>
 </ul>
 </div>
 
 <div class="department-card">
-<h3>Відділ екзаменаційної підготовки</h3>
-
+<h3>Екзаменаційна підготовка</h3>
 <ul>
-<li>Підготовка до ДПА / НМТ</li>
-<li>Підготовка до IELTS / TOEFL</li>
-</ul>
-</div>
-
-<div class="department-card">
-<h3>Міжнародні програми</h3>
-
-<ul>
-<li>Academic Mobility</li>
-<li>Open Education</li>
-<li>International Conferences</li>
-<li>Research Projects</li>
+<li>НМТ / ДПА</li>
+<li>IELTS</li>
+<li>TOEFL</li>
 </ul>
 </div>
 
 </div>
 
 </section>
-
-<!-- PUBLICATIONS -->
-
-<section id="publications" style="margin-top:120px;">
-
-<h2 class="section-title">
-Останні публікації
-</h2>
-
-<p class="section-subtitle">
-Наукові та освітні матеріали репозитарію.
-</p>
-
-<div class="publications">
-
-<div class="publication-card">
-
-<h4>
-Modern Approaches to Language Education
-</h4>
-
-<div class="publication-meta">
-Conference Paper • 2026
-</div>
-
-<p>
-Research on innovative methods
-of multilingual education.
-</p>
-
-<br>
-
-<a href="#">
-Download PDF →
-</a>
-
-</div>
-
-<div class="publication-card">
-
-<h4>
-Artificial Intelligence in Education
-</h4>
-
-<div class="publication-meta">
-Research Article • 2026
-</div>
-
-<p>
-Applications of AI technologies
-in modern educational systems.
-</p>
-
-<br>
-
-<a href="#">
-Download PDF →
-</a>
-
-</div>
-
-<div class="publication-card">
-
-<h4>
-Digital Learning and Academic Mobility
-</h4>
-
-<div class="publication-meta">
-International Project • 2026
-</div>
-
-<p>
-Research on digital transformation
-of educational institutions.
-</p>
-
-<br>
-
-<a href="#">
-Download PDF →
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
 
 <section id="contact">
 
@@ -698,27 +484,18 @@ Download PDF →
 </h3>
 
 <p>
-(незареєстрований освітній проєкт,
-діяльність якого здійснюється
-на підставі індивідуальної ініціативи
-без статусу юридичної особи)
+Вулиця Відпочинку, 1<br>
+Софіївська Борщагівка<br>
+Київська область, Україна
 </p>
 
 </div>
 
 <div>
 
-<h3>Адреса</h3>
-
-<p>
-Вулиця Відпочинку, 1<br>
-Софіївська Борщагівка,<br>
-Київська область, Україна, 08148
-</p>
-
-<br>
-
-<h3>Контакти</h3>
+<h3>
+Контакти
+</h3>
 
 <p>
 Телефон: +38 (093) 719-49-20<br>
@@ -735,8 +512,6 @@ Email: ocmirc@hotmail.com
 
 </div>
 
-<!-- FOOTER -->
-
 <footer>
 
 <div class="footer-container">
@@ -746,20 +521,92 @@ OCMRC Repository
 </div>
 
 <p>
-Електронний академічний репозитарій
-Освітнього центру мов і розвитку "Cambridge".
+Open Access Academic Repository Platform
 </p>
 
 <div class="footer-bottom">
 
-© 2026 OCMRC Repository.<br>
-Open Access Educational Repository Platform.
+© 2026 OCMRC Repository
 
 </div>
 
 </div>
 
 </footer>
+
+<script>
+
+const publications = [
+
+{
+title:"CPC",
+file:"publications/CPC.pdf",
+year:"2026",
+type:"Academic Material"
+},
+
+{
+title:"ІНДЗ",
+file:"publications/ІНДЗ.pdf",
+year:"2026",
+type:"Research Work"
+}
+
+];
+
+const grid = document.getElementById('publicationsGrid');
+
+function renderPublications(items){
+
+grid.innerHTML = '';
+
+items.forEach(pub => {
+
+grid.innerHTML += `
+
+<div class="publication-card">
+
+<h3>${pub.title}</h3>
+
+<div class="publication-meta">
+${pub.type} • ${pub.year}
+</div>
+
+<p>
+Матеріал електронного репозитарію OCMRC.
+</p>
+
+<br>
+
+<a href="${pub.file}" target="_blank">
+Open PDF →
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+renderPublications(publications);
+
+document
+.getElementById('searchInput')
+.addEventListener('input', function(){
+
+const value = this.value.toLowerCase();
+
+const filtered = publications.filter(pub =>
+pub.title.toLowerCase().includes(value)
+);
+
+renderPublications(filtered);
+
+});
+
+</script>
 
 </body>
 </html>
