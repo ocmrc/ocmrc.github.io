@@ -2,6 +2,7 @@
 <html lang="uk">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,10 +10,10 @@
 OCMRC Repository — Освітній центр мов і розвитку "Cambridge"
 </title>
 
-<meta name="description"
-content="Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge">
+<meta name="description" content="Офіційний електронний репозитарій Освітнього центру мов і розвитку Cambridge">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -33,6 +34,10 @@ content="Офіційний електронний академічний реп
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Inter',sans-serif;
     background:var(--light);
@@ -40,15 +45,13 @@ body{
     line-height:1.7;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+/* NAVBAR */
 
 .navbar{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(15,23,42,0.94);
+    background:rgba(15,23,42,0.95);
     backdrop-filter:blur(12px);
     z-index:1000;
     border-bottom:1px solid rgba(255,255,255,0.08);
@@ -64,8 +67,8 @@ html{
 }
 
 .logo{
-    text-decoration:none;
     color:white;
+    text-decoration:none;
     font-size:24px;
     font-weight:800;
 }
@@ -76,18 +79,21 @@ html{
 
 .nav-links{
     display:flex;
-    gap:28px;
+    gap:30px;
 }
 
 .nav-links a{
-    text-decoration:none;
     color:#cbd5e1;
+    text-decoration:none;
     transition:0.3s;
+    font-size:15px;
 }
 
 .nav-links a:hover{
     color:white;
 }
+
+/* HERO */
 
 .hero{
     min-height:100vh;
@@ -96,50 +102,51 @@ html{
 
     background:
     linear-gradient(
-        rgba(15,23,42,0.85),
-        rgba(15,23,42,0.90)
+        rgba(15,23,42,0.86),
+        rgba(15,23,42,0.88)
     ),
 
     url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070&auto=format&fit=crop');
 
     background-size:cover;
     background-position:center;
-
     color:white;
 }
 
 .hero-container{
     max-width:1400px;
     margin:auto;
-    padding:140px 32px 100px;
+    padding:120px 32px 80px;
 }
 
 .hero-badge{
     display:inline-block;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.1);
     padding:10px 18px;
     border-radius:999px;
-    background:rgba(255,255,255,0.1);
     margin-bottom:28px;
-    border:1px solid rgba(255,255,255,0.08);
+    font-size:14px;
 }
 
 .hero h1{
     font-size:72px;
     line-height:1.05;
-    max-width:900px;
-    margin-bottom:28px;
+    max-width:950px;
+    margin-bottom:30px;
+    font-weight:800;
 }
 
 .hero p{
-    max-width:850px;
+    max-width:900px;
     color:#cbd5e1;
     font-size:20px;
 }
 
 .hero-buttons{
-    margin-top:40px;
     display:flex;
     gap:18px;
+    margin-top:40px;
     flex-wrap:wrap;
 }
 
@@ -161,13 +168,15 @@ html{
 }
 
 .btn-secondary{
-    border:1px solid rgba(255,255,255,0.16);
+    border:1px solid rgba(255,255,255,0.18);
     color:white;
 }
 
 .btn-secondary:hover{
     background:rgba(255,255,255,0.08);
 }
+
+/* MAIN */
 
 .container{
     max-width:1400px;
@@ -176,21 +185,23 @@ html{
 }
 
 .section-title{
-    font-size:48px;
-    margin-bottom:18px;
+    font-size:46px;
     color:var(--primary);
+    margin-bottom:18px;
 }
 
 .section-subtitle{
-    max-width:900px;
     color:#64748b;
+    max-width:900px;
     margin-bottom:50px;
 }
 
+/* SEARCH */
+
 .search-box{
     background:white;
-    border-radius:28px;
     padding:40px;
+    border-radius:26px;
     border:1px solid var(--border);
     box-shadow:0 15px 40px rgba(0,0,0,0.05);
     margin-bottom:90px;
@@ -204,7 +215,72 @@ html{
     font-size:16px;
 }
 
-.publications-grid{
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;
+    margin-bottom:100px;
+}
+
+.stat-card{
+    background:white;
+    padding:38px;
+    border-radius:24px;
+    border:1px solid var(--border);
+    box-shadow:0 10px 35px rgba(0,0,0,0.04);
+}
+
+.stat-number{
+    font-size:48px;
+    font-weight:800;
+    color:var(--accent);
+}
+
+.stat-label{
+    margin-top:12px;
+    color:#64748b;
+}
+
+/* DEPARTMENTS */
+
+.departments{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+}
+
+.department-card{
+    background:white;
+    padding:36px;
+    border-radius:24px;
+    border:1px solid var(--border);
+    transition:0.3s;
+    box-shadow:0 10px 35px rgba(0,0,0,0.04);
+}
+
+.department-card:hover{
+    transform:translateY(-8px);
+}
+
+.department-card h3{
+    font-size:24px;
+    margin-bottom:18px;
+    color:var(--primary);
+}
+
+.department-card ul{
+    padding-left:18px;
+}
+
+.department-card li{
+    margin-bottom:10px;
+}
+
+/* PUBLICATIONS */
+
+.publications{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:28px;
@@ -216,22 +292,19 @@ html{
     border-radius:24px;
     border:1px solid var(--border);
     box-shadow:0 10px 35px rgba(0,0,0,0.04);
-    transition:0.3s;
 }
 
-.publication-card:hover{
-    transform:translateY(-6px);
-}
-
-.publication-card h3{
-    color:var(--primary);
+.publication-card h4{
     margin-bottom:14px;
+    color:var(--primary);
+    font-size:22px;
+    word-break:break-word;
 }
 
 .publication-meta{
     color:#64748b;
-    font-size:14px;
     margin-bottom:18px;
+    font-size:14px;
 }
 
 .publication-card a{
@@ -240,39 +313,15 @@ html{
     font-weight:600;
 }
 
-.departments{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:28px;
-    margin-top:50px;
-}
-
-.department-card{
-    background:white;
-    padding:36px;
-    border-radius:24px;
-    border:1px solid var(--border);
-}
-
-.department-card h3{
-    margin-bottom:16px;
-    color:var(--primary);
-}
-
-.department-card ul{
-    padding-left:18px;
-}
-
-.department-card li{
-    margin-bottom:8px;
-}
+/* CONTACT */
 
 .contact{
-    margin-top:120px;
     background:white;
     border-radius:28px;
     padding:50px;
     border:1px solid var(--border);
+    margin-top:100px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.05);
 }
 
 .contact-grid{
@@ -280,6 +329,13 @@ html{
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:40px;
 }
+
+.contact h3{
+    margin-bottom:18px;
+    color:var(--primary);
+}
+
+/* FOOTER */
 
 footer{
     margin-top:120px;
@@ -296,23 +352,30 @@ footer{
 .footer-title{
     color:white;
     font-size:28px;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .footer-bottom{
     margin-top:40px;
     border-top:1px solid rgba(255,255,255,0.08);
     padding-top:30px;
+    color:#94a3b8;
 }
+
+/* RESPONSIVE */
 
 @media(max-width:900px){
 
 .hero h1{
-    font-size:44px;
+    font-size:46px;
 }
 
 .nav-links{
     display:none;
+}
+
+.hero-buttons{
+    flex-direction:column;
 }
 
 .section-title{
@@ -322,22 +385,25 @@ footer{
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- NAVBAR -->
 
 <nav class="navbar">
 
 <div class="nav-container">
 
 <a href="#" class="logo">
-OCMRC <span>Repository</span>
+OCMRC<span> Repository</span>
 </a>
 
 <div class="nav-links">
 <a href="#">Головна</a>
-<a href="#publications">Публікації</a>
 <a href="#departments">Відділи</a>
+<a href="#publications">Публікації</a>
 <a href="#contact">Контакти</a>
 </div>
 
@@ -345,12 +411,14 @@ OCMRC <span>Repository</span>
 
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-container">
 
 <div class="hero-badge">
-Official Open Access Repository
+Офіційний електронний репозитарій
 </div>
 
 <h1>
@@ -358,9 +426,10 @@ Official Open Access Repository
 </h1>
 
 <p>
-Електронний академічний репозитарій для
-зберігання, систематизації та відкритого доступу
-до наукових, освітніх і методичних матеріалів.
+Сучасний електронний академічний репозитарій
+для зберігання, систематизації та відкритого доступу
+до навчальних матеріалів, наукових публікацій,
+конференцій, міжнародних проєктів та освітніх розробок.
 </p>
 
 <div class="hero-buttons">
@@ -369,8 +438,8 @@ Official Open Access Repository
 Переглянути публікації
 </a>
 
-<a href="#contact" class="btn btn-secondary">
-Контакти
+<a href="#departments" class="btn btn-secondary">
+Структура відділів
 </a>
 
 </div>
@@ -379,42 +448,55 @@ Official Open Access Repository
 
 </section>
 
+<!-- MAIN -->
+
 <div class="container">
+
+<!-- SEARCH -->
 
 <div class="search-box">
 
 <h2 class="section-title">
-Пошук публікацій
+Пошук у репозитарії
 </h2>
 
 <p class="section-subtitle">
-Пошук PDF матеріалів репозитарію.
+Автоматичний список PDF-файлів із папки publications.
 </p>
 
-<input
-type="text"
-id="searchInput"
-placeholder="Введіть назву публікації..."
->
+<input type="text" id="searchInput" placeholder="Пошук файлів...">
 
 </div>
 
-<section id="publications">
+<!-- STATS -->
 
-<h2 class="section-title">
-Публікації
-</h2>
+<div class="stats">
 
-<p class="section-subtitle">
-Усі матеріали автоматично завантажуються з папки publications.
-</p>
-
-<div class="publications-grid" id="publicationsGrid">
+<div class="stat-card">
+<div class="stat-number" id="fileCount">0</div>
+<div class="stat-label">Опублікованих файлів</div>
 </div>
 
-</section>
+<div class="stat-card">
+<div class="stat-number">24/7</div>
+<div class="stat-label">Відкритий доступ</div>
+</div>
 
-<section id="departments" style="margin-top:120px;">
+<div class="stat-card">
+<div class="stat-number">PDF</div>
+<div class="stat-label">Academic Repository</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">Open</div>
+<div class="stat-label">Google Indexed</div>
+</div>
+
+</div>
+
+<!-- DEPARTMENTS -->
+
+<section id="departments">
 
 <h2 class="section-title">
 Структура відділів
@@ -424,6 +506,7 @@ placeholder="Введіть назву публікації..."
 
 <div class="department-card">
 <h3>Відділ мовної освіти</h3>
+
 <ul>
 <li>Українська мова</li>
 <li>Англійська мова</li>
@@ -435,7 +518,8 @@ placeholder="Введіть назву публікації..."
 </div>
 
 <div class="department-card">
-<h3>Природничо-математичний відділ</h3>
+<h3>Відділ природничо-математичних дисциплін</h3>
+
 <ul>
 <li>Математика</li>
 <li>Фізика</li>
@@ -444,28 +528,40 @@ placeholder="Введіть назву публікації..."
 </div>
 
 <div class="department-card">
-<h3>IT та професійна освіта</h3>
+<h3>Відділ професійної та IT-освіти</h3>
+
 <ul>
 <li>Програмування</li>
-<li>AI та Machine Learning</li>
+<li>AI та машинне навчання</li>
 <li>Кібербезпека</li>
 <li>Дизайн</li>
 <li>Маркетинг</li>
 </ul>
 </div>
 
-<div class="department-card">
-<h3>Екзаменаційна підготовка</h3>
-<ul>
-<li>НМТ / ДПА</li>
-<li>IELTS</li>
-<li>TOEFL</li>
-</ul>
 </div>
+
+</section>
+
+<!-- PUBLICATIONS -->
+
+<section id="publications" style="margin-top:120px;">
+
+<h2 class="section-title">
+Публікації репозитарію
+</h2>
+
+<p class="section-subtitle">
+PDF-файли автоматично підтягуються із папки publications.
+</p>
+
+<div class="publications" id="publicationsContainer">
 
 </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -493,9 +589,7 @@ placeholder="Введіть назву публікації..."
 
 <div>
 
-<h3>
-Контакти
-</h3>
+<h3>Контакти</h3>
 
 <p>
 Телефон: +38 (093) 719-49-20<br>
@@ -512,6 +606,8 @@ Email: ocmirc@hotmail.com
 
 </div>
 
+<!-- FOOTER -->
+
 <footer>
 
 <div class="footer-container">
@@ -521,7 +617,7 @@ OCMRC Repository
 </div>
 
 <p>
-Open Access Academic Repository Platform
+Open Access Academic Repository
 </p>
 
 <div class="footer-bottom">
@@ -534,6 +630,8 @@ Open Access Academic Repository Platform
 
 </footer>
 
+<!-- SCRIPT -->
+
 <script>
 
 const publications = [
@@ -542,7 +640,7 @@ const publications = [
 title:"CPC",
 file:"publications/CPC.pdf",
 year:"2026",
-type:"Academic Material"
+type:"Conference Paper"
 },
 
 {
@@ -554,32 +652,34 @@ type:"Research Work"
 
 ];
 
-const grid = document.getElementById('publicationsGrid');
+const container = document.getElementById("publicationsContainer");
 
-function renderPublications(items){
+const count = document.getElementById("fileCount");
 
-grid.innerHTML = '';
+function renderPublications(data){
 
-items.forEach(pub => {
+container.innerHTML = "";
 
-grid.innerHTML += `
+data.forEach(pub => {
+
+container.innerHTML += `
 
 <div class="publication-card">
 
-<h3>${pub.title}</h3>
+<h4>${pub.title}</h4>
 
 <div class="publication-meta">
 ${pub.type} • ${pub.year}
 </div>
 
 <p>
-Матеріал електронного репозитарію OCMRC.
+Academic repository publication.
 </p>
 
 <br>
 
 <a href="${pub.file}" target="_blank">
-Open PDF →
+Download PDF →
 </a>
 
 </div>
@@ -588,13 +688,16 @@ Open PDF →
 
 });
 
+count.innerText = data.length;
+
 }
 
 renderPublications(publications);
 
-document
-.getElementById('searchInput')
-.addEventListener('input', function(){
+/* SEARCH */
+
+document.getElementById("searchInput")
+.addEventListener("input", function(){
 
 const value = this.value.toLowerCase();
 
