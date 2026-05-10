@@ -11,22 +11,12 @@ OCMRC Repository — Освітній центр мов і розвитку "Cam
 </title>
 
 <meta name="description"
-content="Офіційний електронний репозитарій Освітнього центру мов і розвитку Cambridge. Наукові публікації, навчальні матеріали, конференції, міжнародні проєкти та відкритий доступ до академічних ресурсів.">
+content="Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge. Open Access Repository Platform.">
 
 <meta name="keywords"
-content="repository, OCMRC, Cambridge, education, research, publications, academic repository, open access">
+content="repository, institutional repository, Cambridge, OCMRC, publications, education, research">
 
-<meta property="og:title"
-content="OCMRC Repository">
-
-<meta property="og:description"
-content="Електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge.">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:url"
-content="https://ocmrc.github.io/">
+<meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -42,7 +32,6 @@ content="https://ocmrc.github.io/">
     --white:#ffffff;
     --border:#e2e8f0;
     --text:#334155;
-    --success:#10b981;
 }
 
 *{
@@ -68,10 +57,10 @@ body{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(15,23,42,0.95);
-    backdrop-filter:blur(12px);
+    background:rgba(15,23,42,0.96);
+    backdrop-filter:blur(16px);
     z-index:1000;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
 .nav-container{
@@ -96,7 +85,7 @@ body{
 
 .nav-links{
     display:flex;
-    gap:30px;
+    gap:28px;
 }
 
 .nav-links a{
@@ -127,6 +116,7 @@ body{
 
     background-size:cover;
     background-position:center;
+
     color:white;
 }
 
@@ -202,7 +192,7 @@ body{
 }
 
 .section-title{
-    font-size:46px;
+    font-size:48px;
     color:var(--primary);
     margin-bottom:18px;
 }
@@ -227,7 +217,7 @@ body{
 .search-box input{
     width:100%;
     padding:20px;
-    border-radius:18px;
+    border-radius:16px;
     border:1px solid var(--border);
     font-size:16px;
 }
@@ -293,14 +283,13 @@ body{
 
 .department-card li{
     margin-bottom:10px;
-    color:#475569;
 }
 
 /* PUBLICATIONS */
 
-.publications-grid{
+.publications{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
     gap:28px;
 }
 
@@ -321,7 +310,6 @@ body{
     margin-bottom:14px;
     color:var(--primary);
     font-size:22px;
-    word-break:break-word;
 }
 
 .publication-meta{
@@ -334,15 +322,6 @@ body{
     text-decoration:none;
     color:var(--accent);
     font-weight:600;
-}
-
-.empty-message{
-    background:white;
-    padding:50px;
-    border-radius:24px;
-    border:1px dashed var(--border);
-    text-align:center;
-    color:#64748b;
 }
 
 /* CONTACT */
@@ -360,11 +339,6 @@ body{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:40px;
-}
-
-.contact h3{
-    margin-bottom:18px;
-    color:var(--primary);
 }
 
 /* FOOTER */
@@ -391,7 +365,6 @@ footer{
     margin-top:40px;
     border-top:1px solid rgba(255,255,255,0.08);
     padding-top:30px;
-    color:#94a3b8;
 }
 
 /* RESPONSIVE */
@@ -399,15 +372,11 @@ footer{
 @media(max-width:900px){
 
 .hero h1{
-    font-size:46px;
+    font-size:44px;
 }
 
 .nav-links{
     display:none;
-}
-
-.hero-buttons{
-    flex-direction:column;
 }
 
 .section-title{
@@ -450,7 +419,7 @@ OCMRC<span> Repository</span>
 <div class="hero-container">
 
 <div class="hero-badge">
-Open Access Institutional Repository
+Official Open Access Repository
 </div>
 
 <h1>
@@ -460,8 +429,9 @@ Open Access Institutional Repository
 <p>
 Сучасний електронний академічний репозитарій
 для зберігання, систематизації та відкритого доступу
-до навчальних матеріалів, наукових публікацій,
-конференцій, міжнародних проєктів та освітніх розробок.
+до освітніх матеріалів, наукових досліджень,
+конференцій, міжнародних проєктів
+та академічних публікацій.
 </p>
 
 <div class="hero-buttons">
@@ -493,15 +463,11 @@ Open Access Institutional Repository
 </h2>
 
 <p class="section-subtitle">
-Пошук статей, досліджень, авторів,
-методичних матеріалів та конференцій.
+Автоматичний пошук PDF-публікацій репозитарію.
 </p>
 
-<input
-type="text"
-id="searchInput"
-placeholder="Введіть ключові слова..."
->
+<input type="text" id="searchInput"
+placeholder="Пошук публікацій...">
 
 </div>
 
@@ -510,23 +476,23 @@ placeholder="Введіть ключові слова..."
 <div class="stats">
 
 <div class="stat-card">
-<div class="stat-number" id="pubCount">0</div>
-<div class="stat-label">Опублікованих матеріалів</div>
-</div>
-
-<div class="stat-card">
-<div class="stat-number">Open</div>
-<div class="stat-label">Open Access Repository</div>
+<div class="stat-number" id="pub-count">0</div>
+<div class="stat-label">Публікацій</div>
 </div>
 
 <div class="stat-card">
 <div class="stat-number">24/7</div>
-<div class="stat-label">Відкритий доступ</div>
+<div class="stat-label">Open Access</div>
 </div>
 
 <div class="stat-card">
-<div class="stat-number">PDF</div>
-<div class="stat-label">Academic Documents</div>
+<div class="stat-number">AI</div>
+<div class="stat-label">Digital Repository</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">∞</div>
+<div class="stat-label">Academic Growth</div>
 </div>
 
 </div>
@@ -540,14 +506,13 @@ placeholder="Введіть ключові слова..."
 </h2>
 
 <p class="section-subtitle">
-Освітні напрями та академічні підрозділи центру.
+Освітні та академічні напрями центру.
 </p>
 
 <div class="departments">
 
 <div class="department-card">
 <h3>Відділ мовної освіти</h3>
-
 <ul>
 <li>Українська мова</li>
 <li>Англійська мова</li>
@@ -560,7 +525,6 @@ placeholder="Введіть ключові слова..."
 
 <div class="department-card">
 <h3>Відділ природничо-математичних дисциплін</h3>
-
 <ul>
 <li>Математика</li>
 <li>Фізика</li>
@@ -570,20 +534,18 @@ placeholder="Введіть ключові слова..."
 
 <div class="department-card">
 <h3>Відділ початкової та дошкільної підготовки</h3>
-
 <ul>
 <li>Підготовка до школи</li>
-<li>Заняття з логопедом</li>
+<li>Логопед</li>
 <li>Літній табір</li>
 </ul>
 </div>
 
 <div class="department-card">
-<h3>Відділ професійної та ІТ-освіти</h3>
-
+<h3>Відділ професійної та IT-освіти</h3>
 <ul>
 <li>Програмування</li>
-<li>Штучний інтелект (AI)</li>
+<li>Штучний інтелект</li>
 <li>Кібербезпека</li>
 <li>Дизайн</li>
 <li>Маркетинг</li>
@@ -593,21 +555,19 @@ placeholder="Введіть ключові слова..."
 
 <div class="department-card">
 <h3>Відділ екзаменаційної підготовки</h3>
-
 <ul>
-<li>Підготовка до ДПА / ЗНО / НМТ</li>
-<li>Підготовка до IELTS / TOEFL</li>
+<li>НМТ / ДПА</li>
+<li>IELTS / TOEFL</li>
 </ul>
 </div>
 
 <div class="department-card">
-<h3>Міжнародні освітні програми</h3>
-
+<h3>International Programs</h3>
 <ul>
 <li>Academic Mobility</li>
-<li>International Research</li>
 <li>Open Education</li>
-<li>Digital Learning</li>
+<li>Research Projects</li>
+<li>International Conferences</li>
 </ul>
 </div>
 
@@ -625,15 +585,10 @@ placeholder="Введіть ключові слова..."
 
 <p class="section-subtitle">
 Усі PDF-файли з папки publications
-автоматично відображаються нижче.
+автоматично відображаються тут.
 </p>
 
-<div id="publicationsGrid" class="publications-grid">
-
-<div class="empty-message">
-Завантажте PDF-файли у папку
-<strong>publications</strong> GitHub repository.
-</div>
+<div class="publications" id="publications-list">
 
 </div>
 
@@ -706,8 +661,8 @@ OCMRC Repository
 </div>
 
 <p>
-Електронний академічний репозитарій
-Освітнього центру мов і розвитку "Cambridge".
+Electronic Institutional Repository Platform.
+Open Access Academic Archive.
 </p>
 
 <div class="footer-bottom">
@@ -725,127 +680,116 @@ Open Access Educational Repository Platform.
 
 <script>
 
-const REPOSITORY_OWNER = "ocmrc";
-const REPOSITORY_NAME = "ocmrc.github.io";
-const PUBLICATIONS_FOLDER = "publications";
+const username = "ocmrc";
+const repository = "ocmrc.github.io";
+const folder = "publications";
 
-const publicationsGrid =
-document.getElementById("publicationsGrid");
+const apiUrl =
+`https://api.github.com/repos/${username}/${repository}/contents/${folder}`;
 
-const pubCount =
-document.getElementById("pubCount");
+const publicationsContainer =
+document.getElementById("publications-list");
 
 const searchInput =
 document.getElementById("searchInput");
 
-let publications = [];
+fetch(apiUrl)
 
-async function loadPublications(){
+.then(response => response.json())
 
-    try{
+.then(files => {
 
-        const response = await fetch(
-            `https://api.github.com/repos/${REPOSITORY_OWNER}/${REPOSITORY_NAME}/contents/${PUBLICATIONS_FOLDER}`
+    const pdfFiles = files.filter(file =>
+        file.name.toLowerCase().endsWith(".pdf")
+    );
+
+    document.getElementById("pub-count")
+    .innerText = pdfFiles.length;
+
+    function renderPublications(filter = ""){
+
+        publicationsContainer.innerHTML = "";
+
+        const filtered = pdfFiles.filter(file =>
+            file.name.toLowerCase()
+            .includes(filter.toLowerCase())
         );
 
-        const files = await response.json();
+        if(filtered.length === 0){
 
-        publications =
-        files.filter(file =>
-            file.name.toLowerCase().endsWith(".pdf")
-        );
+            publicationsContainer.innerHTML =
+            `
+            <div class="publication-card">
+                <h4>Нічого не знайдено</h4>
+                <p>Спробуйте інший пошуковий запит.</p>
+            </div>
+            `;
 
-        renderPublications(publications);
+            return;
+        }
 
-        pubCount.textContent =
-        publications.length;
+        filtered.forEach(file => {
 
-    }
+            const cleanName =
+            file.name
+            .replace(".pdf","")
+            .replaceAll("-"," ");
 
-    catch(error){
+            const card = document.createElement("div");
 
-        publicationsGrid.innerHTML = `
-        <div class="empty-message">
-        Не вдалося завантажити публікації.
-        </div>
-        `;
+            card.className = "publication-card";
 
-        console.error(error);
-
-    }
-
-}
-
-function renderPublications(items){
-
-    if(items.length === 0){
-
-        publicationsGrid.innerHTML = `
-        <div class="empty-message">
-        У репозитарії ще немає PDF-файлів.
-        </div>
-        `;
-
-        return;
-
-    }
-
-    publicationsGrid.innerHTML = "";
-
-    items.forEach(file => {
-
-        const name =
-        file.name
-        .replace(".pdf","")
-        .replaceAll("-"," ")
-        .replaceAll("_"," ");
-
-        const publicationCard = `
-        <div class="publication-card">
-
-            <h4>
-            ${name}
-            </h4>
+            card.innerHTML = `
+            
+            <h4>${cleanName}</h4>
 
             <div class="publication-meta">
-            PDF Document • Repository Publication
+            PDF Publication • Open Access
             </div>
 
             <p>
-            Academic publication available
-            in open access repository.
+            Academic repository material
+            available for open access download.
             </p>
 
             <br>
 
             <a href="${file.download_url}" target="_blank">
-            Open PDF →
+            Download PDF →
             </a>
 
-        </div>
-        `;
+            `;
 
-        publicationsGrid.innerHTML += publicationCard;
+            publicationsContainer.appendChild(card);
 
+        });
+
+    }
+
+    renderPublications();
+
+    searchInput.addEventListener("input", e => {
+        renderPublications(e.target.value);
     });
 
-}
+})
 
-searchInput.addEventListener("input", () => {
+.catch(error => {
 
-    const value =
-    searchInput.value.toLowerCase();
+    publicationsContainer.innerHTML = `
+    
+    <div class="publication-card">
+        <h4>Помилка завантаження</h4>
+        <p>
+        Не вдалося отримати список публікацій.
+        </p>
+    </div>
 
-    const filtered =
-    publications.filter(file =>
-        file.name.toLowerCase().includes(value)
-    );
+    `;
 
-    renderPublications(filtered);
+    console.error(error);
 
 });
-
-loadPublications();
 
 </script>
 
