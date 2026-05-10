@@ -16,22 +16,65 @@ OCMRC Repository — Освітній центр мов і розвитку "Cam
 
 <meta
 name="description"
-content="Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge."
+content="Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge. Official electronic academic repository of the Educational Center for Languages and Development Cambridge."
 >
 
 <meta
 name="keywords"
-content="OCMRC, repository, Cambridge, освіта, наука, академічний репозитарій, research, publications, Ukraine"
+content="OCMRC, repository, Cambridge, освіта, наука, академічний репозитарій, research, publications, Ukraine, educational repository, open access, наукові публікації, academic papers"
 >
 
 <meta
 name="author"
-content="OCMRC Repository"
+content="OCMRC Repository — Educational Center for Languages and Development Cambridge"
 >
 
-<meta property="og:title" content="OCMRC Repository">
-<meta property="og:description" content="Офіційний академічний репозитарій Освітнього центру мов і розвитку Cambridge">
+<!-- Google Scholar Meta Tags -->
+<meta name="citation_title" content="OCMRC Repository — Educational Center for Languages and Development Cambridge">
+<meta name="citation_author" content="OCMRC Repository">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_journal_title" content="OCMRC Repository">
+<meta name="citation_publisher" content="Educational Center for Languages and Development Cambridge">
+<meta name="citation_language" content="uk">
+<meta name="citation_fulltext_world_readable" content="">
+
+<!-- Dublin Core Metadata for Academic Indexing -->
+<meta name="DC.title" content="OCMRC Repository — Educational Center for Languages and Development Cambridge">
+<meta name="DC.creator" content="OCMRC Repository">
+<meta name="DC.subject" content="education, languages, research, academic repository">
+<meta name="DC.description" content="Official electronic academic repository of the Educational Center for Languages and Development Cambridge">
+<meta name="DC.publisher" content="Educational Center for Languages and Development Cambridge">
+<meta name="DC.type" content="Repository">
+<meta name="DC.format" content="text/html">
+<meta name="DC.language" content="uk">
+<meta name="DC.rights" content="Open Access">
+
+<!-- Open Graph -->
+<meta property="og:title" content="OCMRC Repository — Educational Center for Languages and Development Cambridge">
+<meta property="og:description" content="Офіційний академічний репозитарій Освітнього центру мов і розвитку Cambridge. Official academic repository.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ocmrc.github.io/">
+<meta property="og:site_name" content="OCMRC Repository">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OCMRC Repository">
+<meta name="twitter:description" content="Official electronic academic repository of the Educational Center for Languages and Development Cambridge">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://ocmrc.github.io/">
+
+<!-- Alternate language -->
+<link rel="alternate" hreflang="uk" href="https://ocmrc.github.io/">
+<link rel="alternate" hreflang="en" href="https://ocmrc.github.io/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://ocmrc.github.io/">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="google-site-verification" content="">
 
 <meta
 name="theme-color"
@@ -59,6 +102,62 @@ rel="icon"
 type="image/png"
 href="logo.png"
 >
+
+<!-- Structured Data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Educational Center for Languages and Development Cambridge",
+  "alternateName": "OCMRC",
+  "url": "https://ocmrc.github.io/",
+  "description": "Official electronic academic repository of the Educational Center for Languages and Development Cambridge",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vidpochynku Street, 1",
+    "addressLocality": "Sofiivska Borshchahivka",
+    "addressRegion": "Kyiv Oblast",
+    "postalCode": "08148",
+    "addressCountry": "UA"
+  },
+  "telephone": "+380937194920",
+  "email": "ocmirc@hotmail.com"
+}
+</script>
+
+<!-- Structured Data: WebSite with SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OCMRC Repository",
+  "url": "https://ocmrc.github.io/",
+  "description": "Official electronic academic repository of the Educational Center for Languages and Development Cambridge",
+  "inLanguage": ["uk", "en"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ocmrc.github.io/?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured Data: Repository / DataCatalog -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "OCMRC Repository",
+  "description": "Open access academic repository containing scientific articles, educational materials, methodological developments, and research publications",
+  "url": "https://ocmrc.github.io/",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Educational Center for Languages and Development Cambridge"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true
+}
+</script>
 
 <style>
 
@@ -232,6 +331,53 @@ NAVBAR
 
 .nav-links a:hover{
 
+    color:white;
+
+}
+
+/* =========================
+LANGUAGE SWITCHER
+========================= */
+
+.lang-switcher{
+
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    margin-left:10px;
+
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    padding:4px;
+
+}
+
+.lang-btn{
+
+    padding:8px 14px;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    color:#94a3b8;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    font-family:'Inter',sans-serif;
+
+}
+
+.lang-btn:hover{
+
+    color:white;
+
+}
+
+.lang-btn.active{
+
+    background:var(--accent);
     color:white;
 
 }
@@ -848,6 +994,12 @@ RESPONSIVE
 
     }
 
+    .lang-switcher{
+
+        margin-left:0;
+
+    }
+
     .hero{
 
         min-height:auto;
@@ -981,19 +1133,43 @@ Repository
 
 <div class="nav-links">
 
-<a href="#">Головна</a>
+<a href="#" data-i18n="nav_home">Головна</a>
 
-<a href="#departments">
+<a href="#departments" data-i18n="nav_departments">
 Відділи
 </a>
 
-<a href="#publications">
+<a href="#publications" data-i18n="nav_publications">
 Публікації
 </a>
 
-<a href="#contact">
+<a href="#contact" data-i18n="nav_contact">
 Контакти
 </a>
+
+</div>
+
+<div class="lang-switcher">
+
+<button
+class="lang-btn active"
+id="langUk"
+onclick="setLanguage('uk')"
+>
+
+UA
+
+</button>
+
+<button
+class="lang-btn"
+id="langEn"
+onclick="setLanguage('en')"
+>
+
+EN
+
+</button>
 
 </div>
 
@@ -1009,15 +1185,15 @@ HERO
 
 <div class="hero-container">
 
-<div class="hero-badge">
+<div class="hero-badge" data-i18n="hero_badge">
 Відкритий академічний електронний репозитарій
 </div>
 
-<h1>
+<h1 data-i18n="hero_title">
 Освітній центр мов і розвитку "Cambridge"
 </h1>
 
-<p>
+<p data-i18n="hero_description">
 
 Сучасний український академічний репозитарій
 для зберігання, систематизації та відкритого доступу
@@ -1032,6 +1208,7 @@ HERO
 <a
 href="#publications"
 class="btn btn-primary"
+data-i18n="hero_btn_publications"
 >
 
 Переглянути публікації
@@ -1041,6 +1218,7 @@ class="btn btn-primary"
 <a
 href="#departments"
 class="btn btn-secondary"
+data-i18n="hero_btn_departments"
 >
 
 Структура відділів
@@ -1063,11 +1241,11 @@ MAIN
 
 <div class="search-box">
 
-<h2 class="section-title">
+<h2 class="section-title" data-i18n="search_title">
 Пошук у репозитарії
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle" data-i18n="search_subtitle">
 
 Пошук наукових статей, конференцій,
 методичних матеріалів та академічних публікацій.
@@ -1079,10 +1257,11 @@ MAIN
 <input
 type="text"
 id="searchInput"
+data-i18n-placeholder="search_placeholder"
 placeholder="Введіть назву публікації..."
 >
 
-<button type="submit">
+<button type="submit" data-i18n="search_button">
 Пошук
 </button>
 
@@ -1105,7 +1284,7 @@ id="pubCount"
 
 </div>
 
-<div class="stat-label">
+<div class="stat-label" data-i18n="stat_publications">
 Публікацій у репозитарії
 </div>
 
@@ -1117,7 +1296,7 @@ id="pubCount"
 24/7
 </div>
 
-<div class="stat-label">
+<div class="stat-label" data-i18n="stat_access">
 Відкритий доступ
 </div>
 
@@ -1129,7 +1308,7 @@ id="pubCount"
 100%
 </div>
 
-<div class="stat-label">
+<div class="stat-label" data-i18n="stat_open">
 Репозиторій відкритого доступу
 </div>
 
@@ -1141,7 +1320,7 @@ id="pubCount"
 UA
 </div>
 
-<div class="stat-label">
+<div class="stat-label" data-i18n="stat_ukrainian">
 Український освітній репозитарій
 </div>
 
@@ -1153,11 +1332,11 @@ UA
 
 <section id="departments">
 
-<h2 class="section-title">
+<h2 class="section-title" data-i18n="departments_title">
 Структура відділів
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle" data-i18n="departments_subtitle">
 
 Освітні напрями та академічні підрозділи центру.
 
@@ -1167,18 +1346,18 @@ UA
 
 <div class="department-card">
 
-<h3>
+<h3 data-i18n="dept_lang_title">
 Відділ мовної освіти
 </h3>
 
 <ul>
 
-<li>Українська мова</li>
-<li>Англійська мова</li>
-<li>Польська мова</li>
-<li>Німецька мова</li>
-<li>Іспанська мова</li>
-<li>Розмовні клуби</li>
+<li data-i18n="dept_lang_1">Українська мова</li>
+<li data-i18n="dept_lang_2">Англійська мова</li>
+<li data-i18n="dept_lang_3">Польська мова</li>
+<li data-i18n="dept_lang_4">Німецька мова</li>
+<li data-i18n="dept_lang_5">Іспанська мова</li>
+<li data-i18n="dept_lang_6">Розмовні клуби</li>
 
 </ul>
 
@@ -1186,15 +1365,15 @@ UA
 
 <div class="department-card">
 
-<h3>
+<h3 data-i18n="dept_science_title">
 Відділ природничо-математичних дисциплін
 </h3>
 
 <ul>
 
-<li>Математика</li>
-<li>Фізика</li>
-<li>Хімія</li>
+<li data-i18n="dept_science_1">Математика</li>
+<li data-i18n="dept_science_2">Фізика</li>
+<li data-i18n="dept_science_3">Хімія</li>
 
 </ul>
 
@@ -1202,15 +1381,15 @@ UA
 
 <div class="department-card">
 
-<h3>
+<h3 data-i18n="dept_preschool_title">
 Відділ початкової та дошкільної підготовки
 </h3>
 
 <ul>
 
-<li>Підготовка до школи</li>
-<li>Логопедичні заняття</li>
-<li>Літній табір</li>
+<li data-i18n="dept_preschool_1">Підготовка до школи</li>
+<li data-i18n="dept_preschool_2">Логопедичні заняття</li>
+<li data-i18n="dept_preschool_3">Літній табір</li>
 
 </ul>
 
@@ -1218,19 +1397,19 @@ UA
 
 <div class="department-card">
 
-<h3>
+<h3 data-i18n="dept_it_title">
 Відділ професійної та IT-освіти
 </h3>
 
 <ul>
 
-<li>Програмування</li>
-<li>Штучний інтелект (AI)</li>
-<li>Машинне навчання</li>
-<li>Кібербезпека</li>
-<li>Дизайн</li>
-<li>Маркетинг</li>
-<li>Бізнес</li>
+<li data-i18n="dept_it_1">Програмування</li>
+<li data-i18n="dept_it_2">Штучний інтелект (AI)</li>
+<li data-i18n="dept_it_3">Машинне навчання</li>
+<li data-i18n="dept_it_4">Кібербезпека</li>
+<li data-i18n="dept_it_5">Дизайн</li>
+<li data-i18n="dept_it_6">Маркетинг</li>
+<li data-i18n="dept_it_7">Бізнес</li>
 
 </ul>
 
@@ -1238,14 +1417,14 @@ UA
 
 <div class="department-card">
 
-<h3>
+<h3 data-i18n="dept_exam_title">
 Відділ екзаменаційної підготовки
 </h3>
 
 <ul>
 
-<li>Підготовка до ДПА / ЗНО / НМТ</li>
-<li>Підготовка до IELTS / TOEFL</li>
+<li data-i18n="dept_exam_1">Підготовка до ДПА / ЗНО / НМТ</li>
+<li data-i18n="dept_exam_2">Підготовка до IELTS / TOEFL</li>
 
 </ul>
 
@@ -1262,11 +1441,11 @@ id="publications"
 style="margin-top:120px;"
 >
 
-<h2 class="section-title">
+<h2 class="section-title" data-i18n="publications_title">
 Публікації репозитарію
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle" data-i18n="publications_subtitle">
 
 Усі PDF-файли з папки publications
 автоматично відображаються на сайті.
@@ -1278,7 +1457,7 @@ id="publicationsContainer"
 class="publications-grid"
 >
 
-<div class="empty-message">
+<div class="empty-message" data-i18n="publications_empty">
 
 Завантажте PDF-файли у папку
 publications репозиторію GitHub.
@@ -1295,7 +1474,7 @@ publications репозиторію GitHub.
 
 <div class="contact">
 
-<h2 class="section-title">
+<h2 class="section-title" data-i18n="contact_title">
 Контакти
 </h2>
 
@@ -1303,13 +1482,13 @@ publications репозиторію GitHub.
 
 <div>
 
-<h3>
+<h3 data-i18n="contact_org_name">
 
 Освітній центр мов і розвитку "Cambridge"
 
 </h3>
 
-<p>
+<p data-i18n="contact_org_description">
 
 (незареєстрований освітній проєкт,
 діяльність якого здійснюється
@@ -1322,11 +1501,11 @@ publications репозиторію GitHub.
 
 <div>
 
-<h3>
+<h3 data-i18n="contact_address_title">
 Адреса
 </h3>
 
-<p>
+<p data-i18n="contact_address_text">
 
 Вулиця Відпочинку, 1<br>
 
@@ -1340,18 +1519,18 @@ publications репозиторію GitHub.
 
 <br>
 
-<h3>
+<h3 data-i18n="contact_contacts_title">
 Контакти
 </h3>
 
 <p>
 
-Телефон:
+<span data-i18n="contact_phone_label">Телефон:</span>
 +38 (093) 719-49-20
 
 <br><br>
 
-Email:
+<span data-i18n="contact_email_label">Email:</span>
 ocmirc@hotmail.com
 
 </p>
@@ -1378,7 +1557,7 @@ FOOTER
 OCMRC Repository
 </div>
 
-<p>
+<p data-i18n="footer_description">
 
 Електронний академічний репозитарій
 Освітнього центру мов і розвитку "Cambridge".
@@ -1389,9 +1568,9 @@ OCMRC Repository
 
 © 2026 OCMRC Repository.<br>
 
-Open Access Educational Repository Platform.<br><br>
+<span data-i18n="footer_platform">Open Access Educational Repository Platform.</span><br><br>
 
-Софіївська Борщагівка • Київська область • Україна
+<span data-i18n="footer_location">Софіївська Борщагівка • Київська область • Україна</span>
 
 </div>
 
@@ -1404,6 +1583,315 @@ JAVASCRIPT
 ========================= -->
 
 <script>
+
+/* =========================
+TRANSLATIONS
+========================= */
+
+const translations = {
+
+uk: {
+
+    // Nav
+    nav_home: "Головна",
+    nav_departments: "Відділи",
+    nav_publications: "Публікації",
+    nav_contact: "Контакти",
+
+    // Hero
+    hero_badge: "Відкритий академічний електронний репозитарій",
+    hero_title: 'Освітній центр мов і розвитку "Cambridge"',
+    hero_description: "Сучасний український академічний репозитарій для зберігання, систематизації та відкритого доступу до наукових статей, навчальних матеріалів, методичних розробок, міжнародних проєктів, конференцій та освітніх досліджень.",
+    hero_btn_publications: "Переглянути публікації",
+    hero_btn_departments: "Структура відділів",
+
+    // Search
+    search_title: "Пошук у репозитарії",
+    search_subtitle: "Пошук наукових статей, конференцій, методичних матеріалів та академічних публікацій.",
+    search_placeholder: "Введіть назву публікації...",
+    search_button: "Пошук",
+
+    // Stats
+    stat_publications: "Публікацій у репозитарії",
+    stat_access: "Відкритий доступ",
+    stat_open: "Репозиторій відкритого доступу",
+    stat_ukrainian: "Український освітній репозитарій",
+
+    // Departments
+    departments_title: "Структура відділів",
+    departments_subtitle: "Освітні напрями та академічні підрозділи центру.",
+
+    dept_lang_title: "Відділ мовної освіти",
+    dept_lang_1: "Українська мова",
+    dept_lang_2: "Англійська мова",
+    dept_lang_3: "Польська мова",
+    dept_lang_4: "Німецька мова",
+    dept_lang_5: "Іспанська мова",
+    dept_lang_6: "Розмовні клуби",
+
+    dept_science_title: "Відділ природничо-математичних дисциплін",
+    dept_science_1: "Математика",
+    dept_science_2: "Фізика",
+    dept_science_3: "Хімія",
+
+    dept_preschool_title: "Відділ початкової та дошкільної підготовки",
+    dept_preschool_1: "Підготовка до школи",
+    dept_preschool_2: "Логопедичні заняття",
+    dept_preschool_3: "Літній табір",
+
+    dept_it_title: "Відділ професійної та IT-освіти",
+    dept_it_1: "Програмування",
+    dept_it_2: "Штучний інтелект (AI)",
+    dept_it_3: "Машинне навчання",
+    dept_it_4: "Кібербезпека",
+    dept_it_5: "Дизайн",
+    dept_it_6: "Маркетинг",
+    dept_it_7: "Бізнес",
+
+    dept_exam_title: "Відділ екзаменаційної підготовки",
+    dept_exam_1: "Підготовка до ДПА / ЗНО / НМТ",
+    dept_exam_2: "Підготовка до IELTS / TOEFL",
+
+    // Publications
+    publications_title: "Публікації репозитарію",
+    publications_subtitle: "Усі PDF-файли з папки publications автоматично відображаються на сайті.",
+    publications_empty: "Завантажте PDF-файли у папку publications репозиторію GitHub.",
+    publications_loading_error: "Не вдалося завантажити публікації.",
+    publications_none: "Публікації ще не додані.",
+    pub_meta: "PDF-публікація • Відкритий доступ",
+    pub_description: "Академічна публікація електронного репозитарію OCMRC Repository.",
+    pub_link: "Відкрити PDF →",
+
+    // Contact
+    contact_title: "Контакти",
+    contact_org_name: 'Освітній центр мов і розвитку "Cambridge"',
+    contact_org_description: "(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)",
+    contact_address_title: "Адреса",
+    contact_address_text: "Вулиця Відпочинку, 1<br>Софіївська Борщагівка,<br>Київська область,<br>Україна, 08148",
+    contact_contacts_title: "Контакти",
+    contact_phone_label: "Телефон:",
+    contact_email_label: "Email:",
+
+    // Footer
+    footer_description: 'Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".',
+    footer_platform: "Open Access Educational Repository Platform.",
+    footer_location: "Софіївська Борщагівка • Київська область • Україна",
+
+    // Page title
+    page_title: 'OCMRC Repository — Освітній центр мов і розвитку "Cambridge"'
+
+},
+
+en: {
+
+    // Nav
+    nav_home: "Home",
+    nav_departments: "Departments",
+    nav_publications: "Publications",
+    nav_contact: "Contact",
+
+    // Hero
+    hero_badge: "Open Academic Electronic Repository",
+    hero_title: 'Educational Center for Languages and Development "Cambridge"',
+    hero_description: "A modern Ukrainian academic repository for storing, systematizing and providing open access to scientific articles, educational materials, methodological developments, international projects, conferences and educational research.",
+    hero_btn_publications: "Browse Publications",
+    hero_btn_departments: "Department Structure",
+
+    // Search
+    search_title: "Search the Repository",
+    search_subtitle: "Search for scientific articles, conferences, methodological materials and academic publications.",
+    search_placeholder: "Enter publication title...",
+    search_button: "Search",
+
+    // Stats
+    stat_publications: "Publications in the repository",
+    stat_access: "Open access",
+    stat_open: "Open access repository",
+    stat_ukrainian: "Ukrainian educational repository",
+
+    // Departments
+    departments_title: "Department Structure",
+    departments_subtitle: "Educational programs and academic divisions of the center.",
+
+    dept_lang_title: "Department of Language Education",
+    dept_lang_1: "Ukrainian Language",
+    dept_lang_2: "English Language",
+    dept_lang_3: "Polish Language",
+    dept_lang_4: "German Language",
+    dept_lang_5: "Spanish Language",
+    dept_lang_6: "Conversation Clubs",
+
+    dept_science_title: "Department of Natural Sciences and Mathematics",
+    dept_science_1: "Mathematics",
+    dept_science_2: "Physics",
+    dept_science_3: "Chemistry",
+
+    dept_preschool_title: "Department of Primary and Preschool Education",
+    dept_preschool_1: "School Preparation",
+    dept_preschool_2: "Speech Therapy Classes",
+    dept_preschool_3: "Summer Camp",
+
+    dept_it_title: "Department of Professional and IT Education",
+    dept_it_1: "Programming",
+    dept_it_2: "Artificial Intelligence (AI)",
+    dept_it_3: "Machine Learning",
+    dept_it_4: "Cybersecurity",
+    dept_it_5: "Design",
+    dept_it_6: "Marketing",
+    dept_it_7: "Business",
+
+    dept_exam_title: "Department of Exam Preparation",
+    dept_exam_1: "Preparation for DPA / ZNO / NMT",
+    dept_exam_2: "Preparation for IELTS / TOEFL",
+
+    // Publications
+    publications_title: "Repository Publications",
+    publications_subtitle: "All PDF files from the publications folder are automatically displayed on the website.",
+    publications_empty: "Upload PDF files to the publications folder of the GitHub repository.",
+    publications_loading_error: "Failed to load publications.",
+    publications_none: "No publications added yet.",
+    pub_meta: "PDF Publication • Open Access",
+    pub_description: "Academic publication from the OCMRC Repository electronic repository.",
+    pub_link: "Open PDF →",
+
+    // Contact
+    contact_title: "Contact",
+    contact_org_name: 'Educational Center for Languages and Development "Cambridge"',
+    contact_org_description: "(an unregistered educational project, the activities of which are carried out on the basis of individual initiative without the status of a legal entity)",
+    contact_address_title: "Address",
+    contact_address_text: "Vidpochynku Street, 1<br>Sofiivska Borshchahivka,<br>Kyiv Oblast,<br>Ukraine, 08148",
+    contact_contacts_title: "Contact Information",
+    contact_phone_label: "Phone:",
+    contact_email_label: "Email:",
+
+    // Footer
+    footer_description: 'Electronic academic repository of the Educational Center for Languages and Development "Cambridge".',
+    footer_platform: "Open Access Educational Repository Platform.",
+    footer_location: "Sofiivska Borshchahivka • Kyiv Oblast • Ukraine",
+
+    // Page title
+    page_title: 'OCMRC Repository — Educational Center for Languages and Development "Cambridge"'
+
+}
+
+};
+
+/* =========================
+LANGUAGE STATE
+========================= */
+
+let currentLang = 'uk';
+
+/* =========================
+SET LANGUAGE
+========================= */
+
+function setLanguage(lang){
+
+    currentLang = lang;
+
+    // Save preference
+    localStorage.setItem('ocmrc_lang', lang);
+
+    // Update URL
+    const url = new URL(window.location);
+    if(lang === 'uk'){
+        url.searchParams.delete('lang');
+    } else {
+        url.searchParams.set('lang', lang);
+    }
+    window.history.replaceState({}, '', url);
+
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+
+    // Update page title
+    document.title = translations[lang].page_title;
+
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc){
+        if(lang === 'en'){
+            metaDesc.content = "Official electronic academic repository of the Educational Center for Languages and Development Cambridge. Open access to scientific articles, educational materials, and research publications.";
+        } else {
+            metaDesc.content = "Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge. Official electronic academic repository of the Educational Center for Languages and Development Cambridge.";
+        }
+    }
+
+    // Update all data-i18n elements
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+
+        const key = el.getAttribute('data-i18n');
+
+        if(translations[lang][key] !== undefined){
+            el.innerHTML = translations[lang][key];
+        }
+
+    });
+
+    // Update all data-i18n-placeholder elements
+    const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholders.forEach(el => {
+
+        const key = el.getAttribute('data-i18n-placeholder');
+
+        if(translations[lang][key] !== undefined){
+            el.placeholder = translations[lang][key];
+        }
+
+    });
+
+    // Update language buttons
+    document.getElementById('langUk').classList.toggle('active', lang === 'uk');
+    document.getElementById('langEn').classList.toggle('active', lang === 'en');
+
+    // Re-render publications with new language
+    if(publications.length > 0){
+        renderPublications(publications);
+    } else {
+        // Update empty message
+        const emptyMsg = document.querySelector('#publicationsContainer .empty-message');
+        if(emptyMsg){
+            emptyMsg.textContent = translations[lang].publications_empty;
+        }
+    }
+
+}
+
+/* =========================
+DETECT INITIAL LANGUAGE
+========================= */
+
+function detectLanguage(){
+
+    // Check URL parameter first
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+
+    if(urlLang === 'en'){
+        return 'en';
+    }
+
+    if(urlLang === 'uk'){
+        return 'uk';
+    }
+
+    // Check localStorage
+    const savedLang = localStorage.getItem('ocmrc_lang');
+
+    if(savedLang === 'en' || savedLang === 'uk'){
+        return savedLang;
+    }
+
+    // Default to Ukrainian
+    return 'uk';
+
+}
+
+/* =========================
+PUBLICATIONS
+========================= */
 
 const container =
 document.getElementById(
@@ -1449,6 +1937,9 @@ async function loadPublications(){
         pubCount.textContent =
         publications.length;
 
+        // Generate dynamic citation meta tags for each publication
+        generateCitationMeta(publications);
+
     }
 
     catch(error){
@@ -1459,13 +1950,46 @@ async function loadPublications(){
 
         <div class="empty-message">
 
-        Не вдалося завантажити публікації.
+        ${translations[currentLang].publications_loading_error}
 
         </div>
 
         `;
 
     }
+
+}
+
+/* =========================
+GENERATE CITATION META TAGS
+========================= */
+
+function generateCitationMeta(files){
+
+    // Remove existing dynamic citation tags
+    document.querySelectorAll('meta[data-dynamic-citation]').forEach(el => el.remove());
+
+    files.forEach(file => {
+
+        const title = file.name
+            .replace('.pdf','')
+            .replaceAll('-',' ')
+            .replaceAll('_',' ');
+
+        // Create meta tags for Google Scholar
+        const metaTitle = document.createElement('meta');
+        metaTitle.name = 'citation_title';
+        metaTitle.content = title;
+        metaTitle.setAttribute('data-dynamic-citation', 'true');
+        document.head.appendChild(metaTitle);
+
+        const metaPdfUrl = document.createElement('meta');
+        metaPdfUrl.name = 'citation_pdf_url';
+        metaPdfUrl.content = file.download_url;
+        metaPdfUrl.setAttribute('data-dynamic-citation', 'true');
+        document.head.appendChild(metaPdfUrl);
+
+    });
 
 }
 
@@ -1481,7 +2005,7 @@ function renderPublications(files){
 
         <div class="empty-message">
 
-        Публікації ще не додані.
+        ${translations[currentLang].publications_none}
 
         </div>
 
@@ -1504,11 +2028,12 @@ function renderPublications(files){
         .replaceAll('_',' ');
 
         const card =
-        document.createElement('div');
+        document.createElement('article');
 
         card.className =
         'publication-card';
 
+        // Add semantic markup for Google Scholar
         card.innerHTML = `
 
         <h4>
@@ -1519,15 +2044,13 @@ function renderPublications(files){
 
         <div class="publication-meta">
 
-        PDF Publication • Open Access
+        ${translations[currentLang].pub_meta}
 
         </div>
 
         <div class="publication-description">
 
-        Академічна публікація
-        електронного репозитарію
-        OCMRC Repository.
+        ${translations[currentLang].pub_description}
 
         </div>
 
@@ -1539,9 +2062,11 @@ function renderPublications(files){
 
         target="_blank"
 
+        rel="noopener"
+
         >
 
-        Відкрити PDF →
+        ${translations[currentLang].pub_link}
 
         </a>
 
@@ -1583,6 +2108,11 @@ document
 INITIAL LOAD
 ========================= */
 
+// Detect and set language
+const initialLang = detectLanguage();
+setLanguage(initialLang);
+
+// Load publications
 loadPublications();
 
 </script>
