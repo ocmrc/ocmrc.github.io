@@ -2060,7 +2060,7 @@ publications репозиторію GitHub.
 
 </div>
 
-<!-- Debug Log (hidden by default, toggle with ?debug=true in URL) -->
+<!-- Debug Log -->
 <div id="debugLog" class="debug-log"></div>
 
 </section>
@@ -2298,10 +2298,8 @@ function debugLog(message, type){
 
     debugLogEl.innerHTML += `<div class="${cls}">[${time}] ${message}</div>`;
 
-    // Auto scroll to bottom
     debugLogEl.scrollTop = debugLogEl.scrollHeight;
 
-    // Also log to console
     console.log(`[OCMRC ${type || 'info'}]`, message);
 
 }
@@ -2314,33 +2312,28 @@ const translations = {
 
 uk: {
 
-    // Nav
     nav_home: "Головна",
     nav_departments: "Відділи",
     nav_publications: "Публікації",
     nav_contact: "Контакти",
 
-    // Hero
     hero_badge: "Відкритий академічний електронний репозитарій",
     hero_title: 'Освітній центр мов і розвитку "Cambridge"',
     hero_description: "Сучасний український академічний репозитарій для зберігання, систематизації та відкритого доступу до наукових статей, навчальних матеріалів, методичних розробок, міжнародних проєктів, конференцій та освітніх досліджень.",
     hero_btn_publications: "Переглянути публікації",
     hero_btn_departments: "Структура відділів",
 
-    // Search
     search_title: "Пошук у репозитарії",
     search_subtitle: "Пошук наукових статей, конференцій, методичних матеріалів та академічних публікацій.",
     search_placeholder: "Введіть назву публікації...",
     search_button: "Пошук",
 
-    // Stats
     stat_publications: "Публікацій у репозитарії",
     stat_collections: "Зібрань (колекцій)",
     stat_access: "Відкритий доступ",
     stat_open: "Репозитарій відкритого доступу",
     stat_ukrainian: "Український освітній репозитарій",
 
-    // Departments
     departments_title: "Структура відділів",
     departments_subtitle: "Освітні напрями та академічні підрозділи центру.",
 
@@ -2375,7 +2368,6 @@ uk: {
     dept_exam_1: "Підготовка до ДПА / ЗНО / НМТ",
     dept_exam_2: "Підготовка до IELTS / TOEFL",
 
-    // Publications
     publications_title: "Публікації репозитарію",
     publications_subtitle: "Публікації організовані за зібраннями (колекціями). Натисніть на публікацію для перегляду детальної інформації.",
     publications_empty: "Завантажте PDF-файли у папку publications репозиторію GitHub.",
@@ -2387,7 +2379,6 @@ uk: {
     pub_link: "Детальніше →",
     pub_all_collections: "Усі зібрання",
 
-    // Sort
     sort_label: "Сортування:",
     sort_name_asc: "За назвою (А-Я)",
     sort_name_desc: "За назвою (Я-А)",
@@ -2396,7 +2387,6 @@ uk: {
     sort_size_large: "За розміром (більші)",
     sort_size_small: "За розміром (менші)",
 
-    // Modal
     modal_authors: "Автори",
     modal_date: "Дата публікації",
     modal_abstract: "Короткий огляд (реферат)",
@@ -2412,11 +2402,9 @@ uk: {
     modal_download_btn: "Завантажити",
     modal_copyright: "Усі матеріали в архіві електронних ресурсів захищені авторським правом, всі права збережені.",
 
-    // PDF Viewer
     viewer_download: "Завантажити",
     viewer_close: "Закрити",
 
-    // Contact
     contact_title: "Контакти",
     contact_org_name: 'Освітній центр мов і розвитку "Cambridge"',
     contact_org_description: "(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)",
@@ -2426,45 +2414,38 @@ uk: {
     contact_phone_label: "Телефон:",
     contact_email_label: "Email:",
 
-    // Footer
     footer_description: 'Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".',
     footer_platform: "Open Access Educational Repository Platform.",
     footer_location: "Софіївська Борщагівка • Київська область • Україна",
 
-    // Page title
     page_title: 'OCMRC Repository – Освітній центр мов і розвитку "Cambridge"'
 
 },
 
 en: {
 
-    // Nav
     nav_home: "Home",
     nav_departments: "Departments",
     nav_publications: "Publications",
     nav_contact: "Contact",
 
-    // Hero
     hero_badge: "Open Academic Electronic Repository",
     hero_title: 'Educational Center for Languages and Development "Cambridge"',
     hero_description: "A modern Ukrainian academic repository for storing, systematizing and providing open access to scientific articles, educational materials, methodological developments, international projects, conferences and educational research.",
     hero_btn_publications: "Browse Publications",
     hero_btn_departments: "Department Structure",
 
-    // Search
     search_title: "Search the Repository",
     search_subtitle: "Search for scientific articles, conferences, methodological materials and academic publications.",
     search_placeholder: "Enter publication title...",
     search_button: "Search",
 
-    // Stats
     stat_publications: "Publications in the repository",
     stat_collections: "Collections",
     stat_access: "Open access",
     stat_open: "Open access repository",
     stat_ukrainian: "Ukrainian educational repository",
 
-    // Departments
     departments_title: "Department Structure",
     departments_subtitle: "Educational programs and academic divisions of the center.",
 
@@ -2499,7 +2480,6 @@ en: {
     dept_exam_1: "Preparation for DPA / ZNO / NMT",
     dept_exam_2: "Preparation for IELTS / TOEFL",
 
-    // Publications
     publications_title: "Repository Publications",
     publications_subtitle: "Publications are organized by collections. Click on a publication to view detailed information.",
     publications_empty: "Upload PDF files to the publications folder of the GitHub repository.",
@@ -2511,7 +2491,6 @@ en: {
     pub_link: "Details →",
     pub_all_collections: "All collections",
 
-    // Sort
     sort_label: "Sort by:",
     sort_name_asc: "By name (A-Z)",
     sort_name_desc: "By name (Z-A)",
@@ -2520,7 +2499,6 @@ en: {
     sort_size_large: "By size (largest)",
     sort_size_small: "By size (smallest)",
 
-    // Modal
     modal_authors: "Authors",
     modal_date: "Publication date",
     modal_abstract: "Abstract",
@@ -2536,11 +2514,9 @@ en: {
     modal_download_btn: "Download",
     modal_copyright: "All materials in the electronic resources archive are protected by copyright, all rights reserved.",
 
-    // PDF Viewer
     viewer_download: "Download",
     viewer_close: "Close",
 
-    // Contact
     contact_title: "Contact",
     contact_org_name: 'Educational Center for Languages and Development "Cambridge"',
     contact_org_description: "(an unregistered educational project, the activities of which are carried out on the basis of individual initiative without the status of a legal entity)",
@@ -2550,12 +2526,10 @@ en: {
     contact_phone_label: "Phone:",
     contact_email_label: "Email:",
 
-    // Footer
     footer_description: 'Electronic academic repository of the Educational Center for Languages and Development "Cambridge".',
     footer_platform: "Open Access Educational Repository Platform.",
     footer_location: "Sofiivska Borshchahivka • Kyiv Oblast • Ukraine",
 
-    // Page title
     page_title: 'OCMRC Repository — Educational Center for Languages and Development "Cambridge"'
 
 }
@@ -2576,10 +2550,8 @@ function setLanguage(lang){
 
     currentLang = lang;
 
-    // Save preference
     localStorage.setItem('ocmrc_lang', lang);
 
-    // Update URL
     const url = new URL(window.location);
     if(lang === 'uk'){
         url.searchParams.delete('lang');
@@ -2588,13 +2560,10 @@ function setLanguage(lang){
     }
     window.history.replaceState({}, '', url);
 
-    // Update html lang attribute
     document.documentElement.lang = lang;
 
-    // Update page title
     document.title = translations[lang].page_title;
 
-    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if(metaDesc){
         if(lang === 'en'){
@@ -2604,59 +2573,43 @@ function setLanguage(lang){
         }
     }
 
-    // Update all data-i18n elements
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
-
         const key = el.getAttribute('data-i18n');
-
         if(translations[lang][key] !== undefined){
             el.innerHTML = translations[lang][key];
         }
-
     });
 
-    // Update all data-i18n-placeholder elements
     const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     placeholders.forEach(el => {
-
         const key = el.getAttribute('data-i18n-placeholder');
-
         if(translations[lang][key] !== undefined){
             el.placeholder = translations[lang][key];
         }
-
     });
 
-    // Update all data-i18n-option elements (select options)
     const options = document.querySelectorAll('[data-i18n-option]');
     options.forEach(el => {
-
         const key = el.getAttribute('data-i18n-option');
-
         if(translations[lang][key] !== undefined){
             el.textContent = translations[lang][key];
         }
-
     });
 
-    // Update language buttons
     document.getElementById('langUk').classList.toggle('active', lang === 'uk');
     document.getElementById('langEn').classList.toggle('active', lang === 'en');
 
-    // Re-render publications with new language
     if(allPublications.length > 0){
         renderCollectionTabs();
         renderPublications(getFilteredAndSortedPublications());
     } else {
-        // Update empty message
         const emptyMsg = document.querySelector('#publicationsContainer .empty-message');
         if(emptyMsg){
             emptyMsg.textContent = translations[lang].publications_empty;
         }
     }
 
-    // Update breadcrumb
     updateBreadcrumb();
 
 }
@@ -2667,26 +2620,15 @@ DETECT INITIAL LANGUAGE
 
 function detectLanguage(){
 
-    // Check URL parameter first
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
 
-    if(urlLang === 'en'){
-        return 'en';
-    }
+    if(urlLang === 'en') return 'en';
+    if(urlLang === 'uk') return 'uk';
 
-    if(urlLang === 'uk'){
-        return 'uk';
-    }
-
-    // Check localStorage
     const savedLang = localStorage.getItem('ocmrc_lang');
+    if(savedLang === 'en' || savedLang === 'uk') return savedLang;
 
-    if(savedLang === 'en' || savedLang === 'uk'){
-        return savedLang;
-    }
-
-    // Default to Ukrainian
     return 'uk';
 
 }
@@ -2695,37 +2637,253 @@ function detectLanguage(){
 PUBLICATIONS DATA
 ========================= */
 
-const container =
-document.getElementById(
-'publicationsContainer'
-);
+const container = document.getElementById('publicationsContainer');
+const searchInput = document.getElementById('searchInput');
+const pubCount = document.getElementById('pubCount');
+const collectionsCount = document.getElementById('collectionsCount');
 
-const searchInput =
-document.getElementById(
-'searchInput'
-);
-
-const pubCount =
-document.getElementById(
-'pubCount'
-);
-
-const collectionsCount =
-document.getElementById(
-'collectionsCount'
-);
-
-// All publications (flat list with collection info)
 let allPublications = [];
-
-// All collection names
 let allCollections = [];
-
-// Currently selected collection filter
 let activeCollection = 'all';
-
-// Metadata cache: key = file path, value = metadata object
 let metadataCache = {};
+
+/* =========================
+AUTO-LOAD COLLECTIONS FROM GITHUB
+========================= */
+
+async function loadCollections(){
+
+    try{
+
+        const response = await fetch(
+            "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
+        );
+
+        if(!response.ok){
+            debugLog('loadCollections: HTTP ' + response.status, 'error');
+            return [];
+        }
+
+        const data = await response.json();
+
+        if(!Array.isArray(data)){
+            debugLog('loadCollections: response is not array', 'error');
+            return [];
+        }
+
+        // Take only directories (folders)
+        const collections = data
+            .filter(item => item.type === 'dir' && item.name !== '.gitkeep' && !item.name.startsWith('.'))
+            .map(item => ({
+                name: item.name,
+                folder: item.path
+            }));
+
+        debugLog('loadCollections: found ' + collections.length + ' collections: ' + collections.map(c => c.name).join(', '), 'success');
+
+        return collections;
+
+    } catch(error){
+
+        debugLog('loadCollections error: ' + error.message, 'error');
+        console.error("Помилка завантаження колекцій:", error);
+        return [];
+
+    }
+
+}
+
+/* =========================
+LOAD FILES FROM ONE COLLECTION
+========================= */
+
+async function loadCollectionFiles(collectionPath, collectionName){
+
+    try{
+
+        const response = await fetch(
+            "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/" + collectionPath + "?t=" + Date.now()
+        );
+
+        if(!response.ok){
+            debugLog('loadCollectionFiles: HTTP ' + response.status + ' for ' + collectionPath, 'error');
+            return [];
+        }
+
+        const data = await response.json();
+
+        if(!Array.isArray(data)){
+            debugLog('loadCollectionFiles: not array for ' + collectionPath, 'error');
+            return [];
+        }
+
+        const pdfFiles = data
+            .filter(item =>
+                item.type === 'file' &&
+                item.name.trim().toLowerCase().endsWith('.pdf') &&
+                !item.name.startsWith('.')
+            )
+            .map(item => ({
+                name: item.name,
+                path: item.path,
+                size: item.size || 0,
+                download_url: item.download_url,
+                html_url: item.html_url,
+                sha: item.sha,
+                collection: collectionName,
+                metadata: null
+            }));
+
+        debugLog('  Collection "' + collectionName + '": ' + pdfFiles.length + ' PDF files', 'info');
+
+        return pdfFiles;
+
+    } catch(error){
+
+        debugLog('loadCollectionFiles error for ' + collectionPath + ': ' + error.message, 'error');
+        return [];
+
+    }
+
+}
+
+/* =========================
+LOAD ROOT PDF FILES (not in any folder)
+========================= */
+
+async function loadRootFiles(){
+
+    try{
+
+        const response = await fetch(
+            "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
+        );
+
+        if(!response.ok) return [];
+
+        const data = await response.json();
+
+        if(!Array.isArray(data)) return [];
+
+        const pdfFiles = data
+            .filter(item =>
+                item.type === 'file' &&
+                item.name.trim().toLowerCase().endsWith('.pdf') &&
+                !item.name.startsWith('.')
+            )
+            .map(item => ({
+                name: item.name,
+                path: item.path,
+                size: item.size || 0,
+                download_url: item.download_url,
+                html_url: item.html_url,
+                sha: item.sha,
+                collection: 'Без категорії',
+                metadata: null
+            }));
+
+        if(pdfFiles.length > 0){
+            debugLog('Root publications folder: ' + pdfFiles.length + ' PDF files without category', 'info');
+        }
+
+        return pdfFiles;
+
+    } catch(error){
+
+        debugLog('loadRootFiles error: ' + error.message, 'error');
+        return [];
+
+    }
+
+}
+
+/* =========================
+MAIN LOAD PUBLICATIONS
+========================= */
+
+async function loadPublications(){
+
+    try{
+
+        // Show loading spinner
+        container.innerHTML = `
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">${translations[currentLang].publications_loading}</div>
+            </div>
+        `;
+
+        debugLog('=== Starting publication loading ===', 'info');
+
+        // Step 1: Auto-detect all collections (folders) from GitHub
+        const collections = await loadCollections();
+
+        debugLog('Step 1 complete: ' + collections.length + ' collections detected', 'success');
+
+        // Step 2: Load PDF files from each collection folder
+        let allFiles = [];
+
+        for(const col of collections){
+
+            debugLog('Loading files from collection: ' + col.name + ' (' + col.folder + ')', 'info');
+
+            const files = await loadCollectionFiles(col.folder, col.name);
+            allFiles = allFiles.concat(files);
+
+        }
+
+        debugLog('Step 2 complete: ' + allFiles.length + ' files from collections', 'success');
+
+        // Step 3: Also load any PDFs directly in publications/ root (without folder)
+        const rootFiles = await loadRootFiles();
+        allFiles = allFiles.concat(rootFiles);
+
+        debugLog('Step 3 complete: +' + rootFiles.length + ' root files. Total: ' + allFiles.length, 'success');
+
+        // Step 4: Store results
+        allPublications = allFiles;
+
+        // Step 5: Build collection list from actual data
+        const collectionSet = new Set();
+        allPublications.forEach(pub => {
+            if(pub.collection){
+                collectionSet.add(pub.collection);
+            }
+        });
+        allCollections = Array.from(collectionSet).sort();
+
+        debugLog('Collections with files: ' + allCollections.join(', '), 'success');
+
+        // Step 6: Update stats
+        pubCount.textContent = allPublications.length;
+        collectionsCount.textContent = allCollections.length;
+
+        // Step 7: Render
+        renderCollectionTabs();
+        renderPublications(getFilteredAndSortedPublications());
+        generateCitationMeta(allPublications);
+
+        debugLog('=== Rendering complete. Loading metadata... ===', 'info');
+
+        // Step 8: Load metadata in background
+        loadAllMetadata();
+
+    }
+
+    catch(error){
+
+        debugLog('CRITICAL ERROR: ' + error.message, 'error');
+        console.error('loadPublications error:', error);
+
+        container.innerHTML = `
+            <div class="empty-message">
+                ${translations[currentLang].publications_loading_error}
+            </div>
+        `;
+
+    }
+
+}
 
 /* =========================
 PARSE METADATA FROM COMMIT MESSAGE
@@ -2737,7 +2895,6 @@ function parseMetadataFromCommitMessage(message){
 
     if(!message) return metadata;
 
-    // Split by lines
     const lines = message.split('\n');
 
     const fieldMap = {
@@ -2748,8 +2905,6 @@ function parseMetadataFromCommitMessage(message){
         'реферат': 'abstract',
         'опис': 'description',
         'uri': 'uri',
-
-        // English alternatives
         'title': 'title',
         'authors': 'authors',
         'publication date': 'date',
@@ -2767,17 +2922,14 @@ function parseMetadataFromCommitMessage(message){
 
         if(!trimmed) return;
 
-        // Check if line starts with a known field label
         let matched = false;
 
         for(const [label, field] of Object.entries(fieldMap)){
 
-            // Case insensitive match at start of line
             const regex = new RegExp('^' + label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*[:\\-]\\s*', 'i');
 
             if(regex.test(trimmed)){
 
-                // Save previous field
                 if(currentField){
                     metadata[currentField] = currentValue.trim();
                 }
@@ -2792,13 +2944,11 @@ function parseMetadataFromCommitMessage(message){
         }
 
         if(!matched && currentField){
-            // Continue multi-line value
             currentValue += ' ' + trimmed;
         }
 
     });
 
-    // Save last field
     if(currentField){
         metadata[currentField] = currentValue.trim();
     }
@@ -2820,7 +2970,7 @@ async function fetchFileMetadata(filePath){
         );
 
         if(!response.ok){
-            debugLog('Metadata fetch failed for: ' + filePath + ' (HTTP ' + response.status + ')', 'error');
+            debugLog('Metadata fetch failed: ' + filePath + ' (HTTP ' + response.status + ')', 'error');
             return {};
         }
 
@@ -2834,310 +2984,20 @@ async function fetchFileMetadata(filePath){
 
         const metadata = parseMetadataFromCommitMessage(message);
 
-        // Use commit date as fallback for publication date
         if(!metadata.date && commitDate){
             metadata.date = commitDate.split('T')[0];
         }
 
-        // Store commit date separately for sorting
         metadata._commitDate = commitDate;
 
-        debugLog('Metadata loaded for: ' + filePath + ' | Title: ' + (metadata.title || 'N/A'), 'success');
+        debugLog('Metadata OK: ' + filePath + ' | Title: ' + (metadata.title || 'N/A'), 'success');
 
         return metadata;
 
     } catch(err){
 
-        debugLog('Metadata error for: ' + filePath + ' — ' + err.message, 'error');
+        debugLog('Metadata error: ' + filePath + ' — ' + err.message, 'error');
         return {};
-
-    }
-
-}
-
-/* =========================
-LOAD PUBLICATIONS
-========================= */
-
-async function loadPublications(){
-
-    try{
-
-        // Show loading spinner
-        container.innerHTML = `
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <div class="loading-text">${translations[currentLang].publications_loading}</div>
-            </div>
-        `;
-
-        debugLog('Starting to load publications from GitHub API...', 'info');
-
-        // Step 1: Get the Git tree recursively (handles ALL folders at once)
-        const treeUrl = 'https://api.github.com/repos/ocmrc/ocmrc.github.io/git/trees/main?recursive=1&t=' + Date.now();
-
-        debugLog('Fetching full repository tree: ' + treeUrl, 'info');
-
-        const treeResponse = await fetch(treeUrl);
-
-        if(!treeResponse.ok){
-
-            debugLog('Tree API failed with status: ' + treeResponse.status + '. Falling back to contents API...', 'error');
-
-            // Fallback to recursive contents API
-            await loadPublicationsFallback();
-            return;
-
-        }
-
-        const treeData = await treeResponse.json();
-
-        debugLog('Tree loaded. Total items in repo: ' + treeData.tree.length, 'info');
-
-        // Step 2: Filter only files inside publications/ that are PDFs
-        const pdfFiles = treeData.tree.filter(item => {
-
-            // Must be a file (blob)
-            if(item.type !== 'blob') return false;
-
-            // Must be inside publications/ folder
-            if(!item.path.startsWith('publications/')) return false;
-
-            // Must be a PDF
-            if(!item.path.toLowerCase().endsWith('.pdf')) return false;
-
-            // Must not be .gitkeep or other hidden files
-            const fileName = item.path.split('/').pop();
-            if(fileName.startsWith('.')) return false;
-
-            return true;
-
-        });
-
-        debugLog('Found ' + pdfFiles.length + ' PDF files in publications/', 'success');
-
-        // Step 3: Process each PDF file
-        allPublications = pdfFiles.map(item => {
-
-            const pathParts = item.path.split('/');
-            // pathParts[0] = "publications"
-            // pathParts[1] = collection folder OR filename
-            // pathParts[last] = filename
-
-            let collectionName = 'Без категорії';
-            let fileName = pathParts[pathParts.length - 1];
-
-            if(pathParts.length >= 3){
-                // File is inside a subfolder: publications/CollectionName/file.pdf
-                // Or deeper: publications/Collection/Sub/file.pdf
-                collectionName = pathParts[1]; // First subfolder is the collection
-            }
-
-            // Build the raw download URL
-            const rawUrl = 'https://raw.githubusercontent.com/ocmrc/ocmrc.github.io/main/' +
-                           item.path.split('/').map(p => encodeURIComponent(p)).join('/');
-
-            const htmlUrl = 'https://github.com/ocmrc/ocmrc.github.io/blob/main/' +
-                            item.path.split('/').map(p => encodeURIComponent(p)).join('/');
-
-            debugLog('  PDF: ' + fileName + ' | Collection: ' + collectionName + ' | Size: ' + item.size, 'info');
-
-            return {
-                name: fileName,
-                path: item.path,
-                size: item.size || 0,
-                download_url: rawUrl,
-                html_url: htmlUrl,
-                sha: item.sha,
-                collection: collectionName,
-                metadata: null
-            };
-
-        });
-
-        // Step 4: Extract unique collection names
-        const collectionSet = new Set();
-        allPublications.forEach(pub => {
-            if(pub.collection){
-                collectionSet.add(pub.collection);
-            }
-        });
-        allCollections = Array.from(collectionSet).sort();
-
-        debugLog('Collections found: ' + allCollections.join(', '), 'success');
-
-        // Step 5: Update stats
-        pubCount.textContent = allPublications.length;
-        collectionsCount.textContent = allCollections.length;
-
-        // Step 6: Render collection tabs
-        renderCollectionTabs();
-
-        // Step 7: Render publications
-        renderPublications(getFilteredAndSortedPublications());
-
-        // Step 8: Generate dynamic citation meta tags
-        generateCitationMeta(allPublications);
-
-        // Step 9: Load metadata for all publications in background
-        debugLog('Starting background metadata loading...', 'info');
-        loadAllMetadata();
-
-    }
-
-    catch(error){
-
-        debugLog('CRITICAL ERROR: ' + error.message, 'error');
-        console.error('loadPublications error:', error);
-
-        container.innerHTML = `
-
-        <div class="empty-message">
-
-        ${translations[currentLang].publications_loading_error}
-
-        </div>
-
-        `;
-
-    }
-
-}
-
-/* =========================
-FALLBACK: LOAD VIA CONTENTS API
-(for when tree API fails)
-========================= */
-
-async function loadPublicationsFallback(){
-
-    debugLog('Using fallback method (contents API recursive)...', 'info');
-
-    try{
-
-        const files = await loadDirectoryRecursive('publications');
-
-        allPublications = files;
-
-        // Extract unique collection names
-        const collectionSet = new Set();
-        allPublications.forEach(pub => {
-            if(pub.collection){
-                collectionSet.add(pub.collection);
-            }
-        });
-        allCollections = Array.from(collectionSet).sort();
-
-        debugLog('Fallback loaded ' + allPublications.length + ' files in ' + allCollections.length + ' collections', 'success');
-
-        // Update stats
-        pubCount.textContent = allPublications.length;
-        collectionsCount.textContent = allCollections.length;
-
-        // Render
-        renderCollectionTabs();
-        renderPublications(getFilteredAndSortedPublications());
-        generateCitationMeta(allPublications);
-        loadAllMetadata();
-
-    } catch(error){
-
-        debugLog('Fallback also failed: ' + error.message, 'error');
-
-        container.innerHTML = `
-            <div class="empty-message">
-                ${translations[currentLang].publications_loading_error}
-            </div>
-        `;
-
-    }
-
-}
-
-/* =========================
-LOAD DIRECTORY RECURSIVELY
-(FALLBACK METHOD)
-========================= */
-
-async function loadDirectoryRecursive(path, collectionName){
-
-    try{
-
-        const apiUrl = 'https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/' + path + '?t=' + Date.now();
-
-        debugLog('Fetching directory: ' + path, 'info');
-
-        const response = await fetch(apiUrl);
-
-        if(!response.ok){
-            debugLog('API error for path "' + path + '": HTTP ' + response.status, 'error');
-            return [];
-        }
-
-        let data = await response.json();
-
-        if(!Array.isArray(data)){
-            debugLog('API returned non-array for path "' + path + '"', 'error');
-            return [];
-        }
-
-        // Filter out hidden/service files
-        data = data.filter(item =>
-            item.name !== '.gitkeep' &&
-            !item.name.startsWith('.')
-        );
-
-        debugLog('Directory "' + path + '" has ' + data.length + ' items', 'info');
-
-        let results = [];
-
-        for(const item of data){
-
-            // If it's a directory (subfolder = collection)
-            if(item.type === 'dir'){
-
-                debugLog('Found subfolder: ' + item.name, 'info');
-
-                const subFiles = await loadDirectoryRecursive(
-                    item.path,
-                    item.name
-                );
-
-                results = results.concat(subFiles);
-
-            }
-
-            // If it's a PDF file
-            else if(
-                item.type === 'file' &&
-                item.name.trim().toLowerCase().endsWith('.pdf')
-            ){
-
-                debugLog('Found PDF: ' + item.name + ' in collection: ' + (collectionName || 'root'), 'success');
-
-                results.push({
-                    name: item.name,
-                    path: item.path,
-                    size: item.size || 0,
-                    download_url: item.download_url,
-                    html_url: item.html_url,
-                    sha: item.sha,
-                    collection: collectionName || 'Без категорії',
-                    metadata: null
-                });
-
-            }
-
-        }
-
-        return results;
-
-    }
-
-    catch(error){
-
-        debugLog('Error loading directory "' + path + '": ' + error.message, 'error');
-        return [];
 
     }
 
@@ -3153,7 +3013,6 @@ async function loadAllMetadata(){
 
     debugLog('Loading metadata for ' + allPublications.length + ' publications...', 'info');
 
-    // Load in batches of 5 to avoid rate limiting
     const batchSize = 5;
 
     for(let i = 0; i < allPublications.length; i += batchSize){
@@ -3161,16 +3020,13 @@ async function loadAllMetadata(){
         const batch = allPublications.slice(i, i + batchSize);
 
         const promises = batch.map(async (pub) => {
-
             const metadata = await fetchFileMetadata(pub.path);
             metadataCache[pub.path] = metadata;
             pub.metadata = metadata;
-
         });
 
         await Promise.allSettled(promises);
 
-        // Re-render after each batch so user sees updates progressively
         renderPublications(getFilteredAndSortedPublications());
 
     }
@@ -3189,7 +3045,6 @@ function renderCollectionTabs(){
 
     tabsContainer.innerHTML = '';
 
-    // Count publications per collection
     const collectionCounts = {};
     allPublications.forEach(pub => {
         const col = pub.collection || 'Без категорії';
@@ -3263,12 +3118,10 @@ function getFilteredAndSortedPublications(){
 
     let filtered = allPublications.slice();
 
-    // Filter by collection
     if(activeCollection !== 'all'){
         filtered = filtered.filter(pub => pub.collection === activeCollection);
     }
 
-    // Filter by search
     const searchValue = searchInput.value.toLowerCase().trim();
     if(searchValue){
         filtered = filtered.filter(pub => {
@@ -3286,7 +3139,6 @@ function getFilteredAndSortedPublications(){
         });
     }
 
-    // Sort
     const sortValue = document.getElementById('sortSelect').value;
 
     filtered.sort((a, b) => {
@@ -3340,7 +3192,7 @@ function getDisplayTitle(pub){
 }
 
 /* =========================
-HELPER: GET DATE VALUE FOR SORTING
+HELPER: GET DATE VALUE
 ========================= */
 
 function getDateValue(pub){
@@ -3388,19 +3240,17 @@ function applySorting(){
 }
 
 /* =========================
-GENERATE CITATION META TAGS
+GENERATE CITATION META
 ========================= */
 
 function generateCitationMeta(files){
 
-    // Remove existing dynamic citation tags
     document.querySelectorAll('meta[data-dynamic-citation]').forEach(el => el.remove());
 
     files.forEach(file => {
 
         const title = getDisplayTitle(file);
 
-        // Create meta tags for Google Scholar
         const metaTitle = document.createElement('meta');
         metaTitle.name = 'citation_title';
         metaTitle.content = title;
@@ -3426,13 +3276,9 @@ function renderPublications(files){
     if(files.length === 0){
 
         container.innerHTML = `
-
-        <div class="empty-message">
-
-        ${translations[currentLang].publications_none}
-
-        </div>
-
+            <div class="empty-message">
+                ${translations[currentLang].publications_none}
+            </div>
         `;
 
         return;
@@ -3445,21 +3291,15 @@ function renderPublications(files){
 
         const title = getDisplayTitle(file);
 
-        const card =
-        document.createElement('article');
-
-        card.className =
-        'publication-card';
-
+        const card = document.createElement('article');
+        card.className = 'publication-card';
         card.style.cursor = 'pointer';
 
-        // Collection tag
         let collectionTag = '';
         if(file.collection){
             collectionTag = `<div class="publication-collection-tag">${file.collection}</div>`;
         }
 
-        // Meta info
         let metaInfo = translations[currentLang].pub_meta;
 
         if(file.metadata && file.metadata.authors){
@@ -3470,7 +3310,6 @@ function renderPublications(files){
             metaInfo += ' • ' + file.metadata.date;
         }
 
-        // Description
         let descriptionText = translations[currentLang].pub_description;
 
         if(file.metadata && file.metadata.abstract){
@@ -3483,46 +3322,19 @@ function renderPublications(files){
                 : file.metadata.description;
         }
 
-        // Size info
         let sizeInfo = '';
         if(file.size){
             sizeInfo = ` • ${formatFileSize(file.size)}`;
         }
 
-        // Add semantic markup for Google Scholar
         card.innerHTML = `
-
-        ${collectionTag}
-
-        <h4>
-
-        ${title}
-
-        </h4>
-
-        <div class="publication-meta">
-
-        ${metaInfo}${sizeInfo}
-
-        </div>
-
-        <div class="publication-description">
-
-        ${descriptionText}
-
-        </div>
-
-        <span
-        class="publication-link"
-        >
-
-        ${translations[currentLang].pub_link}
-
-        </span>
-
+            ${collectionTag}
+            <h4>${title}</h4>
+            <div class="publication-meta">${metaInfo}${sizeInfo}</div>
+            <div class="publication-description">${descriptionText}</div>
+            <span class="publication-link">${translations[currentLang].pub_link}</span>
         `;
 
-        // Click opens publication detail modal
         card.addEventListener('click', function(e){
             e.preventDefault();
             openPublicationModal(file);
@@ -3544,22 +3356,12 @@ function openPublicationModal(file){
     const title = getDisplayTitle(file);
     const meta = file.metadata || metadataCache[file.path] || {};
 
-    // Title
     document.getElementById('pubModalTitle').textContent = title;
-
-    // Authors
     document.getElementById('pubModalAuthors').textContent = meta.authors || '—';
-
-    // Date
     document.getElementById('pubModalDate').textContent = meta.date || '—';
-
-    // Abstract
     document.getElementById('pubModalAbstract').textContent = meta.abstract || '—';
-
-    // Description
     document.getElementById('pubModalDescription').textContent = meta.description || '—';
 
-    // URI
     const uriEl = document.getElementById('pubModalURI');
     if(meta.uri){
         uriEl.innerHTML = `<a href="${meta.uri}" target="_blank" rel="noopener">${meta.uri}</a>`;
@@ -3568,11 +3370,8 @@ function openPublicationModal(file){
         uriEl.innerHTML = `<a href="${fileUrl}" target="_blank" rel="noopener">${fileUrl}</a>`;
     }
 
-    // Collection
-    const collectionEl = document.getElementById('pubModalCollection');
-    collectionEl.textContent = file.collection || '—';
+    document.getElementById('pubModalCollection').textContent = file.collection || '—';
 
-    // File table — safely escape the filename for onclick
     const safeFileName = file.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
     const safeDownloadUrl = file.download_url.replace(/'/g, "\\'").replace(/"/g, '&quot;');
 
@@ -3587,21 +3386,16 @@ function openPublicationModal(file){
         </tr>
     `;
 
-    // View button
     const viewBtn = document.getElementById('pubModalViewBtn');
     viewBtn.onclick = function(e){
         e.preventDefault();
         openPdfViewer(file.download_url, file.name);
     };
 
-    // Download button
     const downloadBtn = document.getElementById('pubModalDownloadBtn');
     downloadBtn.href = file.download_url;
 
-    // Show modal
     overlay.classList.add('active');
-
-    // Prevent body scroll
     document.body.style.overflow = 'hidden';
 
 }
@@ -3612,10 +3406,7 @@ CLOSE PUBLICATION MODAL
 
 function closePublicationModal(){
 
-    const overlay = document.getElementById('pubModalOverlay');
-    overlay.classList.remove('active');
-
-    // Restore body scroll
+    document.getElementById('pubModalOverlay').classList.remove('active');
     document.body.style.overflow = '';
 
 }
@@ -3626,7 +3417,6 @@ OPEN PDF VIEWER
 
 function openPdfViewer(url, fileName){
 
-    // Close publication modal if open
     closePublicationModal();
 
     const overlay = document.getElementById('pdfViewerOverlay');
@@ -3637,12 +3427,9 @@ function openPdfViewer(url, fileName){
     titleEl.textContent = fileName || 'document.pdf';
     downloadBtn.href = url;
 
-    // Embed PDF directly — most modern browsers render PDFs natively in iframes
     frame.src = url;
 
     overlay.classList.add('active');
-
-    // Prevent body scroll
     document.body.style.overflow = 'hidden';
 
 }
@@ -3659,43 +3446,36 @@ function closePdfViewer(){
     overlay.classList.remove('active');
     frame.src = '';
 
-    // Restore body scroll
     document.body.style.overflow = '';
 
 }
 
 /* =========================
-CLICK OUTSIDE TO CLOSE MODALS
+CLICK OUTSIDE TO CLOSE
 ========================= */
 
 document.getElementById('pubModalOverlay').addEventListener('click', function(e){
-    if(e.target === this){
-        closePublicationModal();
-    }
+    if(e.target === this) closePublicationModal();
 });
 
 document.getElementById('pdfViewerOverlay').addEventListener('click', function(e){
-    if(e.target === this){
-        closePdfViewer();
-    }
+    if(e.target === this) closePdfViewer();
 });
 
 /* =========================
-KEYBOARD: ESC TO CLOSE
+ESC TO CLOSE
 ========================= */
 
 document.addEventListener('keydown', function(e){
 
     if(e.key === 'Escape'){
 
-        // Close PDF viewer first if open
         const pdfOverlay = document.getElementById('pdfViewerOverlay');
         if(pdfOverlay.classList.contains('active')){
             closePdfViewer();
             return;
         }
 
-        // Close publication modal
         const pubOverlay = document.getElementById('pubModalOverlay');
         if(pubOverlay.classList.contains('active')){
             closePublicationModal();
@@ -3710,32 +3490,22 @@ document.addEventListener('keydown', function(e){
 SEARCH
 ========================= */
 
-document
-.getElementById('searchForm')
-.addEventListener('submit', function(e){
-
+document.getElementById('searchForm').addEventListener('submit', function(e){
     e.preventDefault();
-
     renderPublications(getFilteredAndSortedPublications());
-
 });
 
-// Also search on input (live search)
 searchInput.addEventListener('input', function(){
-
     renderPublications(getFilteredAndSortedPublications());
-
 });
 
 /* =========================
 INITIAL LOAD
 ========================= */
 
-// Detect and set language
 const initialLang = detectLanguage();
 setLanguage(initialLang);
 
-// Load publications
 loadPublications();
 
 </script>
