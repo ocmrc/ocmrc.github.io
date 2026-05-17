@@ -2596,21 +2596,6 @@ let metadataCache = {};
 PARSE METADATA FROM COMMIT MESSAGE
 ========================= */
 
-/*
-    When uploading a file via GitHub, you can put metadata in the
-    "extended description" field of the commit, using this format:
-
-    Назва: My Publication Title
-    Автори: Author One, Author Two
-    Дата публікації: 2026-01-15
-    Короткий огляд: Some abstract text here
-    Опис: Detailed description of the publication
-    URI: https://doi.org/10.xxxx/xxxxx
-
-    The script will fetch the last commit that touched each file
-    and parse these fields from the commit message body.
-*/
-
 function parseMetadataFromCommitMessage(message){
 
     const metadata = {};
@@ -2729,7 +2714,7 @@ async function fetchFileMetadata(filePath){
 }
 
 /* =========================
-LOAD PUBLICATIONS RECURSIVELY
+LOAD PUBLICATIONS
 ========================= */
 
 async function loadPublications(){
@@ -2788,58 +2773,90 @@ async function loadPublications(){
 
 /* =========================
 LOAD DIRECTORY RECURSIVELY
+(FIXED VERSION)
 ========================= */
 
 async function loadDirectoryRecursive(path, collectionName){
 
-    const response = await fetch(
-        'https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/' + encodeURIComponent(path)
-    );
+    try{
 
-    if(!response.ok){
-        return [];
-    }
+        const response = await fetch(
+            `https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/${path}?t=${Date.now()}`
+        );
 
-    const data = await response.json();
+        if(!response.ok){
+            console.error("Помилка API:", response.status);
+            return [];
+        }
 
-    if(!Array.isArray(data)){
-        return [];
-    }
+        let data = await response.json();
 
-    let results = [];
+        if(!Array.isArray(data)){
+            return [];
+        }
 
-    for(const item of data){
+        // прибрати службові файли
+        data = data.filter(item =>
+            item.name !== '.gitkeep'
+        );
 
-        if(item.type === 'dir'){
+        let results = [];
 
-            // This is a subfolder = collection
-            const subCollectionName = item.name;
+        for(const item of data){
 
-            const subFiles = await loadDirectoryRecursive(
-                item.path,
-                subCollectionName
-            );
+            // якщо папка
+            if(item.type === 'dir'){
 
-            results = results.concat(subFiles);
+                const subFiles =
+                await loadDirectoryRecursive(
+                    item.path,
+                    item.name
+                );
 
-        } else if(item.type === 'file' && item.name.toLowerCase().endsWith('.pdf')){
+                results =
+                results.concat(subFiles);
 
-            // This is a PDF file
-            results.push({
-                name: item.name,
-                path: item.path,
-                size: item.size,
-                download_url: item.download_url,
-                html_url: item.html_url,
-                sha: item.sha,
-                collection: collectionName || null
-            });
+            }
+
+            // якщо PDF
+            else if(
+                item.type === 'file' &&
+                item.name
+                    .trim()
+                    .toLowerCase()
+                    .endsWith('.pdf')
+            ){
+
+                results.push({
+
+                    name:item.name,
+                    path:item.path,
+                    size:item.size || 0,
+                    download_url:item.download_url,
+                    html_url:item.html_url,
+                    sha:item.sha,
+                    collection:collectionName || "Без категорії"
+
+                });
+
+            }
 
         }
 
+        return results;
+
     }
 
-    return results;
+    catch(error){
+
+        console.error(
+            'Помилка завантаження:',
+            error
+        );
+
+        return [];
+
+    }
 
 }
 
