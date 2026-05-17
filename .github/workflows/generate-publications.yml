@@ -20,31 +20,45 @@ jobs:
 
       - name: Generate publications.json
         run: |
-          echo "[" > publications.json
-          first=true
-          find publications -name "*.pdf" -type f | sort | while read file; do
-            folder=$(dirname "$file" | sed 's|^publications/||' | sed 's|^publications$|.|')
-            filename=$(basename "$file")
-            size=$(stat -c%s "$file" 2>/dev/null || echo "0")
-            if [ "$first" = true ]; then
-              first=false
-            else
-              echo "," >> publications.json
-            fi
-            echo "  {" >> publications.json
-            echo "    \"name\": \"$filename\"," >> publications.json
-            echo "    \"collection\": \"$folder\"," >> publications.json
-            echo "    \"path\": \"$file\"," >> publications.json
-            echo "    \"size\": $size" >> publications.json
-            echo "  }" >> publications.json
+
+          echo "[]" > publications.json
+
+          find publications -mindepth 1 -type d | while read dir
+          do
+
+            folder=$(basename "$dir")
+
+            find "$dir" -maxdepth 1 -type f -name "*.pdf" | while read pdf
+            do
+
+              filename=$(basename "$pdf")
+              size=$(stat -c%s "$pdf" 2>/dev/null || echo 0)
+
+              jq --arg name "$filename" \
+                 --arg collection "$folder" \
+                 --arg path "$pdf" \
+                 --arg size "$size" \
+                 '. += [{
+                    name:$name,
+                    collection:$collection,
+                    path:$path,
+                    size:($size|tonumber)
+                 }]' publications.json > tmp.json
+
+              mv tmp.json publications.json
+
+            done
+
           done
-          echo "]" >> publications.json
-          cat publications.json
 
       - name: Commit publications.json
         run: |
+
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
           git add publications.json
-          git diff --cached --quiet || git commit -m "Auto-update publications.json"
+
+          git diff --cached --quiet || git commit -m "Auto update publications"
+
           git push
