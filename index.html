@@ -2038,8 +2038,6 @@ style="margin-top:120px;"
 <select class="sort-select" id="sortSelect" onchange="applySorting()">
 <option value="name-asc" data-i18n-option="sort_name_asc">За назвою (А-Я)</option>
 <option value="name-desc" data-i18n-option="sort_name_desc">За назвою (Я-А)</option>
-<option value="date-new" data-i18n-option="sort_date_new">За датою (нові)</option>
-<option value="date-old" data-i18n-option="sort_date_old">За датою (старі)</option>
 <option value="size-large" data-i18n-option="sort_size_large">За розміром (більші)</option>
 <option value="size-small" data-i18n-option="sort_size_small">За розміром (менші)</option>
 </select>
@@ -2297,39 +2295,26 @@ function debugLog(message, type){
 }
 
 /* =========================
-SAFE FETCH (no-store cache + error handling)
+SAFE FETCH
 ========================= */
 
 async function safeFetch(url){
-
     try{
-
-        const response = await fetch(url, {
-            cache: "no-store"
-        });
-
+        const response = await fetch(url, { cache: "no-store" });
         if(!response.ok){
             debugLog('HTTP ' + response.status + ' for: ' + url, 'error');
             return null;
         }
-
         const data = await response.json();
-
-        // Guard against rate limit responses like {"message":"API rate limit exceeded"}
         if(data && data.message && !Array.isArray(data)){
             debugLog('API message: ' + data.message, 'error');
             return null;
         }
-
         return data;
-
     } catch(error){
-
         debugLog('Fetch error: ' + url + ' — ' + error.message, 'error');
         return null;
-
     }
-
 }
 
 /* =========================
@@ -2339,32 +2324,26 @@ TRANSLATIONS
 const translations = {
 
 uk: {
-
     nav_home: "Головна",
     nav_departments: "Відділи",
     nav_publications: "Публікації",
     nav_contact: "Контакти",
-
     hero_badge: "Відкритий академічний електронний репозитарій",
     hero_title: 'Освітній центр мов і розвитку "Cambridge"',
     hero_description: "Сучасний український академічний репозитарій для зберігання, систематизації та відкритого доступу до наукових статей, навчальних матеріалів, методичних розробок, міжнародних проєктів, конференцій та освітніх досліджень.",
     hero_btn_publications: "Переглянути публікації",
     hero_btn_departments: "Структура відділів",
-
     search_title: "Пошук у репозитарії",
     search_subtitle: "Пошук наукових статей, конференцій, методичних матеріалів та академічних публікацій.",
     search_placeholder: "Введіть назву публікації...",
     search_button: "Пошук",
-
     stat_publications: "Публікацій у репозитарії",
     stat_collections: "Зібрань (колекцій)",
     stat_access: "Відкритий доступ",
     stat_open: "Репозитарій відкритого доступу",
     stat_ukrainian: "Український освітній репозитарій",
-
     departments_title: "Структура відділів",
     departments_subtitle: "Освітні напрями та академічні підрозділи центру.",
-
     dept_lang_title: "Відділ мовної освіти",
     dept_lang_1: "Українська мова",
     dept_lang_2: "Англійська мова",
@@ -2372,17 +2351,14 @@ uk: {
     dept_lang_4: "Німецька мова",
     dept_lang_5: "Іспанська мова",
     dept_lang_6: "Розмовні клуби",
-
     dept_science_title: "Відділ природничо-математичних дисциплін",
     dept_science_1: "Математика",
     dept_science_2: "Фізика",
     dept_science_3: "Хімія",
-
     dept_preschool_title: "Відділ початкової та дошкільної підготовки",
     dept_preschool_1: "Підготовка до школи",
     dept_preschool_2: "Логопедичні заняття",
     dept_preschool_3: "Літній табір",
-
     dept_it_title: "Відділ професійної та IT-освіти",
     dept_it_1: "Програмування",
     dept_it_2: "Штучний інтелект (AI)",
@@ -2391,11 +2367,9 @@ uk: {
     dept_it_5: "Дизайн",
     dept_it_6: "Маркетинг",
     dept_it_7: "Бізнес",
-
     dept_exam_title: "Відділ екзаменаційної підготовки",
     dept_exam_1: "Підготовка до ДПА / ЗНО / НМТ",
     dept_exam_2: "Підготовка до IELTS / TOEFL",
-
     publications_title: "Публікації репозитарію",
     publications_subtitle: "Публікації організовані за зібраннями (колекціями). Натисніть на публікацію для перегляду детальної інформації.",
     publications_empty: "Завантажте PDF-файли у папку publications репозиторію GitHub.",
@@ -2406,15 +2380,11 @@ uk: {
     pub_description: "Академічна публікація електронного репозитарію OCMRC Repository.",
     pub_link: "Детальніше →",
     pub_all_collections: "Усі зібрання",
-
     sort_label: "Сортування:",
     sort_name_asc: "За назвою (А-Я)",
     sort_name_desc: "За назвою (Я-А)",
-    sort_date_new: "За датою (нові)",
-    sort_date_old: "За датою (старі)",
     sort_size_large: "За розміром (більші)",
     sort_size_small: "За розміром (менші)",
-
     modal_authors: "Автори",
     modal_date: "Дата публікації",
     modal_abstract: "Короткий огляд (реферат)",
@@ -2429,10 +2399,8 @@ uk: {
     modal_view_btn: "Переглянути файл",
     modal_download_btn: "Завантажити",
     modal_copyright: "Усі матеріали в архіві електронних ресурсів захищені авторським правом, всі права збережені.",
-
     viewer_download: "Завантажити",
     viewer_close: "Закрити",
-
     contact_title: "Контакти",
     contact_org_name: 'Освітній центр мов і розвитку "Cambridge"',
     contact_org_description: "(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)",
@@ -2441,42 +2409,33 @@ uk: {
     contact_contacts_title: "Контакти",
     contact_phone_label: "Телефон:",
     contact_email_label: "Email:",
-
     footer_description: 'Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".',
     footer_platform: "Open Access Educational Repository Platform.",
     footer_location: "Софіївська Борщагівка • Київська область • Україна",
-
     page_title: 'OCMRC Repository – Освітній центр мов і розвитку "Cambridge"'
-
 },
 
 en: {
-
     nav_home: "Home",
     nav_departments: "Departments",
     nav_publications: "Publications",
     nav_contact: "Contact",
-
     hero_badge: "Open Academic Electronic Repository",
     hero_title: 'Educational Center for Languages and Development "Cambridge"',
     hero_description: "A modern Ukrainian academic repository for storing, systematizing and providing open access to scientific articles, educational materials, methodological developments, international projects, conferences and educational research.",
     hero_btn_publications: "Browse Publications",
     hero_btn_departments: "Department Structure",
-
     search_title: "Search the Repository",
     search_subtitle: "Search for scientific articles, conferences, methodological materials and academic publications.",
     search_placeholder: "Enter publication title...",
     search_button: "Search",
-
     stat_publications: "Publications in the repository",
     stat_collections: "Collections",
     stat_access: "Open access",
     stat_open: "Open access repository",
     stat_ukrainian: "Ukrainian educational repository",
-
     departments_title: "Department Structure",
     departments_subtitle: "Educational programs and academic divisions of the center.",
-
     dept_lang_title: "Department of Language Education",
     dept_lang_1: "Ukrainian Language",
     dept_lang_2: "English Language",
@@ -2484,17 +2443,14 @@ en: {
     dept_lang_4: "German Language",
     dept_lang_5: "Spanish Language",
     dept_lang_6: "Conversation Clubs",
-
     dept_science_title: "Department of Natural Sciences and Mathematics",
     dept_science_1: "Mathematics",
     dept_science_2: "Physics",
     dept_science_3: "Chemistry",
-
     dept_preschool_title: "Department of Primary and Preschool Education",
     dept_preschool_1: "School Preparation",
     dept_preschool_2: "Speech Therapy Classes",
     dept_preschool_3: "Summer Camp",
-
     dept_it_title: "Department of Professional and IT Education",
     dept_it_1: "Programming",
     dept_it_2: "Artificial Intelligence (AI)",
@@ -2503,11 +2459,9 @@ en: {
     dept_it_5: "Design",
     dept_it_6: "Marketing",
     dept_it_7: "Business",
-
     dept_exam_title: "Department of Exam Preparation",
     dept_exam_1: "Preparation for DPA / ZNO / NMT",
     dept_exam_2: "Preparation for IELTS / TOEFL",
-
     publications_title: "Repository Publications",
     publications_subtitle: "Publications are organized by collections. Click on a publication to view detailed information.",
     publications_empty: "Upload PDF files to the publications folder of the GitHub repository.",
@@ -2518,15 +2472,11 @@ en: {
     pub_description: "Academic publication from the OCMRC Repository electronic repository.",
     pub_link: "Details →",
     pub_all_collections: "All collections",
-
     sort_label: "Sort by:",
     sort_name_asc: "By name (A-Z)",
     sort_name_desc: "By name (Z-A)",
-    sort_date_new: "By date (newest)",
-    sort_date_old: "By date (oldest)",
     sort_size_large: "By size (largest)",
     sort_size_small: "By size (smallest)",
-
     modal_authors: "Authors",
     modal_date: "Publication date",
     modal_abstract: "Abstract",
@@ -2541,10 +2491,8 @@ en: {
     modal_view_btn: "View file",
     modal_download_btn: "Download",
     modal_copyright: "All materials in the electronic resources archive are protected by copyright, all rights reserved.",
-
     viewer_download: "Download",
     viewer_close: "Close",
-
     contact_title: "Contact",
     contact_org_name: 'Educational Center for Languages and Development "Cambridge"',
     contact_org_description: "(an unregistered educational project, the activities of which are carried out on the basis of individual initiative without the status of a legal entity)",
@@ -2553,13 +2501,10 @@ en: {
     contact_contacts_title: "Contact Information",
     contact_phone_label: "Phone:",
     contact_email_label: "Email:",
-
     footer_description: 'Electronic academic repository of the Educational Center for Languages and Development "Cambridge".',
     footer_platform: "Open Access Educational Repository Platform.",
     footer_location: "Sofiivska Borshchahivka • Kyiv Oblast • Ukraine",
-
     page_title: 'OCMRC Repository — Educational Center for Languages and Development "Cambridge"'
-
 }
 
 };
@@ -2591,12 +2536,10 @@ function setLanguage(lang){
         const key = el.getAttribute('data-i18n');
         if(translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
     });
-
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if(translations[lang][key] !== undefined) el.placeholder = translations[lang][key];
     });
-
     document.querySelectorAll('[data-i18n-option]').forEach(el => {
         const key = el.getAttribute('data-i18n-option');
         if(translations[lang][key] !== undefined) el.textContent = translations[lang][key];
@@ -2612,7 +2555,6 @@ function setLanguage(lang){
         const emptyMsg = document.querySelector('#publicationsContainer .empty-message');
         if(emptyMsg) emptyMsg.textContent = translations[lang].publications_empty;
     }
-
     updateBreadcrumb();
 }
 
@@ -2641,38 +2583,23 @@ let activeCollection = 'all';
 let metadataCache = {};
 
 /* =========================
-FIX #1: AUTO-LOAD COLLECTIONS
+AUTO-LOAD COLLECTIONS
 ========================= */
 
 async function loadCollections(){
-
     const data = await safeFetch(
         "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
     );
-
-    if(!data || !Array.isArray(data)){
-        debugLog('loadCollections: no valid data', 'error');
-        return [];
-    }
-
+    if(!data || !Array.isArray(data)) return [];
     const collections = data
-        .filter(item =>
-            item.type === 'dir' &&
-            !item.name.startsWith('.')
-        )
-        .map(item => ({
-            name: item.name,
-            folder: item.path
-        }));
-
-    debugLog('loadCollections: ' + collections.length + ' collections: ' + collections.map(c => c.name).join(', '), 'success');
-
+        .filter(item => item.type === 'dir' && !item.name.startsWith('.'))
+        .map(item => ({ name: item.name, folder: item.path }));
+    debugLog('Collections: ' + collections.map(c => c.name).join(', '), 'success');
     return collections;
-
 }
 
 /* =========================
-FIX #1: RECURSIVE SCAN INSIDE COLLECTION
+RECURSIVE SCAN COLLECTION
 ========================= */
 
 async function loadCollectionFiles(collectionPath, collectionName){
@@ -2680,36 +2607,22 @@ async function loadCollectionFiles(collectionPath, collectionName){
     let results = [];
 
     async function scan(path){
-
         debugLog('  Scanning: ' + path, 'info');
-
         const data = await safeFetch(
             "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/" + path + "?t=" + Date.now()
         );
-
-        if(!data || !Array.isArray(data)){
-            debugLog('  scan(' + path + '): no valid data', 'error');
-            return;
-        }
+        if(!data || !Array.isArray(data)) return;
 
         for(const item of data){
-
-            // Skip hidden files
             if(item.name.startsWith('.')) continue;
 
             if(item.type === 'dir'){
-
-                // Recurse into subdirectory
-                debugLog('  Found subfolder: ' + item.name, 'info');
                 await scan(item.path);
-
             } else if(
                 item.type === 'file' &&
                 item.name.trim().toLowerCase().endsWith('.pdf')
             ){
-
-                debugLog('  Found PDF: ' + item.name, 'success');
-
+                debugLog('  PDF: ' + item.name, 'success');
                 results.push({
                     name: item.name,
                     path: item.path,
@@ -2720,34 +2633,24 @@ async function loadCollectionFiles(collectionPath, collectionName){
                     collection: collectionName,
                     metadata: null
                 });
-
             }
-
         }
-
     }
 
     await scan(collectionPath);
-
-    debugLog('Collection "' + collectionName + '": ' + results.length + ' PDF files total', 'success');
-
     return results;
-
 }
 
 /* =========================
-LOAD ROOT FILES (PDFs without folder)
+LOAD ROOT FILES
 ========================= */
 
 async function loadRootFiles(){
-
     const data = await safeFetch(
         "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
     );
-
     if(!data || !Array.isArray(data)) return [];
-
-    const pdfFiles = data
+    return data
         .filter(item =>
             item.type === 'file' &&
             item.name.trim().toLowerCase().endsWith('.pdf') &&
@@ -2763,12 +2666,22 @@ async function loadRootFiles(){
             collection: 'Без категорії',
             metadata: null
         }));
+}
 
-    if(pdfFiles.length > 0){
-        debugLog('Root PDF files: ' + pdfFiles.length, 'info');
-    }
+/* =========================
+DISABLED: FETCH METADATA
+(prevents API rate limit)
+========================= */
 
-    return pdfFiles;
+async function fetchFileMetadata(filePath){
+
+    return {
+        authors: "—",
+        description: "",
+        abstract: "",
+        date: "",
+        uri: ""
+    };
 
 }
 
@@ -2789,10 +2702,8 @@ async function loadPublications(){
 
         debugLog('=== Starting publication loading ===', 'info');
 
-        // Step 1: Auto-detect collections
         const collections = await loadCollections();
 
-        // Step 2: Load PDFs from each collection (recursively!)
         let allFiles = [];
 
         for(const col of collections){
@@ -2800,35 +2711,28 @@ async function loadPublications(){
             allFiles = allFiles.concat(files);
         }
 
-        // Step 3: Load root PDFs
         const rootFiles = await loadRootFiles();
         allFiles = allFiles.concat(rootFiles);
 
-        debugLog('Total PDF files loaded: ' + allFiles.length, 'success');
+        debugLog('Total: ' + allFiles.length + ' PDF files', 'success');
 
-        // Step 4: Store
         allPublications = allFiles;
 
-        // Step 5: Build collection list
         const collectionSet = new Set();
         allPublications.forEach(pub => {
             if(pub.collection) collectionSet.add(pub.collection);
         });
         allCollections = Array.from(collectionSet).sort();
 
-        // Step 6: Update stats
         pubCount.textContent = allPublications.length;
         collectionsCount.textContent = allCollections.length;
 
-        // Step 7: Render
         renderCollectionTabs();
         renderPublications(getFilteredAndSortedPublications());
         generateCitationMeta(allPublications);
 
-        debugLog('=== Rendering complete ===', 'success');
-
-        // Step 8: Background metadata
-        loadAllMetadata();
+        // Metadata loading disabled to prevent API rate limit
+        debugLog('Metadata loading disabled (rate limit protection)', 'info');
 
     } catch(error){
 
@@ -2846,146 +2750,10 @@ async function loadPublications(){
 }
 
 /* =========================
-PARSE METADATA FROM COMMIT
-========================= */
-
-function parseMetadataFromCommitMessage(message){
-
-    const metadata = {};
-    if(!message) return metadata;
-
-    const lines = message.split('\n');
-
-    const fieldMap = {
-        'назва': 'title',
-        'автори': 'authors',
-        'дата публікації': 'date',
-        'короткий огляд': 'abstract',
-        'реферат': 'abstract',
-        'опис': 'description',
-        'uri': 'uri',
-        'title': 'title',
-        'authors': 'authors',
-        'publication date': 'date',
-        'date': 'date',
-        'abstract': 'abstract',
-        'description': 'description'
-    };
-
-    let currentField = null;
-    let currentValue = '';
-
-    lines.forEach(line => {
-        const trimmed = line.trim();
-        if(!trimmed) return;
-
-        let matched = false;
-
-        for(const [label, field] of Object.entries(fieldMap)){
-            const regex = new RegExp('^' + label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*[:\\-]\\s*', 'i');
-            if(regex.test(trimmed)){
-                if(currentField) metadata[currentField] = currentValue.trim();
-                currentField = field;
-                currentValue = trimmed.replace(regex, '');
-                matched = true;
-                break;
-            }
-        }
-
-        if(!matched && currentField){
-            currentValue += ' ' + trimmed;
-        }
-    });
-
-    if(currentField) metadata[currentField] = currentValue.trim();
-
-    return metadata;
-
-}
-
-/* =========================
-FIX #4: FETCH METADATA (safe)
-========================= */
-
-async function fetchFileMetadata(filePath){
-
-    try{
-
-        const data = await safeFetch(
-            'https://api.github.com/repos/ocmrc/ocmrc.github.io/commits?path=' + encodeURIComponent(filePath) + '&per_page=1'
-        );
-
-        // FIX #4: guard against non-array responses (rate limit etc)
-        if(!data || !Array.isArray(data)){
-            debugLog('Metadata: non-array response for ' + filePath, 'error');
-            return {};
-        }
-
-        if(data.length === 0) return {};
-
-        const commit = data[0];
-        const message = commit.commit.message || '';
-        const commitDate = commit.commit.committer.date || commit.commit.author.date || '';
-
-        const metadata = parseMetadataFromCommitMessage(message);
-
-        if(!metadata.date && commitDate){
-            metadata.date = commitDate.split('T')[0];
-        }
-
-        metadata._commitDate = commitDate;
-
-        debugLog('Metadata OK: ' + filePath, 'success');
-
-        return metadata;
-
-    } catch(err){
-
-        debugLog('Metadata error: ' + filePath + ' — ' + err.message, 'error');
-        return {};
-
-    }
-
-}
-
-/* =========================
-LOAD ALL METADATA (BACKGROUND)
-========================= */
-
-async function loadAllMetadata(){
-
-    if(allPublications.length === 0) return;
-
-    debugLog('Loading metadata for ' + allPublications.length + ' files...', 'info');
-
-    const batchSize = 5;
-
-    for(let i = 0; i < allPublications.length; i += batchSize){
-
-        const batch = allPublications.slice(i, i + batchSize);
-
-        const promises = batch.map(async (pub) => {
-            const metadata = await fetchFileMetadata(pub.path);
-            metadataCache[pub.path] = metadata;
-            pub.metadata = metadata;
-        });
-
-        await Promise.allSettled(promises);
-
-        renderPublications(getFilteredAndSortedPublications());
-
-    }
-
-    debugLog('All metadata loaded!', 'success');
-
-}
-
-/* =========================
 RENDER COLLECTION TABS
 ========================= */
 
 function renderCollectionTabs(){
-
     const tabsContainer = document.getElementById('collectionTabs');
     tabsContainer.innerHTML = '';
 
@@ -3010,8 +2778,7 @@ function renderCollectionTabs(){
     allCollections.forEach(col => {
         const tab = document.createElement('button');
         tab.className = 'collection-tab' + (activeCollection === col ? ' active' : '');
-        const count = collectionCounts[col] || 0;
-        tab.innerHTML = col + '<span class="collection-tab-count">' + count + '</span>';
+        tab.innerHTML = col + '<span class="collection-tab-count">' + (collectionCounts[col] || 0) + '</span>';
         tab.onclick = function(){
             activeCollection = col;
             renderCollectionTabs();
@@ -3020,22 +2787,18 @@ function renderCollectionTabs(){
         };
         tabsContainer.appendChild(tab);
     });
-
 }
 
 /* =========================
-UPDATE BREADCRUMB
+BREADCRUMB
 ========================= */
 
 function updateBreadcrumb(){
-
     const breadcrumb = document.getElementById('collectionBreadcrumb');
-
     if(activeCollection === 'all'){
         breadcrumb.style.display = 'none';
         return;
     }
-
     breadcrumb.style.display = 'flex';
     breadcrumb.innerHTML = `
         <a href="#publications" onclick="event.preventDefault(); activeCollection='all'; renderCollectionTabs(); updateBreadcrumb(); renderPublications(getFilteredAndSortedPublications());">
@@ -3044,15 +2807,13 @@ function updateBreadcrumb(){
         <span>›</span>
         <span style="color:var(--primary); font-weight:600;">${activeCollection}</span>
     `;
-
 }
 
 /* =========================
-GET FILTERED AND SORTED
+FILTER AND SORT
 ========================= */
 
 function getFilteredAndSortedPublications(){
-
     let filtered = allPublications.slice();
 
     if(activeCollection !== 'all'){
@@ -3063,24 +2824,16 @@ function getFilteredAndSortedPublications(){
     if(searchValue){
         filtered = filtered.filter(pub => {
             const fileName = pub.name.toLowerCase();
-            const metaTitle = (pub.metadata && pub.metadata.title) ? pub.metadata.title.toLowerCase() : '';
-            const metaAuthors = (pub.metadata && pub.metadata.authors) ? pub.metadata.authors.toLowerCase() : '';
             const collection = (pub.collection || '').toLowerCase();
-            return fileName.includes(searchValue) ||
-                   metaTitle.includes(searchValue) ||
-                   metaAuthors.includes(searchValue) ||
-                   collection.includes(searchValue);
+            return fileName.includes(searchValue) || collection.includes(searchValue);
         });
     }
 
     const sortValue = document.getElementById('sortSelect').value;
-
     filtered.sort((a, b) => {
         switch(sortValue){
             case 'name-asc': return getDisplayTitle(a).localeCompare(getDisplayTitle(b), 'uk');
             case 'name-desc': return getDisplayTitle(b).localeCompare(getDisplayTitle(a), 'uk');
-            case 'date-new': return getDateValue(b) - getDateValue(a);
-            case 'date-old': return getDateValue(a) - getDateValue(b);
             case 'size-large': return (b.size || 0) - (a.size || 0);
             case 'size-small': return (a.size || 0) - (b.size || 0);
             default: return 0;
@@ -3088,7 +2841,6 @@ function getFilteredAndSortedPublications(){
     });
 
     return filtered;
-
 }
 
 /* =========================
@@ -3098,18 +2850,6 @@ HELPERS
 function getDisplayTitle(pub){
     if(pub.metadata && pub.metadata.title) return pub.metadata.title;
     return pub.name.replace(/\.pdf$/i, '').replaceAll('-', ' ').replaceAll('_', ' ');
-}
-
-function getDateValue(pub){
-    if(pub.metadata && pub.metadata.date){
-        const d = new Date(pub.metadata.date);
-        if(!isNaN(d)) return d.getTime();
-    }
-    if(pub.metadata && pub.metadata._commitDate){
-        const d = new Date(pub.metadata._commitDate);
-        if(!isNaN(d)) return d.getTime();
-    }
-    return 0;
 }
 
 function formatFileSize(bytes){
@@ -3124,7 +2864,7 @@ function applySorting(){
 }
 
 /* =========================
-GENERATE CITATION META
+CITATION META
 ========================= */
 
 function generateCitationMeta(files){
@@ -3149,50 +2889,27 @@ RENDER PUBLICATIONS
 ========================= */
 
 function renderPublications(files){
-
     if(files.length === 0){
-        container.innerHTML = `
-            <div class="empty-message">
-                ${translations[currentLang].publications_none}
-            </div>
-        `;
+        container.innerHTML = `<div class="empty-message">${translations[currentLang].publications_none}</div>`;
         return;
     }
 
     container.innerHTML = '';
 
     files.forEach(file => {
-
         const title = getDisplayTitle(file);
         const card = document.createElement('article');
         card.className = 'publication-card';
         card.style.cursor = 'pointer';
 
-        let collectionTag = '';
-        if(file.collection) collectionTag = `<div class="publication-collection-tag">${file.collection}</div>`;
-
-        let metaInfo = translations[currentLang].pub_meta;
-        if(file.metadata && file.metadata.authors) metaInfo = file.metadata.authors + ' • ' + metaInfo;
-        if(file.metadata && file.metadata.date) metaInfo += ' • ' + file.metadata.date;
-
-        let descriptionText = translations[currentLang].pub_description;
-        if(file.metadata && file.metadata.abstract){
-            descriptionText = file.metadata.abstract.length > 150
-                ? file.metadata.abstract.substring(0, 150) + '...'
-                : file.metadata.abstract;
-        } else if(file.metadata && file.metadata.description){
-            descriptionText = file.metadata.description.length > 150
-                ? file.metadata.description.substring(0, 150) + '...'
-                : file.metadata.description;
-        }
-
+        let collectionTag = file.collection ? `<div class="publication-collection-tag">${file.collection}</div>` : '';
         let sizeInfo = file.size ? ` • ${formatFileSize(file.size)}` : '';
 
         card.innerHTML = `
             ${collectionTag}
             <h4>${title}</h4>
-            <div class="publication-meta">${metaInfo}${sizeInfo}</div>
-            <div class="publication-description">${descriptionText}</div>
+            <div class="publication-meta">${translations[currentLang].pub_meta}${sizeInfo}</div>
+            <div class="publication-description">${translations[currentLang].pub_description}</div>
             <span class="publication-link">${translations[currentLang].pub_link}</span>
         `;
 
@@ -3202,20 +2919,17 @@ function renderPublications(files){
         });
 
         container.appendChild(card);
-
     });
-
 }
 
 /* =========================
-OPEN PUBLICATION MODAL
+PUBLICATION MODAL
 ========================= */
 
 function openPublicationModal(file){
-
     const overlay = document.getElementById('pubModalOverlay');
     const title = getDisplayTitle(file);
-    const meta = file.metadata || metadataCache[file.path] || {};
+    const meta = file.metadata || {};
 
     document.getElementById('pubModalTitle').textContent = title;
     document.getElementById('pubModalAuthors').textContent = meta.authors || '—';
@@ -3255,7 +2969,6 @@ function openPublicationModal(file){
 
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-
 }
 
 function closePublicationModal(){
@@ -3269,17 +2982,15 @@ PDF VIEWER
 
 function openPdfViewer(url, fileName){
     closePublicationModal();
-    const overlay = document.getElementById('pdfViewerOverlay');
     document.getElementById('pdfViewerTitle').textContent = fileName || 'document.pdf';
     document.getElementById('pdfDownloadBtn').href = url;
     document.getElementById('pdfViewerFrame').src = url;
-    overlay.classList.add('active');
+    document.getElementById('pdfViewerOverlay').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closePdfViewer(){
-    const overlay = document.getElementById('pdfViewerOverlay');
-    overlay.classList.remove('active');
+    document.getElementById('pdfViewerOverlay').classList.remove('active');
     document.getElementById('pdfViewerFrame').src = '';
     document.body.style.overflow = '';
 }
@@ -3298,11 +3009,8 @@ document.getElementById('pdfViewerOverlay').addEventListener('click', function(e
 
 document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
-        if(document.getElementById('pdfViewerOverlay').classList.contains('active')){
-            closePdfViewer();
-        } else if(document.getElementById('pubModalOverlay').classList.contains('active')){
-            closePublicationModal();
-        }
+        if(document.getElementById('pdfViewerOverlay').classList.contains('active')) closePdfViewer();
+        else if(document.getElementById('pubModalOverlay').classList.contains('active')) closePublicationModal();
     }
 });
 
