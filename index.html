@@ -177,6 +177,8 @@ ROOT VARIABLES
     --text:#334155;
     --muted:#64748b;
     --success:#16a34a;
+    --warning:#f59e0b;
+    --danger:#ef4444;
 
 }
 
@@ -634,11 +636,14 @@ SEARCH
 
     outline:none;
 
+    transition:0.3s;
+
 }
 
 .search-box input:focus{
 
     border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(37,99,235,0.1);
 
 }
 
@@ -661,11 +666,17 @@ SEARCH
 
     transition:0.3s;
 
+    font-family:'Inter',sans-serif;
+
+    font-size:16px;
+
 }
 
 .search-box button:hover{
 
     background:#1d4ed8;
+
+    transform:translateY(-2px);
 
 }
 
@@ -698,6 +709,15 @@ STATS
 
     box-shadow:
     0 15px 40px rgba(0,0,0,0.04);
+
+    transition:0.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
 
 }
 
@@ -755,6 +775,7 @@ DEPARTMENTS
 .department-card:hover{
 
     transform:translateY(-6px);
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
 
 }
 
@@ -813,11 +834,26 @@ PUBLICATIONS
 
     transition:0.3s;
 
+    animation:fadeInUp 0.5s ease forwards;
+    opacity:0;
+
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .publication-card:hover{
 
     transform:translateY(-5px);
+    box-shadow:0 25px 60px rgba(0,0,0,0.1);
 
 }
 
@@ -861,11 +897,14 @@ PUBLICATIONS
 
     font-weight:700;
 
+    transition:0.3s;
+
 }
 
 .publication-link:hover{
 
     text-decoration:underline;
+    gap:12px;
 
 }
 
@@ -918,6 +957,7 @@ COLLECTION FILTER TABS
 
     border-color:var(--accent);
     color:var(--accent);
+    transform:translateY(-2px);
 
 }
 
@@ -957,6 +997,211 @@ COLLECTION COUNT BADGE
 }
 
 /* =========================
+LOADING OVERLAY (FULL)
+========================= */
+
+.loading-overlay{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:80px 30px;
+    gap:24px;
+
+}
+
+.loading-spinner-large{
+
+    width:64px;
+    height:64px;
+    border:5px solid var(--border);
+    border-top-color:var(--accent);
+    border-radius:50%;
+    animation:spin 0.7s linear infinite;
+
+}
+
+@keyframes spin{
+    to{ transform:rotate(360deg); }
+}
+
+.loading-title{
+
+    font-size:20px;
+    font-weight:700;
+    color:var(--primary);
+    text-align:center;
+
+}
+
+.loading-subtitle{
+
+    font-size:15px;
+    color:var(--muted);
+    text-align:center;
+    max-width:400px;
+
+}
+
+/* =========================
+PROGRESS BAR
+========================= */
+
+.progress-container{
+
+    width:100%;
+    max-width:400px;
+    background:var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    height:8px;
+
+}
+
+.progress-bar{
+
+    height:100%;
+    background:linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius:12px;
+    width:0%;
+    transition:width 0.4s ease;
+
+}
+
+.progress-text{
+
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+
+}
+
+/* =========================
+STATUS BADGE
+========================= */
+
+.status-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 16px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.status-badge.loading{
+
+    background:#eff6ff;
+    color:var(--accent);
+
+}
+
+.status-badge.success{
+
+    background:#f0fdf4;
+    color:var(--success);
+
+}
+
+.status-badge.error{
+
+    background:#fef2f2;
+    color:var(--danger);
+
+}
+
+.status-dot{
+
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:currentColor;
+
+}
+
+.status-dot.pulse{
+
+    animation:pulse 1.5s ease infinite;
+
+}
+
+@keyframes pulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:0.3; }
+}
+
+/* =========================
+RETRY BUTTON
+========================= */
+
+.retry-btn{
+
+    padding:14px 28px;
+    border:2px solid var(--accent);
+    border-radius:16px;
+    background:transparent;
+    color:var(--accent);
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    font-family:'Inter',sans-serif;
+    margin-top:10px;
+
+}
+
+.retry-btn:hover{
+
+    background:var(--accent);
+    color:white;
+
+}
+
+/* =========================
+SCROLL TO TOP BUTTON
+========================= */
+
+.scroll-top-btn{
+
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    background:var(--accent);
+    color:white;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+    z-index:900;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 30px rgba(37,99,235,0.3);
+    transition:0.3s;
+    font-family:'Inter',sans-serif;
+
+}
+
+.scroll-top-btn.visible{
+
+    display:flex;
+
+}
+
+.scroll-top-btn:hover{
+
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(37,99,235,0.4);
+
+}
+
+/* =========================
 PUBLICATION DETAIL MODAL
 ========================= */
 
@@ -992,7 +1237,19 @@ PUBLICATION DETAIL MODAL
     box-shadow:0 30px 80px rgba(0,0,0,0.2);
     margin-top:40px;
     margin-bottom:40px;
+    animation:modalSlideIn 0.3s ease;
 
+}
+
+@keyframes modalSlideIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(0.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
 .pub-modal-close{
@@ -1316,6 +1573,19 @@ SORT CONTROLS
 }
 
 /* =========================
+RESULTS COUNT
+========================= */
+
+.results-count{
+
+    font-size:14px;
+    color:var(--muted);
+    font-weight:500;
+    margin-left:auto;
+
+}
+
+/* =========================
 PUBLICATION CARD COLLECTION TAG
 ========================= */
 
@@ -1334,41 +1604,71 @@ PUBLICATION CARD COLLECTION TAG
 }
 
 /* =========================
-LOADING SPINNER
+TOAST NOTIFICATION
 ========================= */
 
-.loading-spinner{
+.toast-container{
 
+    position:fixed;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:5000;
     display:flex;
     flex-direction:column;
+    gap:10px;
     align-items:center;
-    justify-content:center;
-    padding:60px 20px;
-    gap:20px;
 
 }
 
-.spinner{
+.toast{
 
-    width:48px;
-    height:48px;
-    border:4px solid var(--border);
-    border-top-color:var(--accent);
-    border-radius:50%;
-    animation:spin 0.8s linear infinite;
+    padding:16px 28px;
+    border-radius:16px;
+    background:var(--primary);
+    color:white;
+    font-size:14px;
+    font-weight:600;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation:toastIn 0.3s ease, toastOut 0.3s ease 3.7s forwards;
+    display:flex;
+    align-items:center;
+    gap:10px;
 
 }
 
-@keyframes spin{
-    to{ transform:rotate(360deg); }
+.toast.success{
+    background:var(--success);
 }
 
-.loading-text{
+.toast.error{
+    background:var(--danger);
+}
 
-    color:var(--muted);
-    font-size:16px;
-    font-weight:500;
+.toast.info{
+    background:var(--accent);
+}
 
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes toastOut{
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+    to{
+        opacity:0;
+        transform:translateY(20px);
+    }
 }
 
 /* =========================
@@ -1397,17 +1697,9 @@ DEBUG LOG
 
 }
 
-.debug-log .debug-success{
-    color:#4ade80;
-}
-
-.debug-log .debug-error{
-    color:#f87171;
-}
-
-.debug-log .debug-info{
-    color:#60a5fa;
-}
+.debug-log .debug-success{ color:#4ade80; }
+.debug-log .debug-error{ color:#f87171; }
+.debug-log .debug-info{ color:#60a5fa; }
 
 /* =========================
 CONTACT
@@ -1505,126 +1797,28 @@ RESPONSIVE
 
 @media(max-width:900px){
 
-    .nav-container{
-
-        padding:16px 20px;
-
-    }
-
-    .nav-links{
-
-        display:none;
-
-    }
-
-    .lang-switcher{
-
-        margin-left:0;
-
-    }
-
-    .hero{
-
-        min-height:auto;
-
-    }
-
-    .hero-container{
-
-        padding:
-        140px 20px
-        90px;
-
-    }
-
-    .hero h1{
-
-        font-size:46px;
-
-    }
-
-    .hero p{
-
-        font-size:18px;
-
-    }
-
-    .hero-buttons{
-
-        flex-direction:column;
-
-    }
-
-    .container{
-
-        padding:80px 20px;
-
-    }
-
-    .section-title{
-
-        font-size:36px;
-
-    }
-
-    .search-box{
-
-        padding:28px;
-
-    }
-
-    .contact{
-
-        padding:35px;
-
-    }
-
-    .logo-image{
-
-        width:48px;
-        height:48px;
-
-    }
-
-    .logo-main,
-    .logo-sub{
-
-        font-size:20px;
-
-    }
-
-    .pub-modal{
-
-        padding:30px 22px;
-        border-radius:22px;
-
-    }
-
-    .pub-modal h2{
-
-        font-size:22px;
-
-    }
-
-    .pdf-viewer-title{
-
-        max-width:50%;
-        font-size:14px;
-
-    }
-
-    .collection-tabs{
-
-        gap:6px;
-
-    }
-
-    .collection-tab{
-
-        padding:9px 16px;
-        font-size:13px;
-
-    }
+    .nav-container{ padding:16px 20px; }
+    .nav-links{ display:none; }
+    .lang-switcher{ margin-left:0; }
+    .hero{ min-height:auto; }
+    .hero-container{ padding:140px 20px 90px; }
+    .hero h1{ font-size:46px; }
+    .hero p{ font-size:18px; }
+    .hero-buttons{ flex-direction:column; }
+    .container{ padding:80px 20px; }
+    .section-title{ font-size:36px; }
+    .search-box{ padding:28px; }
+    .contact{ padding:35px; }
+    .logo-image{ width:48px; height:48px; }
+    .logo-main, .logo-sub{ font-size:20px; }
+    .pub-modal{ padding:30px 22px; border-radius:22px; }
+    .pub-modal h2{ font-size:22px; }
+    .pdf-viewer-title{ max-width:50%; font-size:14px; }
+    .collection-tabs{ gap:6px; }
+    .collection-tab{ padding:9px 16px; font-size:13px; }
+    .scroll-top-btn{ bottom:20px; right:20px; width:46px; height:46px; }
+    .sort-controls{ flex-direction:column; align-items:flex-start; }
+    .results-count{ margin-left:0; }
 
 }
 
@@ -1632,24 +1826,9 @@ RESPONSIVE
 SCROLLBAR
 ========================= */
 
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:#e2e8f0;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#94a3b8;
-    border-radius:999px;
-
-}
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:#e2e8f0; }
+::-webkit-scrollbar-thumb{ background:#94a3b8; border-radius:999px; }
 
 </style>
 
@@ -1667,66 +1846,25 @@ NAVBAR
 
 <a href="#" class="logo">
 
-<img
-src="logo.png"
-alt="OCMRC Logo"
-class="logo-image"
->
+<img src="logo.png" alt="OCMRC Logo" class="logo-image">
 
 <div class="logo-text">
-
-<span class="logo-main">
-OCMRC
-</span>
-
-<span class="logo-sub">
-Repository
-</span>
-
+<span class="logo-main">OCMRC</span>
+<span class="logo-sub">Repository</span>
 </div>
 
 </a>
 
 <div class="nav-links">
-
 <a href="#" data-i18n="nav_home">Головна</a>
-
-<a href="#departments" data-i18n="nav_departments">
-Відділи
-</a>
-
-<a href="#publications" data-i18n="nav_publications">
-Публікації
-</a>
-
-<a href="#contact" data-i18n="nav_contact">
-Контакти
-</a>
-
+<a href="#departments" data-i18n="nav_departments">Відділи</a>
+<a href="#publications" data-i18n="nav_publications">Публікації</a>
+<a href="#contact" data-i18n="nav_contact">Контакти</a>
 </div>
 
 <div class="lang-switcher">
-
-<button
-class="lang-btn active"
-id="langUk"
-onclick="setLanguage('uk')"
->
-
-UA
-
-</button>
-
-<button
-class="lang-btn"
-id="langEn"
-onclick="setLanguage('en')"
->
-
-EN
-
-</button>
-
+<button class="lang-btn active" id="langUk" onclick="setLanguage('uk')">UA</button>
+<button class="lang-btn" id="langEn" onclick="setLanguage('en')">EN</button>
 </div>
 
 </div>
@@ -1750,37 +1888,16 @@ HERO
 </h1>
 
 <p data-i18n="hero_description">
-
 Сучасний український академічний репозитарій
 для зберігання, систематизації та відкритого доступу
 до наукових статей, навчальних матеріалів,
 методичних розробок, міжнародних проєктів,
 конференцій та освітніх досліджень.
-
 </p>
 
 <div class="hero-buttons">
-
-<a
-href="#publications"
-class="btn btn-primary"
-data-i18n="hero_btn_publications"
->
-
-Переглянути публікації
-
-</a>
-
-<a
-href="#departments"
-class="btn btn-secondary"
-data-i18n="hero_btn_departments"
->
-
-Структура відділів
-
-</a>
-
+<a href="#publications" class="btn btn-primary" data-i18n="hero_btn_publications">Переглянути публікації</a>
+<a href="#departments" class="btn btn-secondary" data-i18n="hero_btn_departments">Структура відділів</a>
 </div>
 
 </div>
@@ -1797,30 +1914,16 @@ MAIN
 
 <div class="search-box">
 
-<h2 class="section-title" data-i18n="search_title">
-Пошук у репозитарії
-</h2>
+<h2 class="section-title" data-i18n="search_title">Пошук у репозитарії</h2>
 
 <p class="section-subtitle" data-i18n="search_subtitle">
-
 Пошук наукових статей, конференцій,
 методичних матеріалів та академічних публікацій.
-
 </p>
 
 <form id="searchForm">
-
-<input
-type="text"
-id="searchInput"
-data-i18n-placeholder="search_placeholder"
-placeholder="Введіть назву публікації..."
->
-
-<button type="submit" data-i18n="search_button">
-Пошук
-</button>
-
+<input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Введіть назву публікації...">
+<button type="submit" data-i18n="search_button">Пошук</button>
 </form>
 
 </div>
@@ -1830,68 +1933,28 @@ placeholder="Введіть назву публікації..."
 <div class="stats">
 
 <div class="stat-card">
-
-<div
-class="stat-number"
-id="pubCount"
->
-
-0
-
-</div>
-
-<div class="stat-label" data-i18n="stat_publications">
-Публікацій у репозитарії
-</div>
-
+<div class="stat-number" id="pubCount">0</div>
+<div class="stat-label" data-i18n="stat_publications">Публікацій у репозитарії</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-number" id="collectionsCount">
-0
-</div>
-
-<div class="stat-label" data-i18n="stat_collections">
-Зібрань (колекцій)
-</div>
-
+<div class="stat-number" id="collectionsCount">0</div>
+<div class="stat-label" data-i18n="stat_collections">Зібрань (колекцій)</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-number">
-24/7
-</div>
-
-<div class="stat-label" data-i18n="stat_access">
-Відкритий доступ
-</div>
-
+<div class="stat-number">24/7</div>
+<div class="stat-label" data-i18n="stat_access">Відкритий доступ</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-number">
-100%
-</div>
-
-<div class="stat-label" data-i18n="stat_open">
-Репозитарій відкритого доступу
-</div>
-
+<div class="stat-number">100%</div>
+<div class="stat-label" data-i18n="stat_open">Репозитарій відкритого доступу</div>
 </div>
 
 <div class="stat-card">
-
-<div class="stat-number">
-UA
-</div>
-
-<div class="stat-label" data-i18n="stat_ukrainian">
-Український освітній репозитарій
-</div>
-
+<div class="stat-number">UA</div>
+<div class="stat-label" data-i18n="stat_ukrainian">Український освітній репозитарій</div>
 </div>
 
 </div>
@@ -1900,77 +1963,44 @@ UA
 
 <section id="departments">
 
-<h2 class="section-title" data-i18n="departments_title">
-Структура відділів
-</h2>
-
-<p class="section-subtitle" data-i18n="departments_subtitle">
-
-Освітні напрями та академічні підрозділи центру.
-
-</p>
+<h2 class="section-title" data-i18n="departments_title">Структура відділів</h2>
+<p class="section-subtitle" data-i18n="departments_subtitle">Освітні напрями та академічні підрозділи центру.</p>
 
 <div class="departments">
 
 <div class="department-card">
-
-<h3 data-i18n="dept_lang_title">
-Відділ мовної освіти
-</h3>
-
+<h3 data-i18n="dept_lang_title">Відділ мовної освіти</h3>
 <ul>
-
 <li data-i18n="dept_lang_1">Українська мова</li>
 <li data-i18n="dept_lang_2">Англійська мова</li>
 <li data-i18n="dept_lang_3">Польська мова</li>
 <li data-i18n="dept_lang_4">Німецька мова</li>
 <li data-i18n="dept_lang_5">Іспанська мова</li>
 <li data-i18n="dept_lang_6">Розмовні клуби</li>
-
 </ul>
-
 </div>
 
 <div class="department-card">
-
-<h3 data-i18n="dept_science_title">
-Відділ природничо-математичних дисциплін
-</h3>
-
+<h3 data-i18n="dept_science_title">Відділ природничо-математичних дисциплін</h3>
 <ul>
-
 <li data-i18n="dept_science_1">Математика</li>
 <li data-i18n="dept_science_2">Фізика</li>
 <li data-i18n="dept_science_3">Хімія</li>
-
 </ul>
-
 </div>
 
 <div class="department-card">
-
-<h3 data-i18n="dept_preschool_title">
-Відділ початкової та дошкільної підготовки
-</h3>
-
+<h3 data-i18n="dept_preschool_title">Відділ початкової та дошкільної підготовки</h3>
 <ul>
-
 <li data-i18n="dept_preschool_1">Підготовка до школи</li>
 <li data-i18n="dept_preschool_2">Логопедичні заняття</li>
 <li data-i18n="dept_preschool_3">Літній табір</li>
-
 </ul>
-
 </div>
 
 <div class="department-card">
-
-<h3 data-i18n="dept_it_title">
-Відділ професійної та IT-освіти
-</h3>
-
+<h3 data-i18n="dept_it_title">Відділ професійної та IT-освіти</h3>
 <ul>
-
 <li data-i18n="dept_it_1">Програмування</li>
 <li data-i18n="dept_it_2">Штучний інтелект (AI)</li>
 <li data-i18n="dept_it_3">Машинне навчання</li>
@@ -1978,24 +2008,15 @@ UA
 <li data-i18n="dept_it_5">Дизайн</li>
 <li data-i18n="dept_it_6">Маркетинг</li>
 <li data-i18n="dept_it_7">Бізнес</li>
-
 </ul>
-
 </div>
 
 <div class="department-card">
-
-<h3 data-i18n="dept_exam_title">
-Відділ екзаменаційної підготовки
-</h3>
-
+<h3 data-i18n="dept_exam_title">Відділ екзаменаційної підготовки</h3>
 <ul>
-
 <li data-i18n="dept_exam_1">Підготовка до ДПА / ЗНО / НМТ</li>
 <li data-i18n="dept_exam_2">Підготовка до IELTS / TOEFL</li>
-
 </ul>
-
 </div>
 
 </div>
@@ -2004,61 +2025,32 @@ UA
 
 <!-- PUBLICATIONS -->
 
-<section
-id="publications"
-style="margin-top:120px;"
->
+<section id="publications" style="margin-top:120px;">
 
-<h2 class="section-title" data-i18n="publications_title">
-Публікації репозитарію
-</h2>
+<h2 class="section-title" data-i18n="publications_title">Публікації репозитарію</h2>
+<p class="section-subtitle" data-i18n="publications_subtitle">Публікації організовані за зібраннями (колекціями). Натисніть на публікацію для перегляду детальної інформації.</p>
 
-<p class="section-subtitle" data-i18n="publications_subtitle">
+<div id="collectionTabs" class="collection-tabs"></div>
 
-Публікації організовані за зібраннями (колекціями).
-Натисніть на публікацію для перегляду детальної інформації.
+<div id="collectionBreadcrumb" class="collection-breadcrumb" style="display:none;"></div>
 
-</p>
-
-<!-- Collection filter tabs -->
-<div id="collectionTabs" class="collection-tabs">
-
-</div>
-
-<!-- Breadcrumb -->
-<div id="collectionBreadcrumb" class="collection-breadcrumb" style="display:none;">
-
-</div>
-
-<!-- Sort controls -->
 <div class="sort-controls">
-
 <label data-i18n="sort_label">Сортування:</label>
-
 <select class="sort-select" id="sortSelect" onchange="applySorting()">
 <option value="name-asc" data-i18n-option="sort_name_asc">За назвою (А-Я)</option>
 <option value="name-desc" data-i18n-option="sort_name_desc">За назвою (Я-А)</option>
 <option value="size-large" data-i18n-option="sort_size_large">За розміром (більші)</option>
 <option value="size-small" data-i18n-option="sort_size_small">За розміром (менші)</option>
 </select>
-
+<div class="results-count" id="resultsCount"></div>
 </div>
 
-<div
-id="publicationsContainer"
-class="publications-grid"
->
-
+<div id="publicationsContainer" class="publications-grid">
 <div class="empty-message" data-i18n="publications_empty">
-
-Завантажте PDF-файли у папку
-publications репозиторію GitHub.
-
+Завантажте PDF-файли у папку publications репозиторію GitHub.
+</div>
 </div>
 
-</div>
-
-<!-- Debug Log -->
 <div id="debugLog" class="debug-log"></div>
 
 </section>
@@ -2069,67 +2061,25 @@ publications репозиторію GitHub.
 
 <div class="contact">
 
-<h2 class="section-title" data-i18n="contact_title">
-Контакти
-</h2>
+<h2 class="section-title" data-i18n="contact_title">Контакти</h2>
 
 <div class="contact-grid">
 
 <div>
-
-<h3 data-i18n="contact_org_name">
-
-Освітній центр мов і розвитку "Cambridge"
-
-</h3>
-
-<p data-i18n="contact_org_description">
-
-(незареєстрований освітній проєкт,
-діяльність якого здійснюється
-на підставі індивідуальної ініціативи
-без статусу юридичної особи)
-
-</p>
-
+<h3 data-i18n="contact_org_name">Освітній центр мов і розвитку "Cambridge"</h3>
+<p data-i18n="contact_org_description">(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)</p>
 </div>
 
 <div>
-
-<h3 data-i18n="contact_address_title">
-Адреса
-</h3>
-
-<p data-i18n="contact_address_text">
-
-Вулиця Відпочинку, 1<br>
-
-Софіївська Борщагівка,<br>
-
-Київська область,<br>
-
-Україна, 08148
-
-</p>
-
+<h3 data-i18n="contact_address_title">Адреса</h3>
+<p data-i18n="contact_address_text">Вулиця Відпочинку, 1<br>Софіївська Борщагівка,<br>Київська область,<br>Україна, 08148</p>
 <br>
-
-<h3 data-i18n="contact_contacts_title">
-Контакти
-</h3>
-
+<h3 data-i18n="contact_contacts_title">Контакти</h3>
 <p>
-
-<span data-i18n="contact_phone_label">Телефон:</span>
-+38 (093) 719-49-20
-
+<span data-i18n="contact_phone_label">Телефон:</span> +38 (093) 719-49-20
 <br><br>
-
-<span data-i18n="contact_email_label">Email:</span>
-ocmirc@hotmail.com
-
+<span data-i18n="contact_email_label">Email:</span> ocmirc@hotmail.com
 </p>
-
 </div>
 
 </div>
@@ -2145,7 +2095,6 @@ PUBLICATION DETAIL MODAL
 ========================= -->
 
 <div class="pub-modal-overlay" id="pubModalOverlay">
-
 <div class="pub-modal" id="pubModal">
 
 <button class="pub-modal-close" onclick="closePublicationModal()" title="Закрити">✕</button>
@@ -2196,9 +2145,7 @@ PUBLICATION DETAIL MODAL
 </tr>
 </thead>
 <tbody id="pubModalFileBody">
-<tr>
-<td colspan="5">—</td>
-</tr>
+<tr><td colspan="5">—</td></tr>
 </tbody>
 </table>
 </div>
@@ -2214,7 +2161,6 @@ PUBLICATION DETAIL MODAL
 </div>
 
 </div>
-
 </div>
 
 <!-- =========================
@@ -2224,19 +2170,28 @@ PDF VIEWER MODAL
 <div class="pdf-viewer-overlay" id="pdfViewerOverlay">
 
 <div class="pdf-viewer-header">
-
 <div class="pdf-viewer-title" id="pdfViewerTitle">document.pdf</div>
-
 <div class="pdf-viewer-actions">
 <a href="#" class="pdf-viewer-btn" id="pdfDownloadBtn" download data-i18n="viewer_download">Завантажити</a>
 <button class="pdf-viewer-btn close-btn" onclick="closePdfViewer()" data-i18n="viewer_close">Закрити</button>
 </div>
-
 </div>
 
 <iframe class="pdf-viewer-frame" id="pdfViewerFrame" src=""></iframe>
 
 </div>
+
+<!-- =========================
+SCROLL TO TOP BUTTON
+========================= -->
+
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Вгору">↑</button>
+
+<!-- =========================
+TOAST CONTAINER
+========================= -->
+
+<div class="toast-container" id="toastContainer"></div>
 
 <!-- =========================
 FOOTER
@@ -2246,25 +2201,16 @@ FOOTER
 
 <div class="footer-container">
 
-<div class="footer-title">
-OCMRC Repository
-</div>
+<div class="footer-title">OCMRC Repository</div>
 
 <p data-i18n="footer_description">
-
-Електронний академічний репозитарій
-Освітнього центру мов і розвитку "Cambridge".
-
+Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".
 </p>
 
 <div class="footer-bottom">
-
 © 2026 OCMRC Repository.<br>
-
 <span data-i18n="footer_platform">Open Access Educational Repository Platform.</span><br><br>
-
 <span data-i18n="footer_location">Софіївська Борщагівка • Київська область • Україна</span>
-
 </div>
 
 </div>
@@ -2284,229 +2230,189 @@ DEBUG MODE
 const DEBUG = new URLSearchParams(window.location.search).get('debug') === 'true';
 const debugLogEl = document.getElementById('debugLog');
 
-function debugLog(message, type){
+function debugLog(msg, type){
     if(!DEBUG) return;
     debugLogEl.classList.add('visible');
-    const time = new Date().toLocaleTimeString();
-    const cls = type === 'success' ? 'debug-success' : type === 'error' ? 'debug-error' : 'debug-info';
-    debugLogEl.innerHTML += `<div class="${cls}">[${time}] ${message}</div>`;
+    const t = new Date().toLocaleTimeString();
+    const c = type === 'success' ? 'debug-success' : type === 'error' ? 'debug-error' : 'debug-info';
+    debugLogEl.innerHTML += `<div class="${c}">[${t}] ${msg}</div>`;
     debugLogEl.scrollTop = debugLogEl.scrollHeight;
-    console.log(`[OCMRC ${type || 'info'}]`, message);
+    console.log(`[OCMRC ${type||'info'}]`, msg);
 }
 
 /* =========================
-SAFE FETCH
+TOAST NOTIFICATIONS
 ========================= */
 
-async function safeFetch(url){
-    try{
-        const response = await fetch(url, { cache: "no-store" });
-        if(!response.ok){
-            debugLog('HTTP ' + response.status + ' for: ' + url, 'error');
-            return null;
-        }
-        const data = await response.json();
-        if(data && data.message && !Array.isArray(data)){
-            debugLog('API message: ' + data.message, 'error');
-            return null;
-        }
-        return data;
-    } catch(error){
-        debugLog('Fetch error: ' + url + ' — ' + error.message, 'error');
-        return null;
-    }
+function showToast(message, type){
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + (type || 'info');
+    toast.innerHTML = message;
+    container.appendChild(toast);
+    setTimeout(() => { if(toast.parentNode) toast.parentNode.removeChild(toast); }, 4000);
 }
+
+/* =========================
+SAFE FETCH WITH RETRY
+========================= */
+
+async function safeFetch(url, retries){
+    const maxRetries = retries || 3;
+    for(let attempt = 1; attempt <= maxRetries; attempt++){
+        try{
+            const response = await fetch(url, { cache: "no-store" });
+            if(!response.ok){
+                debugLog('HTTP ' + response.status + ' (attempt ' + attempt + '): ' + url, 'error');
+                if(attempt < maxRetries){
+                    await new Promise(r => setTimeout(r, 1000 * attempt));
+                    continue;
+                }
+                return null;
+            }
+            const data = await response.json();
+            if(data && data.message && !Array.isArray(data)){
+                debugLog('API: ' + data.message, 'error');
+                if(attempt < maxRetries){
+                    await new Promise(r => setTimeout(r, 2000 * attempt));
+                    continue;
+                }
+                return null;
+            }
+            return data;
+        } catch(error){
+            debugLog('Fetch error (attempt ' + attempt + '): ' + error.message, 'error');
+            if(attempt < maxRetries){
+                await new Promise(r => setTimeout(r, 1000 * attempt));
+                continue;
+            }
+            return null;
+        }
+    }
+    return null;
+}
+
+/* =========================
+SCROLL TO TOP BUTTON
+========================= */
+
+window.addEventListener('scroll', function(){
+    const btn = document.getElementById('scrollTopBtn');
+    if(window.scrollY > 600) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
 
 /* =========================
 TRANSLATIONS
 ========================= */
 
 const translations = {
-
 uk: {
-    nav_home: "Головна",
-    nav_departments: "Відділи",
-    nav_publications: "Публікації",
-    nav_contact: "Контакти",
-    hero_badge: "Відкритий академічний електронний репозитарій",
-    hero_title: 'Освітній центр мов і розвитку "Cambridge"',
-    hero_description: "Сучасний український академічний репозитарій для зберігання, систематизації та відкритого доступу до наукових статей, навчальних матеріалів, методичних розробок, міжнародних проєктів, конференцій та освітніх досліджень.",
-    hero_btn_publications: "Переглянути публікації",
-    hero_btn_departments: "Структура відділів",
-    search_title: "Пошук у репозитарії",
-    search_subtitle: "Пошук наукових статей, конференцій, методичних матеріалів та академічних публікацій.",
-    search_placeholder: "Введіть назву публікації...",
-    search_button: "Пошук",
-    stat_publications: "Публікацій у репозитарії",
-    stat_collections: "Зібрань (колекцій)",
-    stat_access: "Відкритий доступ",
-    stat_open: "Репозитарій відкритого доступу",
-    stat_ukrainian: "Український освітній репозитарій",
-    departments_title: "Структура відділів",
-    departments_subtitle: "Освітні напрями та академічні підрозділи центру.",
-    dept_lang_title: "Відділ мовної освіти",
-    dept_lang_1: "Українська мова",
-    dept_lang_2: "Англійська мова",
-    dept_lang_3: "Польська мова",
-    dept_lang_4: "Німецька мова",
-    dept_lang_5: "Іспанська мова",
-    dept_lang_6: "Розмовні клуби",
-    dept_science_title: "Відділ природничо-математичних дисциплін",
-    dept_science_1: "Математика",
-    dept_science_2: "Фізика",
-    dept_science_3: "Хімія",
-    dept_preschool_title: "Відділ початкової та дошкільної підготовки",
-    dept_preschool_1: "Підготовка до школи",
-    dept_preschool_2: "Логопедичні заняття",
-    dept_preschool_3: "Літній табір",
-    dept_it_title: "Відділ професійної та IT-освіти",
-    dept_it_1: "Програмування",
-    dept_it_2: "Штучний інтелект (AI)",
-    dept_it_3: "Машинне навчання",
-    dept_it_4: "Кібербезпека",
-    dept_it_5: "Дизайн",
-    dept_it_6: "Маркетинг",
-    dept_it_7: "Бізнес",
-    dept_exam_title: "Відділ екзаменаційної підготовки",
-    dept_exam_1: "Підготовка до ДПА / ЗНО / НМТ",
-    dept_exam_2: "Підготовка до IELTS / TOEFL",
-    publications_title: "Публікації репозитарію",
-    publications_subtitle: "Публікації організовані за зібраннями (колекціями). Натисніть на публікацію для перегляду детальної інформації.",
-    publications_empty: "Завантажте PDF-файли у папку publications репозиторію GitHub.",
-    publications_loading: "Завантаження публікацій...",
-    publications_loading_error: "Не вдалося завантажити публікації.",
-    publications_none: "Публікації ще не додані.",
-    pub_meta: "PDF-публікація • Відкритий доступ",
-    pub_description: "Академічна публікація електронного репозитарію OCMRC Repository.",
-    pub_link: "Детальніше →",
-    pub_all_collections: "Усі зібрання",
-    sort_label: "Сортування:",
-    sort_name_asc: "За назвою (А-Я)",
-    sort_name_desc: "За назвою (Я-А)",
-    sort_size_large: "За розміром (більші)",
-    sort_size_small: "За розміром (менші)",
-    modal_authors: "Автори",
-    modal_date: "Дата публікації",
-    modal_abstract: "Короткий огляд (реферат)",
-    modal_description: "Опис",
-    modal_uri: "URI (Уніфікований ідентифікатор ресурсу)",
-    modal_collection: "Розташовується у зібраннях",
-    modal_files: "Файли цього матеріалу",
-    modal_file_name: "Файл",
-    modal_file_desc: "Опис",
-    modal_file_size: "Розмір",
-    modal_file_format: "Формат",
-    modal_view_btn: "Переглянути файл",
-    modal_download_btn: "Завантажити",
-    modal_copyright: "Усі матеріали в архіві електронних ресурсів захищені авторським правом, всі права збережені.",
-    viewer_download: "Завантажити",
-    viewer_close: "Закрити",
-    contact_title: "Контакти",
-    contact_org_name: 'Освітній центр мов і розвитку "Cambridge"',
-    contact_org_description: "(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)",
-    contact_address_title: "Адреса",
-    contact_address_text: "Вулиця Відпочинку, 1<br>Софіївська Борщагівка,<br>Київська область,<br>Україна, 08148",
-    contact_contacts_title: "Контакти",
-    contact_phone_label: "Телефон:",
-    contact_email_label: "Email:",
-    footer_description: 'Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".',
-    footer_platform: "Open Access Educational Repository Platform.",
-    footer_location: "Софіївська Борщагівка • Київська область • Україна",
-    page_title: 'OCMRC Repository – Освітній центр мов і розвитку "Cambridge"'
+    nav_home:"Головна", nav_departments:"Відділи", nav_publications:"Публікації", nav_contact:"Контакти",
+    hero_badge:"Відкритий академічний електронний репозитарій",
+    hero_title:'Освітній центр мов і розвитку "Cambridge"',
+    hero_description:"Сучасний український академічний репозитарій для зберігання, систематизації та відкритого доступу до наукових статей, навчальних матеріалів, методичних розробок, міжнародних проєктів, конференцій та освітніх досліджень.",
+    hero_btn_publications:"Переглянути публікації", hero_btn_departments:"Структура відділів",
+    search_title:"Пошук у репозитарії",
+    search_subtitle:"Пошук наукових статей, конференцій, методичних матеріалів та академічних публікацій.",
+    search_placeholder:"Введіть назву публікації...", search_button:"Пошук",
+    stat_publications:"Публікацій у репозитарії", stat_collections:"Зібрань (колекцій)",
+    stat_access:"Відкритий доступ", stat_open:"Репозитарій відкритого доступу", stat_ukrainian:"Український освітній репозитарій",
+    departments_title:"Структура відділів", departments_subtitle:"Освітні напрями та академічні підрозділи центру.",
+    dept_lang_title:"Відділ мовної освіти", dept_lang_1:"Українська мова", dept_lang_2:"Англійська мова",
+    dept_lang_3:"Польська мова", dept_lang_4:"Німецька мова", dept_lang_5:"Іспанська мова", dept_lang_6:"Розмовні клуби",
+    dept_science_title:"Відділ природничо-математичних дисциплін", dept_science_1:"Математика", dept_science_2:"Фізика", dept_science_3:"Хімія",
+    dept_preschool_title:"Відділ початкової та дошкільної підготовки", dept_preschool_1:"Підготовка до школи",
+    dept_preschool_2:"Логопедичні заняття", dept_preschool_3:"Літній табір",
+    dept_it_title:"Відділ професійної та IT-освіти", dept_it_1:"Програмування", dept_it_2:"Штучний інтелект (AI)",
+    dept_it_3:"Машинне навчання", dept_it_4:"Кібербезпека", dept_it_5:"Дизайн", dept_it_6:"Маркетинг", dept_it_7:"Бізнес",
+    dept_exam_title:"Відділ екзаменаційної підготовки", dept_exam_1:"Підготовка до ДПА / ЗНО / НМТ", dept_exam_2:"Підготовка до IELTS / TOEFL",
+    publications_title:"Публікації репозитарію",
+    publications_subtitle:"Публікації організовані за зібраннями (колекціями). Натисніть на публікацію для перегляду детальної інформації.",
+    publications_empty:"Завантажте PDF-файли у папку publications репозиторію GitHub.",
+    publications_loading:"Завантаження публікацій...",
+    publications_loading_collections:"Завантаження зібрань...",
+    publications_loading_files:"Завантаження файлів...",
+    publications_loading_error:"Не вдалося завантажити публікації.",
+    publications_none:"Публікації ще не додані.",
+    publications_retry:"Спробувати знову",
+    pub_meta:"PDF-публікація • Відкритий доступ",
+    pub_description:"Академічна публікація електронного репозитарію OCMRC Repository.",
+    pub_link:"Детальніше →", pub_all_collections:"Усі зібрання",
+    results_showing:"Показано", results_of:"з",
+    sort_label:"Сортування:", sort_name_asc:"За назвою (А-Я)", sort_name_desc:"За назвою (Я-А)",
+    sort_size_large:"За розміром (більші)", sort_size_small:"За розміром (менші)",
+    modal_authors:"Автори", modal_date:"Дата публікації", modal_abstract:"Короткий огляд (реферат)",
+    modal_description:"Опис", modal_uri:"URI (Уніфікований ідентифікатор ресурсу)",
+    modal_collection:"Розташовується у зібраннях", modal_files:"Файли цього матеріалу",
+    modal_file_name:"Файл", modal_file_desc:"Опис", modal_file_size:"Розмір", modal_file_format:"Формат",
+    modal_view_btn:"Переглянути файл", modal_download_btn:"Завантажити",
+    modal_copyright:"Усі матеріали в архіві електронних ресурсів захищені авторським правом, всі права збережені.",
+    viewer_download:"Завантажити", viewer_close:"Закрити",
+    contact_title:"Контакти", contact_org_name:'Освітній центр мов і розвитку "Cambridge"',
+    contact_org_description:"(незареєстрований освітній проєкт, діяльність якого здійснюється на підставі індивідуальної ініціативи без статусу юридичної особи)",
+    contact_address_title:"Адреса", contact_address_text:"Вулиця Відпочинку, 1<br>Софіївська Борщагівка,<br>Київська область,<br>Україна, 08148",
+    contact_contacts_title:"Контакти", contact_phone_label:"Телефон:", contact_email_label:"Email:",
+    footer_description:'Електронний академічний репозитарій Освітнього центру мов і розвитку "Cambridge".',
+    footer_platform:"Open Access Educational Repository Platform.",
+    footer_location:"Софіївська Борщагівка • Київська область • Україна",
+    page_title:'OCMRC Repository – Освітній центр мов і розвитку "Cambridge"',
+    toast_loaded:"✓ Публікації завантажено успішно",
+    toast_error:"✕ Помилка завантаження"
 },
-
 en: {
-    nav_home: "Home",
-    nav_departments: "Departments",
-    nav_publications: "Publications",
-    nav_contact: "Contact",
-    hero_badge: "Open Academic Electronic Repository",
-    hero_title: 'Educational Center for Languages and Development "Cambridge"',
-    hero_description: "A modern Ukrainian academic repository for storing, systematizing and providing open access to scientific articles, educational materials, methodological developments, international projects, conferences and educational research.",
-    hero_btn_publications: "Browse Publications",
-    hero_btn_departments: "Department Structure",
-    search_title: "Search the Repository",
-    search_subtitle: "Search for scientific articles, conferences, methodological materials and academic publications.",
-    search_placeholder: "Enter publication title...",
-    search_button: "Search",
-    stat_publications: "Publications in the repository",
-    stat_collections: "Collections",
-    stat_access: "Open access",
-    stat_open: "Open access repository",
-    stat_ukrainian: "Ukrainian educational repository",
-    departments_title: "Department Structure",
-    departments_subtitle: "Educational programs and academic divisions of the center.",
-    dept_lang_title: "Department of Language Education",
-    dept_lang_1: "Ukrainian Language",
-    dept_lang_2: "English Language",
-    dept_lang_3: "Polish Language",
-    dept_lang_4: "German Language",
-    dept_lang_5: "Spanish Language",
-    dept_lang_6: "Conversation Clubs",
-    dept_science_title: "Department of Natural Sciences and Mathematics",
-    dept_science_1: "Mathematics",
-    dept_science_2: "Physics",
-    dept_science_3: "Chemistry",
-    dept_preschool_title: "Department of Primary and Preschool Education",
-    dept_preschool_1: "School Preparation",
-    dept_preschool_2: "Speech Therapy Classes",
-    dept_preschool_3: "Summer Camp",
-    dept_it_title: "Department of Professional and IT Education",
-    dept_it_1: "Programming",
-    dept_it_2: "Artificial Intelligence (AI)",
-    dept_it_3: "Machine Learning",
-    dept_it_4: "Cybersecurity",
-    dept_it_5: "Design",
-    dept_it_6: "Marketing",
-    dept_it_7: "Business",
-    dept_exam_title: "Department of Exam Preparation",
-    dept_exam_1: "Preparation for DPA / ZNO / NMT",
-    dept_exam_2: "Preparation for IELTS / TOEFL",
-    publications_title: "Repository Publications",
-    publications_subtitle: "Publications are organized by collections. Click on a publication to view detailed information.",
-    publications_empty: "Upload PDF files to the publications folder of the GitHub repository.",
-    publications_loading: "Loading publications...",
-    publications_loading_error: "Failed to load publications.",
-    publications_none: "No publications added yet.",
-    pub_meta: "PDF Publication • Open Access",
-    pub_description: "Academic publication from the OCMRC Repository electronic repository.",
-    pub_link: "Details →",
-    pub_all_collections: "All collections",
-    sort_label: "Sort by:",
-    sort_name_asc: "By name (A-Z)",
-    sort_name_desc: "By name (Z-A)",
-    sort_size_large: "By size (largest)",
-    sort_size_small: "By size (smallest)",
-    modal_authors: "Authors",
-    modal_date: "Publication date",
-    modal_abstract: "Abstract",
-    modal_description: "Description",
-    modal_uri: "URI (Uniform Resource Identifier)",
-    modal_collection: "Appears in collections",
-    modal_files: "Files in this item",
-    modal_file_name: "File",
-    modal_file_desc: "Description",
-    modal_file_size: "Size",
-    modal_file_format: "Format",
-    modal_view_btn: "View file",
-    modal_download_btn: "Download",
-    modal_copyright: "All materials in the electronic resources archive are protected by copyright, all rights reserved.",
-    viewer_download: "Download",
-    viewer_close: "Close",
-    contact_title: "Contact",
-    contact_org_name: 'Educational Center for Languages and Development "Cambridge"',
-    contact_org_description: "(an unregistered educational project, the activities of which are carried out on the basis of individual initiative without the status of a legal entity)",
-    contact_address_title: "Address",
-    contact_address_text: "Vidpochynku Street, 1<br>Sofiivska Borshchahivka,<br>Kyiv Oblast,<br>Ukraine, 08148",
-    contact_contacts_title: "Contact Information",
-    contact_phone_label: "Phone:",
-    contact_email_label: "Email:",
-    footer_description: 'Electronic academic repository of the Educational Center for Languages and Development "Cambridge".',
-    footer_platform: "Open Access Educational Repository Platform.",
-    footer_location: "Sofiivska Borshchahivka • Kyiv Oblast • Ukraine",
-    page_title: 'OCMRC Repository — Educational Center for Languages and Development "Cambridge"'
+    nav_home:"Home", nav_departments:"Departments", nav_publications:"Publications", nav_contact:"Contact",
+    hero_badge:"Open Academic Electronic Repository",
+    hero_title:'Educational Center for Languages and Development "Cambridge"',
+    hero_description:"A modern Ukrainian academic repository for storing, systematizing and providing open access to scientific articles, educational materials, methodological developments, international projects, conferences and educational research.",
+    hero_btn_publications:"Browse Publications", hero_btn_departments:"Department Structure",
+    search_title:"Search the Repository",
+    search_subtitle:"Search for scientific articles, conferences, methodological materials and academic publications.",
+    search_placeholder:"Enter publication title...", search_button:"Search",
+    stat_publications:"Publications in the repository", stat_collections:"Collections",
+    stat_access:"Open access", stat_open:"Open access repository", stat_ukrainian:"Ukrainian educational repository",
+    departments_title:"Department Structure", departments_subtitle:"Educational programs and academic divisions of the center.",
+    dept_lang_title:"Department of Language Education", dept_lang_1:"Ukrainian Language", dept_lang_2:"English Language",
+    dept_lang_3:"Polish Language", dept_lang_4:"German Language", dept_lang_5:"Spanish Language", dept_lang_6:"Conversation Clubs",
+    dept_science_title:"Department of Natural Sciences and Mathematics", dept_science_1:"Mathematics", dept_science_2:"Physics", dept_science_3:"Chemistry",
+    dept_preschool_title:"Department of Primary and Preschool Education", dept_preschool_1:"School Preparation",
+    dept_preschool_2:"Speech Therapy Classes", dept_preschool_3:"Summer Camp",
+    dept_it_title:"Department of Professional and IT Education", dept_it_1:"Programming", dept_it_2:"Artificial Intelligence (AI)",
+    dept_it_3:"Machine Learning", dept_it_4:"Cybersecurity", dept_it_5:"Design", dept_it_6:"Marketing", dept_it_7:"Business",
+    dept_exam_title:"Department of Exam Preparation", dept_exam_1:"Preparation for DPA / ZNO / NMT", dept_exam_2:"Preparation for IELTS / TOEFL",
+    publications_title:"Repository Publications",
+    publications_subtitle:"Publications are organized by collections. Click on a publication to view detailed information.",
+    publications_empty:"Upload PDF files to the publications folder of the GitHub repository.",
+    publications_loading:"Loading publications...",
+    publications_loading_collections:"Loading collections...",
+    publications_loading_files:"Loading files...",
+    publications_loading_error:"Failed to load publications.",
+    publications_none:"No publications added yet.",
+    publications_retry:"Try again",
+    pub_meta:"PDF Publication • Open Access",
+    pub_description:"Academic publication from the OCMRC Repository electronic repository.",
+    pub_link:"Details →", pub_all_collections:"All collections",
+    results_showing:"Showing", results_of:"of",
+    sort_label:"Sort by:", sort_name_asc:"By name (A-Z)", sort_name_desc:"By name (Z-A)",
+    sort_size_large:"By size (largest)", sort_size_small:"By size (smallest)",
+    modal_authors:"Authors", modal_date:"Publication date", modal_abstract:"Abstract",
+    modal_description:"Description", modal_uri:"URI (Uniform Resource Identifier)",
+    modal_collection:"Appears in collections", modal_files:"Files in this item",
+    modal_file_name:"File", modal_file_desc:"Description", modal_file_size:"Size", modal_file_format:"Format",
+    modal_view_btn:"View file", modal_download_btn:"Download",
+    modal_copyright:"All materials in the electronic resources archive are protected by copyright, all rights reserved.",
+    viewer_download:"Download", viewer_close:"Close",
+    contact_title:"Contact", contact_org_name:'Educational Center for Languages and Development "Cambridge"',
+    contact_org_description:"(an unregistered educational project, the activities of which are carried out on the basis of individual initiative without the status of a legal entity)",
+    contact_address_title:"Address", contact_address_text:"Vidpochynku Street, 1<br>Sofiivska Borshchahivka,<br>Kyiv Oblast,<br>Ukraine, 08148",
+    contact_contacts_title:"Contact Information", contact_phone_label:"Phone:", contact_email_label:"Email:",
+    footer_description:'Electronic academic repository of the Educational Center for Languages and Development "Cambridge".',
+    footer_platform:"Open Access Educational Repository Platform.",
+    footer_location:"Sofiivska Borshchahivka • Kyiv Oblast • Ukraine",
+    page_title:'OCMRC Repository — Educational Center for Languages and Development "Cambridge"',
+    toast_loaded:"✓ Publications loaded successfully",
+    toast_error:"✕ Loading error"
 }
-
 };
 
 /* =========================
@@ -2519,210 +2425,208 @@ function setLanguage(lang){
     currentLang = lang;
     localStorage.setItem('ocmrc_lang', lang);
     const url = new URL(window.location);
-    if(lang === 'uk') url.searchParams.delete('lang');
-    else url.searchParams.set('lang', lang);
-    window.history.replaceState({}, '', url);
+    if(lang==='uk') url.searchParams.delete('lang'); else url.searchParams.set('lang',lang);
+    window.history.replaceState({},'',url);
     document.documentElement.lang = lang;
     document.title = translations[lang].page_title;
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if(metaDesc){
-        metaDesc.content = lang === 'en'
-            ? "Official electronic academic repository of the Educational Center for Languages and Development Cambridge."
-            : "Офіційний електронний академічний репозитарій Освітнього центру мов і розвитку Cambridge.";
-    }
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if(translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k=el.getAttribute('data-i18n'); if(translations[lang][k]!==undefined) el.innerHTML=translations[lang][k];
     });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if(translations[lang][key] !== undefined) el.placeholder = translations[lang][key];
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const k=el.getAttribute('data-i18n-placeholder'); if(translations[lang][k]!==undefined) el.placeholder=translations[lang][k];
     });
-    document.querySelectorAll('[data-i18n-option]').forEach(el => {
-        const key = el.getAttribute('data-i18n-option');
-        if(translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+    document.querySelectorAll('[data-i18n-option]').forEach(el=>{
+        const k=el.getAttribute('data-i18n-option'); if(translations[lang][k]!==undefined) el.textContent=translations[lang][k];
     });
-
-    document.getElementById('langUk').classList.toggle('active', lang === 'uk');
-    document.getElementById('langEn').classList.toggle('active', lang === 'en');
-
-    if(allPublications.length > 0){
-        renderCollectionTabs();
-        renderPublications(getFilteredAndSortedPublications());
+    document.getElementById('langUk').classList.toggle('active',lang==='uk');
+    document.getElementById('langEn').classList.toggle('active',lang==='en');
+    if(allPublications.length>0){
+        renderCollectionTabs(); renderPublications(getFilteredAndSortedPublications());
     } else {
-        const emptyMsg = document.querySelector('#publicationsContainer .empty-message');
-        if(emptyMsg) emptyMsg.textContent = translations[lang].publications_empty;
+        const em=document.querySelector('#publicationsContainer .empty-message');
+        if(em) em.textContent=translations[lang].publications_empty;
     }
-    updateBreadcrumb();
+    updateBreadcrumb(); updateResultsCount();
 }
 
 function detectLanguage(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
-    if(urlLang === 'en') return 'en';
-    if(urlLang === 'uk') return 'uk';
-    const savedLang = localStorage.getItem('ocmrc_lang');
-    if(savedLang === 'en' || savedLang === 'uk') return savedLang;
-    return 'uk';
+    const p=new URLSearchParams(window.location.search).get('lang');
+    if(p==='en') return 'en'; if(p==='uk') return 'uk';
+    const s=localStorage.getItem('ocmrc_lang');
+    if(s==='en'||s==='uk') return s; return 'uk';
 }
 
 /* =========================
-PUBLICATIONS DATA
+DATA
 ========================= */
 
-const container = document.getElementById('publicationsContainer');
-const searchInput = document.getElementById('searchInput');
-const pubCount = document.getElementById('pubCount');
-const collectionsCount = document.getElementById('collectionsCount');
+const container=document.getElementById('publicationsContainer');
+const searchInput=document.getElementById('searchInput');
+const pubCount=document.getElementById('pubCount');
+const collectionsCount=document.getElementById('collectionsCount');
 
-let allPublications = [];
-let allCollections = [];
-let activeCollection = 'all';
-let metadataCache = {};
+let allPublications=[];
+let allCollections=[];
+let activeCollection='all';
+let loadStartTime=0;
 
 /* =========================
-AUTO-LOAD COLLECTIONS
+PROGRESS UI
+========================= */
+
+function showLoadingUI(stage, progress){
+    const t = translations[currentLang];
+    let stageText = t.publications_loading;
+    if(stage==='collections') stageText = t.publications_loading_collections;
+    if(stage==='files') stageText = t.publications_loading_files;
+
+    container.innerHTML = `
+        <div class="loading-overlay">
+            <div class="loading-spinner-large"></div>
+            <div class="loading-title">${stageText}</div>
+            <div class="loading-subtitle">${t.publications_subtitle}</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width:${progress||0}%"></div>
+            </div>
+            <div class="progress-text" id="progressText">${progress ? Math.round(progress)+'%' : ''}</div>
+            <div class="status-badge loading">
+                <div class="status-dot pulse"></div>
+                ${stageText}
+            </div>
+        </div>
+    `;
+}
+
+function updateProgress(percent, text){
+    const bar = document.getElementById('progressBar');
+    const txt = document.getElementById('progressText');
+    if(bar) bar.style.width = percent + '%';
+    if(txt) txt.textContent = text || Math.round(percent) + '%';
+}
+
+function showErrorUI(message){
+    const t = translations[currentLang];
+    container.innerHTML = `
+        <div class="loading-overlay">
+            <div style="font-size:48px;">⚠️</div>
+            <div class="loading-title">${message || t.publications_loading_error}</div>
+            <div class="loading-subtitle">${t.publications_loading_error}</div>
+            <div class="status-badge error">
+                <div class="status-dot"></div>
+                Error
+            </div>
+            <button class="retry-btn" onclick="loadPublications()">
+                ${t.publications_retry}
+            </button>
+        </div>
+    `;
+}
+
+/* =========================
+LOAD COLLECTIONS
 ========================= */
 
 async function loadCollections(){
     const data = await safeFetch(
-        "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
+        "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t="+Date.now()
     );
-    if(!data || !Array.isArray(data)) return [];
-    const collections = data
-        .filter(item => item.type === 'dir' && !item.name.startsWith('.'))
-        .map(item => ({ name: item.name, folder: item.path }));
-    debugLog('Collections: ' + collections.map(c => c.name).join(', '), 'success');
-    return collections;
+    if(!data||!Array.isArray(data)) return [];
+    return data
+        .filter(i=>i.type==='dir'&&!i.name.startsWith('.'))
+        .map(i=>({name:i.name,folder:i.path}));
 }
 
 /* =========================
-RECURSIVE SCAN COLLECTION
+RECURSIVE SCAN
 ========================= */
 
 async function loadCollectionFiles(collectionPath, collectionName){
-
-    let results = [];
-
+    let results=[];
     async function scan(path){
-        debugLog('  Scanning: ' + path, 'info');
         const data = await safeFetch(
-            "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/" + path + "?t=" + Date.now()
+            "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/"+path+"?t="+Date.now()
         );
-        if(!data || !Array.isArray(data)) return;
-
+        if(!data||!Array.isArray(data)) return;
         for(const item of data){
             if(item.name.startsWith('.')) continue;
-
-            if(item.type === 'dir'){
-                await scan(item.path);
-            } else if(
-                item.type === 'file' &&
-                item.name.trim().toLowerCase().endsWith('.pdf')
-            ){
-                debugLog('  PDF: ' + item.name, 'success');
+            if(item.type==='dir'){ await scan(item.path); }
+            else if(item.type==='file'&&item.name.trim().toLowerCase().endsWith('.pdf')){
                 results.push({
-                    name: item.name,
-                    path: item.path,
-                    size: item.size || 0,
-                    download_url: item.download_url,
-                    html_url: item.html_url,
-                    sha: item.sha,
-                    collection: collectionName,
-                    metadata: null
+                    name:item.name, path:item.path, size:item.size||0,
+                    download_url:item.download_url, html_url:item.html_url,
+                    sha:item.sha, collection:collectionName, metadata:null
                 });
             }
         }
     }
-
     await scan(collectionPath);
     return results;
 }
 
 /* =========================
-LOAD ROOT FILES
+ROOT FILES
 ========================= */
 
 async function loadRootFiles(){
     const data = await safeFetch(
-        "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t=" + Date.now()
+        "https://api.github.com/repos/ocmrc/ocmrc.github.io/contents/publications?t="+Date.now()
     );
-    if(!data || !Array.isArray(data)) return [];
+    if(!data||!Array.isArray(data)) return [];
     return data
-        .filter(item =>
-            item.type === 'file' &&
-            item.name.trim().toLowerCase().endsWith('.pdf') &&
-            !item.name.startsWith('.')
-        )
-        .map(item => ({
-            name: item.name,
-            path: item.path,
-            size: item.size || 0,
-            download_url: item.download_url,
-            html_url: item.html_url,
-            sha: item.sha,
-            collection: 'Без категорії',
-            metadata: null
+        .filter(i=>i.type==='file'&&i.name.trim().toLowerCase().endsWith('.pdf')&&!i.name.startsWith('.'))
+        .map(i=>({
+            name:i.name, path:i.path, size:i.size||0,
+            download_url:i.download_url, html_url:i.html_url,
+            sha:i.sha, collection:'Без категорії', metadata:null
         }));
 }
 
 /* =========================
-DISABLED: FETCH METADATA
-(prevents API rate limit)
-========================= */
-
-async function fetchFileMetadata(filePath){
-
-    return {
-        authors: "—",
-        description: "",
-        abstract: "",
-        date: "",
-        uri: ""
-    };
-
-}
-
-/* =========================
-MAIN LOAD PUBLICATIONS
+MAIN LOAD
 ========================= */
 
 async function loadPublications(){
+    loadStartTime = Date.now();
 
     try{
-
-        container.innerHTML = `
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <div class="loading-text">${translations[currentLang].publications_loading}</div>
-            </div>
-        `;
-
-        debugLog('=== Starting publication loading ===', 'info');
+        showLoadingUI('collections', 10);
+        debugLog('=== Loading started ===','info');
 
         const collections = await loadCollections();
+        debugLog('Collections: '+collections.length,'success');
 
-        let allFiles = [];
+        showLoadingUI('files', 30);
 
-        for(const col of collections){
+        let allFiles=[];
+        for(let i=0; i<collections.length; i++){
+            const col = collections[i];
+            const progress = 30 + ((i+1)/collections.length)*50;
+            updateProgress(progress, col.name + '...');
+            debugLog('Loading: '+col.name,'info');
+
             const files = await loadCollectionFiles(col.folder, col.name);
             allFiles = allFiles.concat(files);
+
+            // Show files as they load (progressive)
+            if(files.length > 0){
+                allPublications = allFiles.slice();
+                const cs = new Set(); allPublications.forEach(p=>{ if(p.collection) cs.add(p.collection); });
+                allCollections = Array.from(cs).sort();
+                pubCount.textContent = allPublications.length;
+                collectionsCount.textContent = allCollections.length;
+            }
         }
 
+        updateProgress(85, 'Root files...');
         const rootFiles = await loadRootFiles();
         allFiles = allFiles.concat(rootFiles);
 
-        debugLog('Total: ' + allFiles.length + ' PDF files', 'success');
+        updateProgress(95, '');
 
         allPublications = allFiles;
-
-        const collectionSet = new Set();
-        allPublications.forEach(pub => {
-            if(pub.collection) collectionSet.add(pub.collection);
-        });
-        allCollections = Array.from(collectionSet).sort();
+        const cs2 = new Set();
+        allPublications.forEach(p=>{ if(p.collection) cs2.add(p.collection); });
+        allCollections = Array.from(cs2).sort();
 
         pubCount.textContent = allPublications.length;
         collectionsCount.textContent = allCollections.length;
@@ -2731,61 +2635,48 @@ async function loadPublications(){
         renderPublications(getFilteredAndSortedPublications());
         generateCitationMeta(allPublications);
 
-        // Metadata loading disabled to prevent API rate limit
-        debugLog('Metadata loading disabled (rate limit protection)', 'info');
+        const elapsed = ((Date.now()-loadStartTime)/1000).toFixed(1);
+        debugLog('Done! '+allPublications.length+' files in '+elapsed+'s','success');
+
+        showToast(translations[currentLang].toast_loaded + ' (' + allPublications.length + ')', 'success');
 
     } catch(error){
-
-        debugLog('CRITICAL: ' + error.message, 'error');
+        debugLog('CRITICAL: '+error.message,'error');
         console.error(error);
-
-        container.innerHTML = `
-            <div class="empty-message">
-                ${translations[currentLang].publications_loading_error}
-            </div>
-        `;
-
+        showErrorUI(error.message);
+        showToast(translations[currentLang].toast_error, 'error');
     }
-
 }
 
 /* =========================
-RENDER COLLECTION TABS
+DISABLED METADATA
+========================= */
+
+async function fetchFileMetadata(filePath){
+    return { authors:"—", description:"", abstract:"", date:"", uri:"" };
+}
+
+/* =========================
+RENDER TABS
 ========================= */
 
 function renderCollectionTabs(){
-    const tabsContainer = document.getElementById('collectionTabs');
-    tabsContainer.innerHTML = '';
+    const tc=document.getElementById('collectionTabs'); tc.innerHTML='';
+    const cc={};
+    allPublications.forEach(p=>{ const c=p.collection||'Без категорії'; cc[c]=(cc[c]||0)+1; });
 
-    const collectionCounts = {};
-    allPublications.forEach(pub => {
-        const col = pub.collection || 'Без категорії';
-        collectionCounts[col] = (collectionCounts[col] || 0) + 1;
-    });
+    const at=document.createElement('button');
+    at.className='collection-tab'+(activeCollection==='all'?' active':'');
+    at.innerHTML=translations[currentLang].pub_all_collections+'<span class="collection-tab-count">'+allPublications.length+'</span>';
+    at.onclick=function(){ activeCollection='all'; renderCollectionTabs(); updateBreadcrumb(); renderPublications(getFilteredAndSortedPublications()); };
+    tc.appendChild(at);
 
-    const allTab = document.createElement('button');
-    allTab.className = 'collection-tab' + (activeCollection === 'all' ? ' active' : '');
-    allTab.innerHTML = translations[currentLang].pub_all_collections +
-        '<span class="collection-tab-count">' + allPublications.length + '</span>';
-    allTab.onclick = function(){
-        activeCollection = 'all';
-        renderCollectionTabs();
-        updateBreadcrumb();
-        renderPublications(getFilteredAndSortedPublications());
-    };
-    tabsContainer.appendChild(allTab);
-
-    allCollections.forEach(col => {
-        const tab = document.createElement('button');
-        tab.className = 'collection-tab' + (activeCollection === col ? ' active' : '');
-        tab.innerHTML = col + '<span class="collection-tab-count">' + (collectionCounts[col] || 0) + '</span>';
-        tab.onclick = function(){
-            activeCollection = col;
-            renderCollectionTabs();
-            updateBreadcrumb();
-            renderPublications(getFilteredAndSortedPublications());
-        };
-        tabsContainer.appendChild(tab);
+    allCollections.forEach(col=>{
+        const t=document.createElement('button');
+        t.className='collection-tab'+(activeCollection===col?' active':'');
+        t.innerHTML=col+'<span class="collection-tab-count">'+(cc[col]||0)+'</span>';
+        t.onclick=function(){ activeCollection=col; renderCollectionTabs(); updateBreadcrumb(); renderPublications(getFilteredAndSortedPublications()); };
+        tc.appendChild(t);
     });
 }
 
@@ -2794,93 +2685,81 @@ BREADCRUMB
 ========================= */
 
 function updateBreadcrumb(){
-    const breadcrumb = document.getElementById('collectionBreadcrumb');
-    if(activeCollection === 'all'){
-        breadcrumb.style.display = 'none';
-        return;
-    }
-    breadcrumb.style.display = 'flex';
-    breadcrumb.innerHTML = `
-        <a href="#publications" onclick="event.preventDefault(); activeCollection='all'; renderCollectionTabs(); updateBreadcrumb(); renderPublications(getFilteredAndSortedPublications());">
+    const b=document.getElementById('collectionBreadcrumb');
+    if(activeCollection==='all'){ b.style.display='none'; return; }
+    b.style.display='flex';
+    b.innerHTML=`
+        <a href="#publications" onclick="event.preventDefault();activeCollection='all';renderCollectionTabs();updateBreadcrumb();renderPublications(getFilteredAndSortedPublications());">
             ${translations[currentLang].pub_all_collections}
-        </a>
-        <span>›</span>
-        <span style="color:var(--primary); font-weight:600;">${activeCollection}</span>
+        </a><span>›</span>
+        <span style="color:var(--primary);font-weight:600;">${activeCollection}</span>
     `;
 }
 
 /* =========================
-FILTER AND SORT
+RESULTS COUNT
 ========================= */
 
-function getFilteredAndSortedPublications(){
-    let filtered = allPublications.slice();
-
-    if(activeCollection !== 'all'){
-        filtered = filtered.filter(pub => pub.collection === activeCollection);
+function updateResultsCount(){
+    const rc = document.getElementById('resultsCount');
+    if(!rc) return;
+    const filtered = getFilteredAndSortedPublications();
+    const t = translations[currentLang];
+    if(filtered.length === allPublications.length){
+        rc.textContent = t.results_showing + ' ' + filtered.length;
+    } else {
+        rc.textContent = t.results_showing + ' ' + filtered.length + ' ' + t.results_of + ' ' + allPublications.length;
     }
-
-    const searchValue = searchInput.value.toLowerCase().trim();
-    if(searchValue){
-        filtered = filtered.filter(pub => {
-            const fileName = pub.name.toLowerCase();
-            const collection = (pub.collection || '').toLowerCase();
-            return fileName.includes(searchValue) || collection.includes(searchValue);
-        });
-    }
-
-    const sortValue = document.getElementById('sortSelect').value;
-    filtered.sort((a, b) => {
-        switch(sortValue){
-            case 'name-asc': return getDisplayTitle(a).localeCompare(getDisplayTitle(b), 'uk');
-            case 'name-desc': return getDisplayTitle(b).localeCompare(getDisplayTitle(a), 'uk');
-            case 'size-large': return (b.size || 0) - (a.size || 0);
-            case 'size-small': return (a.size || 0) - (b.size || 0);
-            default: return 0;
-        }
-    });
-
-    return filtered;
 }
 
 /* =========================
-HELPERS
+FILTER & SORT
 ========================= */
 
-function getDisplayTitle(pub){
-    if(pub.metadata && pub.metadata.title) return pub.metadata.title;
-    return pub.name.replace(/\.pdf$/i, '').replaceAll('-', ' ').replaceAll('_', ' ');
+function getFilteredAndSortedPublications(){
+    let f=allPublications.slice();
+    if(activeCollection!=='all') f=f.filter(p=>p.collection===activeCollection);
+    const sv=searchInput.value.toLowerCase().trim();
+    if(sv) f=f.filter(p=>{
+        return p.name.toLowerCase().includes(sv)||(p.collection||'').toLowerCase().includes(sv);
+    });
+    const so=document.getElementById('sortSelect').value;
+    f.sort((a,b)=>{
+        switch(so){
+            case 'name-asc': return getDisplayTitle(a).localeCompare(getDisplayTitle(b),'uk');
+            case 'name-desc': return getDisplayTitle(b).localeCompare(getDisplayTitle(a),'uk');
+            case 'size-large': return (b.size||0)-(a.size||0);
+            case 'size-small': return (a.size||0)-(b.size||0);
+            default: return 0;
+        }
+    });
+    return f;
 }
 
-function formatFileSize(bytes){
-    if(!bytes || bytes === 0) return '—';
-    if(bytes < 1024) return bytes + ' B';
-    if(bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+function getDisplayTitle(p){
+    if(p.metadata&&p.metadata.title) return p.metadata.title;
+    return p.name.replace(/\.pdf$/i,'').replaceAll('-',' ').replaceAll('_',' ');
 }
 
-function applySorting(){
-    renderPublications(getFilteredAndSortedPublications());
+function formatFileSize(b){
+    if(!b||b===0) return '—';
+    if(b<1024) return b+' B';
+    if(b<1024*1024) return (b/1024).toFixed(1)+' KB';
+    return (b/(1024*1024)).toFixed(2)+' MB';
 }
+
+function applySorting(){ renderPublications(getFilteredAndSortedPublications()); }
 
 /* =========================
 CITATION META
 ========================= */
 
 function generateCitationMeta(files){
-    document.querySelectorAll('meta[data-dynamic-citation]').forEach(el => el.remove());
-    files.forEach(file => {
-        const title = getDisplayTitle(file);
-        const metaTitle = document.createElement('meta');
-        metaTitle.name = 'citation_title';
-        metaTitle.content = title;
-        metaTitle.setAttribute('data-dynamic-citation', 'true');
-        document.head.appendChild(metaTitle);
-        const metaPdfUrl = document.createElement('meta');
-        metaPdfUrl.name = 'citation_pdf_url';
-        metaPdfUrl.content = file.download_url;
-        metaPdfUrl.setAttribute('data-dynamic-citation', 'true');
-        document.head.appendChild(metaPdfUrl);
+    document.querySelectorAll('meta[data-dynamic-citation]').forEach(e=>e.remove());
+    files.forEach(f=>{
+        const t=getDisplayTitle(f);
+        const m1=document.createElement('meta'); m1.name='citation_title'; m1.content=t; m1.setAttribute('data-dynamic-citation','true'); document.head.appendChild(m1);
+        const m2=document.createElement('meta'); m2.name='citation_pdf_url'; m2.content=f.download_url; m2.setAttribute('data-dynamic-citation','true'); document.head.appendChild(m2);
     });
 }
 
@@ -2889,35 +2768,31 @@ RENDER PUBLICATIONS
 ========================= */
 
 function renderPublications(files){
-    if(files.length === 0){
-        container.innerHTML = `<div class="empty-message">${translations[currentLang].publications_none}</div>`;
+    updateResultsCount();
+
+    if(files.length===0){
+        container.innerHTML=`<div class="empty-message">${translations[currentLang].publications_none}</div>`;
         return;
     }
+    container.innerHTML='';
+    files.forEach((file,index)=>{
+        const title=getDisplayTitle(file);
+        const card=document.createElement('article');
+        card.className='publication-card';
+        card.style.cursor='pointer';
+        card.style.animationDelay=(index*0.05)+'s';
 
-    container.innerHTML = '';
+        let tag=file.collection?`<div class="publication-collection-tag">${file.collection}</div>`:'';
+        let size=file.size?` • ${formatFileSize(file.size)}`:'';
 
-    files.forEach(file => {
-        const title = getDisplayTitle(file);
-        const card = document.createElement('article');
-        card.className = 'publication-card';
-        card.style.cursor = 'pointer';
-
-        let collectionTag = file.collection ? `<div class="publication-collection-tag">${file.collection}</div>` : '';
-        let sizeInfo = file.size ? ` • ${formatFileSize(file.size)}` : '';
-
-        card.innerHTML = `
-            ${collectionTag}
+        card.innerHTML=`
+            ${tag}
             <h4>${title}</h4>
-            <div class="publication-meta">${translations[currentLang].pub_meta}${sizeInfo}</div>
+            <div class="publication-meta">${translations[currentLang].pub_meta}${size}</div>
             <div class="publication-description">${translations[currentLang].pub_description}</div>
             <span class="publication-link">${translations[currentLang].pub_link}</span>
         `;
-
-        card.addEventListener('click', function(e){
-            e.preventDefault();
-            openPublicationModal(file);
-        });
-
+        card.addEventListener('click',function(e){ e.preventDefault(); openPublicationModal(file); });
         container.appendChild(card);
     });
 }
@@ -2927,88 +2802,71 @@ PUBLICATION MODAL
 ========================= */
 
 function openPublicationModal(file){
-    const overlay = document.getElementById('pubModalOverlay');
-    const title = getDisplayTitle(file);
-    const meta = file.metadata || {};
+    const o=document.getElementById('pubModalOverlay');
+    const title=getDisplayTitle(file);
+    const m=file.metadata||{};
 
-    document.getElementById('pubModalTitle').textContent = title;
-    document.getElementById('pubModalAuthors').textContent = meta.authors || '—';
-    document.getElementById('pubModalDate').textContent = meta.date || '—';
-    document.getElementById('pubModalAbstract').textContent = meta.abstract || '—';
-    document.getElementById('pubModalDescription').textContent = meta.description || '—';
+    document.getElementById('pubModalTitle').textContent=title;
+    document.getElementById('pubModalAuthors').textContent=m.authors||'—';
+    document.getElementById('pubModalDate').textContent=m.date||'—';
+    document.getElementById('pubModalAbstract').textContent=m.abstract||'—';
+    document.getElementById('pubModalDescription').textContent=m.description||'—';
 
-    const uriEl = document.getElementById('pubModalURI');
-    if(meta.uri){
-        uriEl.innerHTML = `<a href="${meta.uri}" target="_blank" rel="noopener">${meta.uri}</a>`;
-    } else {
-        const fileUrl = 'https://ocmrc.github.io/' + file.path;
-        uriEl.innerHTML = `<a href="${fileUrl}" target="_blank" rel="noopener">${fileUrl}</a>`;
-    }
+    const u=document.getElementById('pubModalURI');
+    if(m.uri) u.innerHTML=`<a href="${m.uri}" target="_blank" rel="noopener">${m.uri}</a>`;
+    else { const fu='https://ocmrc.github.io/'+file.path; u.innerHTML=`<a href="${fu}" target="_blank" rel="noopener">${fu}</a>`; }
 
-    document.getElementById('pubModalCollection').textContent = file.collection || '—';
+    document.getElementById('pubModalCollection').textContent=file.collection||'—';
 
-    const safeFileName = file.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    const safeDownloadUrl = file.download_url.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-
-    document.getElementById('pubModalFileBody').innerHTML = `
+    const sf=file.name.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    const sd=file.download_url.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    document.getElementById('pubModalFileBody').innerHTML=`
         <tr>
-            <td><a href="#" onclick="event.preventDefault(); openPdfViewer('${safeDownloadUrl}', '${safeFileName}');">${file.name}</a></td>
-            <td></td>
-            <td>${formatFileSize(file.size)}</td>
-            <td>Adobe PDF</td>
-            <td><a href="#" onclick="event.preventDefault(); openPdfViewer('${safeDownloadUrl}', '${safeFileName}');">👁</a></td>
+            <td><a href="#" onclick="event.preventDefault();openPdfViewer('${sd}','${sf}');">${file.name}</a></td>
+            <td></td><td>${formatFileSize(file.size)}</td><td>Adobe PDF</td>
+            <td><a href="#" onclick="event.preventDefault();openPdfViewer('${sd}','${sf}');">👁</a></td>
         </tr>
     `;
 
-    document.getElementById('pubModalViewBtn').onclick = function(e){
-        e.preventDefault();
-        openPdfViewer(file.download_url, file.name);
-    };
+    document.getElementById('pubModalViewBtn').onclick=function(e){ e.preventDefault(); openPdfViewer(file.download_url,file.name); };
+    document.getElementById('pubModalDownloadBtn').href=file.download_url;
 
-    document.getElementById('pubModalDownloadBtn').href = file.download_url;
-
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    o.classList.add('active');
+    document.body.style.overflow='hidden';
 }
 
 function closePublicationModal(){
     document.getElementById('pubModalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.style.overflow='';
 }
 
 /* =========================
 PDF VIEWER
 ========================= */
 
-function openPdfViewer(url, fileName){
+function openPdfViewer(url,fn){
     closePublicationModal();
-    document.getElementById('pdfViewerTitle').textContent = fileName || 'document.pdf';
-    document.getElementById('pdfDownloadBtn').href = url;
-    document.getElementById('pdfViewerFrame').src = url;
+    document.getElementById('pdfViewerTitle').textContent=fn||'document.pdf';
+    document.getElementById('pdfDownloadBtn').href=url;
+    document.getElementById('pdfViewerFrame').src=url;
     document.getElementById('pdfViewerOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
 }
 
 function closePdfViewer(){
     document.getElementById('pdfViewerOverlay').classList.remove('active');
-    document.getElementById('pdfViewerFrame').src = '';
-    document.body.style.overflow = '';
+    document.getElementById('pdfViewerFrame').src='';
+    document.body.style.overflow='';
 }
 
 /* =========================
 MODAL EVENTS
 ========================= */
 
-document.getElementById('pubModalOverlay').addEventListener('click', function(e){
-    if(e.target === this) closePublicationModal();
-});
-
-document.getElementById('pdfViewerOverlay').addEventListener('click', function(e){
-    if(e.target === this) closePdfViewer();
-});
-
-document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
+document.getElementById('pubModalOverlay').addEventListener('click',function(e){ if(e.target===this) closePublicationModal(); });
+document.getElementById('pdfViewerOverlay').addEventListener('click',function(e){ if(e.target===this) closePdfViewer(); });
+document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
         if(document.getElementById('pdfViewerOverlay').classList.contains('active')) closePdfViewer();
         else if(document.getElementById('pubModalOverlay').classList.contains('active')) closePublicationModal();
     }
@@ -3018,20 +2876,16 @@ document.addEventListener('keydown', function(e){
 SEARCH
 ========================= */
 
-document.getElementById('searchForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    renderPublications(getFilteredAndSortedPublications());
+document.getElementById('searchForm').addEventListener('submit',function(e){
+    e.preventDefault(); renderPublications(getFilteredAndSortedPublications());
 });
-
-searchInput.addEventListener('input', function(){
-    renderPublications(getFilteredAndSortedPublications());
-});
+searchInput.addEventListener('input',function(){ renderPublications(getFilteredAndSortedPublications()); });
 
 /* =========================
-INITIAL LOAD
+INIT
 ========================= */
 
-const initialLang = detectLanguage();
+const initialLang=detectLanguage();
 setLanguage(initialLang);
 loadPublications();
 
